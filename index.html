@@ -1,53 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H2H 음원총공팀</title>
+  <title>H2H FAN SUPPORT</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- ========================= -->
+  <!-- 항상 유지되는 상단 배너 -->
+  <!-- ========================= -->
 
   <header>
     <h1>H2H 음원총공팀</h1>
 
     <nav>
-      <a href="#home">HOME</a>
+      <a href="#home" id="home-link">HOME</a>
       <a href="#guide">GUIDE</a>
-      <a href="#streaming">STREAMING</a>
+      <a href="#streaming" class="streaming-link">STREAMING</a>
       <a href="#fanchant">FANCHANT</a>
     </nav>
   </header>
 
-  <main>
-    
-    <section class="menu-section">
-      <a href="#guide" class="menu-card">
-        <span>01</span>
-        <h3>GUIDE</h3>
-        <p>팬 활동에 필요한 가이드</p>
-      </a>
 
-      <a href="#streaming" class="menu-card">
-        <span>02</span>
-        <h3>STREAMING</h3>
-        <p>음원 스트리밍 가이드</p>
-      </a>
+  <!-- ========================= -->
+  <!-- 메인 화면 -->
+  <!-- ========================= -->
 
-      <a href="#fanchant" class="menu-card">
-        <span>03</span>
-        <h3>FANCHANT</h3>
-        <p>공식 응원법 모음</p>
-      </a>
-    </section>
-  </main>
+  <div id="main-page" class="page active">
 
-  <footer>
-    <p>하츠투하츠 음원총공팀
-    </p>
-  </footer>
+    <main>
+      <section class="menu-section">
+
+        <a href="#guide" class="menu-card">
+          <span>01</span>
+          <h3>GUIDE</h3>
+          <p>팬 활동에 필요한 가이드</p>
+        </a>
+
+
+        <a href="#streaming" class="menu-card streaming-link">
+          <span>02</span>
+          <h3>STREAMING</h3>
+          <p>MV/음원 스트리밍 가이드</p>
+        </a>
+
+
+        <a href="#fanchant" class="menu-card">
+          <span>03</span>
+          <h3>FANCHANT</h3>
+          <p>공식 응원법 모음</p>
+        </a>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      <p>Made by H2H 음원총공팀</p>
+    </footer>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- 스트리밍 가이드 화면 -->
+  <!-- ========================= -->
+
+  <div id="streaming-page" class="page">
+
+    <div class="streaming-inner">
+
+      <p class="small-text">
+        MV/음원 스트리밍 가이드
+      </p>
+
+      <h2>STREAMING GUIDE</h2>
+
+
+      <button
+        id="streaming-list-btn"
+        class="streaming-list-btn"
+      >
+        스트리밍 리스트
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- 스트리밍 리스트 화면 -->
+  <!-- ========================= -->
+
+  <div id="streaming-list-page" class="page">
+
+    <div class="streaming-list-inner">
+
+      <p class="small-text">
+        H2H 음원총공팀에서 제공하는 권장 스트리밍리스트
+      </p>
+
+      <h2>STREAMING LIST</h2>
+
+
+      <div class="streaming-list-image">
+
+        <img
+          src="images/Moonride-STREAMING.jpg"
+          alt="스트리밍 리스트"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
 
   <script src="script.js"></script>
+
 </body>
 </html>
