@@ -6,6 +6,7 @@
   <title>H2H FAN SUPPORT</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- ========================= -->
@@ -19,7 +20,7 @@
       <a href="#home" id="home-link">HOME</a>
       <a href="#guide">GUIDE</a>
       <a href="#streaming" class="streaming-link">STREAMING</a>
-      <a href="#fanchant">FANCHANT</a>
+      <a href="#fanchant" class="fanchant-link">FANCHANT</a>
     </nav>
   </header>
 
@@ -39,24 +40,20 @@
           <p>팬 활동에 필요한 가이드</p>
         </a>
 
-
         <a href="#streaming" class="menu-card streaming-link">
           <span>02</span>
           <h3>STREAMING</h3>
           <p>MV/음원 스트리밍 가이드</p>
         </a>
 
-
-        <a href="#fanchant" class="menu-card">
+        <a href="#fanchant" class="menu-card fanchant-link">
           <span>03</span>
           <h3>FANCHANT</h3>
           <p>공식 응원법 모음</p>
         </a>
 
       </section>
-
     </main>
-
 
     <footer>
       <p>Made by H2H 음원총공팀</p>
@@ -66,31 +63,44 @@
 
 
   <!-- ========================= -->
-  <!-- 스트리밍 가이드 화면 -->
-  <!-- ========================= -->
+<!-- 스트리밍 가이드 화면 -->
+<!-- ========================= -->
 
-  <div id="streaming-page" class="page">
+<div id="streaming-page" class="page">
 
-    <div class="streaming-inner">
+  <div class="streaming-inner">
 
-      <p class="small-text">
-        MV/음원 스트리밍 가이드
-      </p>
+    <!-- HOME으로 돌아가기 -->
+    <button
+      id="streaming-home-btn"
+      class="back-btn"
+    >
+      &lt;
+    </button>
 
-      <h2>STREAMING GUIDE</h2>
+    <p class="small-text">
+      MV/음원 스트리밍 가이드
+    </p>
 
+    <h2>STREAMING GUIDE</h2>
 
-      <button
-        id="streaming-list-btn"
-        class="streaming-list-btn"
-      >
-        스트리밍 리스트
-      </button>
+    <button
+      id="streaming-list-btn"
+      class="streaming-list-btn"
+    >
+      스트리밍 리스트
+    </button>
 
-    </div>
+    <button
+      id="streaming-oneclick-btn"
+      class="streaming-list-btn"
+    >
+      원클릭 스트리밍
+    </button>
 
   </div>
 
+</div>
 
   <!-- ========================= -->
   <!-- 스트리밍 리스트 화면 -->
@@ -100,12 +110,19 @@
 
     <div class="streaming-list-inner">
 
+      <!-- 스트리밍 가이드로 돌아가기 -->
+      <button
+        id="streaming-list-back-btn"
+        class="back-btn"
+      >
+        &lt;
+      </button>
+
       <p class="small-text">
         H2H 음원총공팀에서 제공하는 권장 스트리밍리스트
       </p>
 
       <h2>STREAMING LIST</h2>
-
 
       <div class="streaming-list-image">
 
@@ -114,12 +131,310 @@
           alt="스트리밍 리스트"
         >
 
+        <p class="streaming-list-caption">
+          MOONRIDE 스트리밍 리스트
+        </p>
+
       </div>
 
     </div>
 
   </div>
 
+<!-- ========================= -->
+<!-- 원클릭 스트리밍 화면 -->
+<!-- ========================= -->
+
+<div id="oneclick-streaming-page" class="page">
+
+  <div class="oneclick-streaming-inner">
+
+    <!-- 스트리밍 가이드로 돌아가기 -->
+    <button
+      id="oneclick-streaming-back-btn"
+      class="back-btn"
+    >
+      &lt;
+    </button>
+
+    <p class="small-text">
+      음원 원클릭 스트리밍
+    </p>
+
+    <h2>ONE CLICK STREAMING</h2>
+
+
+    <!-- ========================= -->
+    <!-- MELON ANDROID -->
+    <!-- ========================= -->
+
+    <div class="oneclick-streaming-group">
+
+      <p class="streaming-platform-title">
+        MELON ANDROID
+      </p>
+
+      <div class="oneclick-streaming-list">
+
+        <a
+          href="melonapp://play?menuid=0&ctype=1&cid=602313594,603038071,601332163,600320356,602313595"
+          class="streaming-list-btn"
+        >
+          멜론 (안드로이드) 1
+        </a>
+
+        <a
+          href="melonapp://play?menuid=0&ctype=1&cid=602313594,601332163,602733454,600320356,602313598"
+          class="streaming-list-btn"
+        >
+          멜론 (안드로이드) 2
+        </a>
+
+        <a
+          href="melonapp://play?menuid=0&ctype=1&cid=602313594,603038071,601332163,600320356,602313597"
+          class="streaming-list-btn"
+        >
+          멜론 (안드로이드) 3
+        </a>
+
+        <a
+          href="melonapp://play?menuid=0&ctype=1&cid=602313594,601332163,602733454,39161085,602313596"
+          class="streaming-list-btn"
+        >
+          멜론 (안드로이드) 4
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- MELON iOS -->
+    <!-- ========================= -->
+
+    <div class="oneclick-streaming-group">
+
+      <p class="streaming-platform-title">
+        MELON iOS
+      </p>
+
+      <div class="oneclick-streaming-list">
+
+        <a
+          href="melonapp://play?menuid=0&ctype=1&cid=602313594,603038071,601332163,600320356,602313595,602313594,601332163,602733454,600320356,602313598,602313594,603038071,601332163,600320356,602313597,602313594,601332163,602733454,39161085,602313596"
+          class="streaming-list-btn"
+        >
+          멜론 (iOS)
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GENIE ANDROID -->
+    <!-- ========================= -->
+
+    <div class="oneclick-streaming-group">
+
+      <p class="streaming-platform-title">
+        GENIE MUSIC ANDROID
+      </p>
+
+      <div class="oneclick-streaming-list">
+
+        <a
+          href="cromegenie://scan/?landing_type=31&landing_target=115638790;116771050;113970278;112272119;115638791;115638790;113970278;116282404;112272119;115638794;115638790;116771050;113970278;112272119;115638793;115638790;113970278;116282404;110569963;115638792"
+          class="streaming-list-btn"
+        >
+          지니뮤직 (안드로이드)
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GENIE iOS -->
+    <!-- ========================= -->
+
+    <div class="oneclick-streaming-group">
+
+      <p class="streaming-platform-title">
+        GENIE MUSIC iOS
+      </p>
+
+      <div class="oneclick-streaming-list">
+
+        <a
+          href="ktolleh00167://landing/?landing_type=31&landing_target=115638790;116771050;113970278;112272119;115638791;115638790;113970278;116282404;112272119;115638794;115638790;116771050;113970278;112272119;115638793;115638790;113970278;116282404;110569963;115638792"
+          class="streaming-list-btn"
+        >
+          지니뮤직 (iOS)
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- FLO MUSIC -->
+    <!-- ========================= -->
+
+    <div class="oneclick-streaming-group">
+
+      <p class="streaming-platform-title">
+        FLO MUSIC
+      </p>
+
+      <div class="oneclick-streaming-list">
+
+        <a
+          href="flomusic://play/track?ids=594237946,606836978,576104327,558807581,594237947,594237946,576104327,601629304,558807581,594237950,594237946,606836978,576104327,558807581,594237949,594237946,576104327,601629304,544564174,594237948"
+          class="streaming-list-btn"
+        >
+          FLO MUSIC
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- ========================= -->
+<!-- 응원법 메인 화면 -->
+<!-- ========================= -->
+
+<div id="fanchant-page" class="page">
+
+  <div class="fanchant-inner">
+
+    <!-- 메인 화면으로 돌아가기 -->
+    <button
+      id="fanchant-home-btn"
+      class="back-btn"
+    >
+      &lt;
+    </button>
+
+    <p class="small-text">
+      H2H 음원총공팀에서 제공하는 공식 응원법
+    </p>
+
+    <h2>FANCHANT</h2>
+
+    <div class="fanchant-list">
+
+      <button
+        class="fanchant-song-btn"
+        data-song="The Chase"
+        data-title="The Chase"
+      >
+        The Chase
+      </button>
+
+      <button
+        class="fanchant-song-btn"
+        data-song="STYLE"
+        data-title="STYLE"
+      >
+        STYLE
+      </button>
+
+      <button
+        class="fanchant-song-btn"
+        data-song="Pretty Please"
+        data-title="Pretty Please"
+      >
+        Pretty Please
+      </button>
+
+      <button
+  class="fanchant-song-btn"
+  data-song="FOCUS"
+  data-title="FOCUS"
+>
+  FOCUS
+</button>
+
+<button
+  class="fanchant-song-btn"
+  data-song="RUDE"
+  data-title="RUDE"
+>
+  RUDE
+</button>
+
+      <button
+        class="fanchant-song-btn"
+        data-song="Lemon Tang"
+        data-title="Lemon Tang"
+      >
+        Lemon Tang
+    </button>
+
+      <button
+        class="fanchant-song-btn"
+        data-song="15-LOVE"
+        data-title="15-LOVE"
+      >
+        15-LOVE
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 곡별 응원법 상세 화면 -->
+<!-- ========================= -->
+
+<div id="fanchant-detail-page" class="page">
+
+  <div class="fanchant-detail-inner">
+
+    <!-- 메인 화면으로 돌아가기 -->
+    <button
+      id="fanchant-back-btn"
+      class="back-btn"
+    >
+      &lt;
+    </button>
+
+    <p class="small-text">
+      OFFICIAL FANCHANT
+    </p>
+
+    <h2 id="fanchant-song-title"></h2>
+
+    <div class="fanchant-image">
+
+      <img
+        id="fanchant-song-image"
+        src=""
+        alt="공식 응원법"
+      >
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <!-- ========================= -->
+  <!-- JavaScript -->
+  <!-- ========================= -->
 
   <script src="script.js"></script>
 

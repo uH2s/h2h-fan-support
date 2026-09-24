@@ -249,6 +249,128 @@ footer {
 }
 
 
+/* 스트리밍 리스트 설명 */
+
+.streaming-list-caption {
+  margin-top: 10px;
+
+  font-size: 11px;
+
+  color: #888;
+
+  text-align: center;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ================================= */
+/* FANCHANT */
+/* ================================= */
+
+.fanchant-inner,
+.fanchant-detail-inner {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 60px 20px;
+}
+
+
+/* ================================= */
+/* FANCHANT 돌아가기 버튼 */
+/* ================================= */
+
+.back-btn {
+  display: block;
+
+  margin-bottom: 30px;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+
+  color: #222;
+
+  font-size: 24px;
+
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #888;
+}
+
+
+/* ================================= */
+/* FANCHANT 곡 버튼 */
+/* ================================= */
+
+.fanchant-list {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+
+  margin-top: 35px;
+}
+
+.fanchant-song-btn {
+  width: 100%;
+
+  padding: 20px 10px;
+
+  background: transparent;
+
+  border: 1px solid currentColor;
+
+  color: #222;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.fanchant-song-btn:hover {
+  opacity: 0.6;
+}
+
+
+/* ================================= */
+/* FANCHANT 이미지 */
+/* ================================= */
+
+.fanchant-image {
+  margin-top: 30px;
+
+  text-align: center;
+}
+
+.fanchant-image img {
+  display: block;
+
+  width: 100%;
+
+  max-width: 700px;
+
+  height: auto;
+
+  margin: 0 auto;
+}
+
+
 /* ================================= */
 /* 모바일 */
 /* ================================= */
@@ -385,6 +507,184 @@ footer {
     font-size: 32px;
 
     margin-bottom: 28px;
+  }
+
+
+  /* FANCHANT */
+
+  .fanchant-inner,
+  .fanchant-detail-inner {
+    padding: 60px 20px;
+  }
+
+
+  .fanchant-list {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+  }
+
+
+  .fanchant-song-btn {
+    padding: 16px 8px;
+
+    font-size: 14px;
+  }
+
+
+  .back-btn {
+    margin-bottom: 25px;
+
+    font-size: 22px;
+  }
+
+}
+#streaming-oneclick-btn {
+  margin-left: 12px;
+}
+
+/* ========================= */
+/* 원클릭 스트리밍 화면 */
+/* ========================= */
+
+.oneclick-streaming-inner {
+  width: 100%;
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 60px 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* 제목 */
+
+.oneclick-streaming-inner h2 {
+  font-size: clamp(32px, 5vw, 56px);
+
+  margin-bottom: 40px;
+}
+
+
+/* ========================= */
+/* 플랫폼 그룹 */
+/* ========================= */
+
+.oneclick-streaming-group {
+  width: 100%;
+
+  margin-top: 45px;
+
+  padding-top: 30px;
+
+  border-top: 1px solid #eee;
+}
+
+
+/* 첫 번째 그룹 */
+
+.oneclick-streaming-group:first-of-type {
+  margin-top: 35px;
+
+  padding-top: 0;
+
+  border-top: none;
+}
+
+
+/* 플랫폼 제목 */
+
+.streaming-platform-title {
+  margin-bottom: 14px;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  color: #888;
+
+  text-align: center;
+}
+
+
+/* ========================= */
+/* 버튼 목록 */
+/* ========================= */
+
+.oneclick-streaming-list {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+
+/* ========================= */
+/* 스트리밍 버튼 */
+/* ========================= */
+
+.oneclick-streaming-list .streaming-list-btn {
+  display: block;
+
+  width: min(100%, 320px);
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+}
+
+
+/* ========================= */
+/* 모바일 */
+/* ========================= */
+
+@media (max-width: 700px) {
+
+  .oneclick-streaming-inner {
+    padding: 60px 20px;
+  }
+
+
+  .oneclick-streaming-inner h2 {
+    font-size: 32px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .oneclick-streaming-group {
+    margin-top: 40px;
+
+    padding-top: 25px;
+  }
+
+
+  .oneclick-streaming-group:first-of-type {
+    margin-top: 30px;
+
+    padding-top: 0;
+  }
+
+
+  .streaming-platform-title {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 12px;
+  }
+
+
+  .oneclick-streaming-list {
+    gap: 10px;
   }
 
 }
