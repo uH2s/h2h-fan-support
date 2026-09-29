@@ -517,8 +517,12 @@ footer {
   header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
-    padding: 20px;
+
+    /* 로고와 메뉴 사이 */
+    gap: 20px;
+
+    /* 모바일 헤더 위아래 여백 */
+    padding: 24px 20px 26px;
   }
 
   header h1 {
@@ -537,6 +541,28 @@ footer {
   nav a {
     font-size: 12px;
   }
+
+
+  /* 언어 변환 */
+
+  .language-selector {
+    margin-left: 0;
+  }
+
+  .language-toggle {
+    width: 22px;
+    height: 22px;
+  }
+
+  .language-menu {
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 145px;
+  }
+
+
+  /* 이하 기존 모바일 CSS 그대로 */
+}
 
 
   /* 언어 변환 */
