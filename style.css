@@ -1230,10 +1230,85 @@ footer {
 
 }
 
-.notice-unread
 
-/* 공지 목록 카드의 빨간 점 위치 */
+/* ================================= */
+/* 읽지 않은 공지 빨간 점 */
+/* ================================= */
+
+.latest-notice-button,
+.notice-list-item {
+  position: relative;
+}
+
+.latest-notice-button.notice-unread::before,
 .notice-list-item.notice-unread::before {
+  content: "";
+  position: absolute;
   top: 10px;
   left: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e53935;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ================================= */
+/* 모바일 상단 메뉴 정렬 */
+/* ================================= */
+
+@media (max-width: 700px) {
+  header {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  nav {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  nav a,
+  nav button,
+  .language-selector {
+    flex-shrink: 0;
+  }
+
+  .notice-nav-btn {
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .language-selector {
+    margin-left: 0;
+  }
+
+  main {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .latest-notice-button {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
 }

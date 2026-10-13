@@ -410,6 +410,7 @@ function getNoticeKey(notice) {
   return `${notice.date}|${notice.title.ko || notice.title.en || ""}`;
 }
 
+
 /* ================================= */
 /* 공지별 읽음 상태 */
 /* ================================= */
@@ -431,9 +432,7 @@ function isNoticeRead(notice) {
 }
 
 function markNoticeAsRead(notice) {
-  if (!notice) {
-    return;
-  }
+  if (!notice) return;
 
   const readNotices = getReadNotices();
   const noticeKey = getNoticeKey(notice);
@@ -450,22 +449,22 @@ function markNoticeAsRead(notice) {
   updateNoticeUnreadDots();
 }
 
-```javascript
+/* ================================= */
 /* 공지 관련 버튼의 빨간 점 갱신 */
+/* ================================= */
+
 function updateNoticeUnreadDots() {
   const readNotices = getReadNotices();
 
-  const hasUnreadNotice = notices.some(
-    (notice) => !readNotices.includes(getNoticeKey(notice))
-  );
-
   /* 메인 화면 최신 공지 버튼 */
   if (latestNoticeButton) {
+    const noticeKey = currentNotice
+      ? getNoticeKey(currentNotice)
+      : null;
+
     latestNoticeButton.classList.toggle(
       "notice-unread",
-      currentNotice
-        ? !isNoticeRead(currentNotice)
-        : hasUnreadNotice
+      !!noticeKey && !readNotices.includes(noticeKey)
     );
   }
 
@@ -479,12 +478,12 @@ function updateNoticeUnreadDots() {
     );
   });
 
-  /* 상단 배너 NOTICE 버튼만 빨간 점 제거 */
+  /* 상단 배너 NOTICE 버튼에는 빨간 점 표시 안 함 */
   if (noticeLink) {
     noticeLink.classList.remove("notice-unread");
   }
 }
-```
+
 
 /* ================================= */
 /* 최신 공지 표시 */
@@ -629,28 +628,33 @@ function renderNoticeList(page = 1) {
       notice.title.ko ||
       "";
 
-    const preview =
-      document.createElement("div");
+  
+const preview =
+  document.createElement("div");
 
-    preview.className = "notice-list-item-preview";
+preview.className = "notice-list-item-preview";
 
-    const content =
-      notice.content[currentLanguage] ||
-      notice.content.ko ||
-      "";
+const content =
+  notice.content[currentLanguage] ||
+  notice.content.ko ||
+  "";
 
-    preview.textContent =
-      content.replace(/\s+/g, " ").trim();
+preview.textContent =
+  content.replace(/\s+/g, " ").trim();
 
-    item.append(top, title, preview);
+/* 공지별 식별값 지정 */
+item.dataset.noticeKey = getNoticeKey(notice);
 
-    item.addEventListener("click", () => {
-      openNotice(notice);
-    });
+item.append(top, title, preview);
 
-    noticeListContainer.appendChild(item);
-    updateNoticeUnreadDots();
-  });
+item.addEventListener("click", () => {
+  openNotice(notice);
+});
+
+noticeListContainer.appendChild(item);
+
+updateNoticeUnreadDots();
+});
 
   /* 페이지네이션 */
 
@@ -739,30 +743,23 @@ function openNotice(notice) {
 }
 
 
-/* ================================= */
-/* NOTICE 메뉴 클릭 */
-/* ================================= */
 
-noticeLink.addEventListener("click", () => {
+/* 상단 배너 NOTICE 버튼 */
+if (noticeLink) {
+  noticeLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    currentNoticePage = 1;
+    openNoticeList();
+  });
+}
 
-  currentNoticePage = 1;
-
-  openNoticeList();
-
-});
-
-
-/* ================================= */
-/* 메인 최신 공지 클릭 */
-/* ================================= */
-
-latestNoticeButton.addEventListener("click", () => {
-
-  currentNoticePage = 1;
-
-  openNoticeList();
-
-});
+/* 메인 화면 최신 공지 버튼 */
+if (latestNoticeButton) {
+  latestNoticeButton.addEventListener("click", () => {
+    currentNoticePage = 1;
+    openNoticeList();
+  });
+}
 
 
 /* ================================= */
@@ -1533,6 +1530,7 @@ document.addEventListener("click", (event) => {
 });
 
 
+
 /* ================================= */
 /* 최초 실행 */
 /* ================================= */
@@ -1540,3 +1538,5 @@ document.addEventListener("click", (event) => {
 applyLanguage(currentLanguage);
 
 updateLatestNotice();
+
+updateNoticeUnreadDots();
