@@ -1501,3 +1501,37 @@ footer {
 .latest-notice-arrow {
   font-size: 15px;
 }
+
+/* 최신 공지 - 더 얇은 배너 */
+.latest-notice-button {
+  padding: 9px 18px;
+  gap: 12px;
+}
+
+/* 날짜와 NOTICE */
+.latest-notice-top {
+  margin-bottom: 3px;
+}
+
+/* 안내 문구 */
+.latest-notice-button .latest-notice-guide {
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+
+/* 공지 제목 */
+.latest-notice-button .latest-notice-title {
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+/* 내용 미리보기 숨기기 */
+.latest-notice-button .latest-notice-preview {
+  display: none;
+}
+
+/* 버튼 높이는 내용에 맞춤 */
+.latest-notice-button {
+  height: auto;
+  min-height: 0;
+}
