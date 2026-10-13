@@ -27,126 +27,145 @@
 
     <nav>
 
-      <a href="#home" id="home-link">HOME</a>
+      
+<nav>
 
-      <a href="#guide" id="guide-link">
-        GUIDE
-      </a>
+  <!-- 항상 표시: HOME -->
+  <a href="#home" id="home-link">HOME</a>
 
-      <a href="#streaming" class="streaming-link">
-        STREAMING
-      </a>
+  <!-- 모바일 메뉴: 기존 기능 유지 -->
+  <div id="mobile-menu-links" class="mobile-menu-links">
 
-      <a href="#fanchant" class="fanchant-link">
-        FANCHANT
-      </a>
+    <a href="#guide" id="guide-link">
+      GUIDE
+    </a>
 
-      <!-- NOTICE -->
-      <button
-        id="notice-link"
-        class="notice-nav-btn"
-        type="button"
-        aria-label="Notice"
+    <a href="#streaming" class="streaming-link">
+      STREAMING
+    </a>
+
+    <a href="#fanchant" class="fanchant-link">
+      FANCHANT
+    </a>
+
+  </div>
+
+  <!-- 항상 표시: NOTICE -->
+  <button
+    id="notice-link"
+    class="notice-nav-btn"
+    type="button"
+    aria-label="Notice"
+  >
+    <span class="notice-nav-icon">!</span>
+    <span class="notice-nav-text">NOTICE</span>
+  </button>
+
+  <!-- 항상 표시: 언어 변환 -->
+  <div class="language-selector">
+
+    <button
+      id="language-toggle"
+      class="language-toggle"
+      type="button"
+      aria-label="언어 선택"
+      aria-expanded="false"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
-        <span class="notice-nav-icon">!</span>
-        <span class="notice-nav-text">NOTICE</span>
+        <circle
+          cx="12"
+          cy="12"
+          r="9"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+
+        <path
+          d="M3 12H21"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+
+        <path
+          d="M12 3C14.5 5.4 15.7 8.4 15.7 12C15.7 15.6 14.5 18.6 12 21"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+
+        <path
+          d="M12 3C9.5 5.4 8.3 8.4 8.3 12C8.3 15.6 9.5 18.6 12 21"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+      </svg>
+    </button>
+
+    <div id="language-menu" class="language-menu">
+
+      <button
+        class="language-option active"
+        type="button"
+        data-language="ko"
+      >
+        한국어
       </button>
 
-      <!-- 언어 변환 -->
-      <div class="language-selector">
+      <button
+        class="language-option"
+        type="button"
+        data-language="en"
+      >
+        English
+      </button>
 
-        <button
-          id="language-toggle"
-          class="language-toggle"
-          type="button"
-          aria-label="언어 선택"
-          aria-expanded="false"
-        >
+      <button
+        class="language-option"
+        type="button"
+        data-language="id"
+      >
+        Bahasa Indonesia
+      </button>
 
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="9"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
+      <button
+        class="language-option"
+        type="button"
+        data-language="ja"
+      >
+        日本語
+      </button>
 
-            <path
-              d="M3 12H21"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
+      <button
+        class="language-option"
+        type="button"
+        data-language="zh"
+      >
+        简体中文
+      </button>
 
-            <path
-              d="M12 3C14.5 5.4 15.7 8.4 15.7 12C15.7 15.6 14.5 18.6 12 21"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
+    </div>
 
-            <path
-              d="M12 3C9.5 5.4 8.3 8.4 8.3 12C8.3 15.6 9.5 18.6 12 21"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
+  </div>
 
-          </svg>
+  <!-- 모바일 전용 햄버거 버튼 -->
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    type="button"
+    aria-label="메뉴 열기"
+    aria-expanded="false"
+    aria-controls="mobile-menu-links"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-        </button>
-
-        <div
-          id="language-menu"
-          class="language-menu"
-        >
-
-          <button
-            class="language-option active"
-            type="button"
-            data-language="ko"
-          >
-            한국어
-          </button>
-
-          <button
-            class="language-option"
-            type="button"
-            data-language="en"
-          >
-            English
-          </button>
-
-          <button
-            class="language-option"
-            type="button"
-            data-language="id"
-          >
-            Bahasa Indonesia
-          </button>
-
-          <button
-            class="language-option"
-            type="button"
-            data-language="ja"
-          >
-            日本語
-          </button>
-
-          <button
-            class="language-option"
-            type="button"
-            data-language="zh"
-          >
-            简体中文
-          </button>
-
-        </div>
-
-      </div>
+</nav>
 
     </nav>
 
@@ -246,7 +265,7 @@
           <h3>GUIDE</h3>
 
           <p>
-            다운로드, 투표 등 각종 가이드
+            다운로드/투표/음방/비활동기 가이드
           </p>
 
         </a>
@@ -372,7 +391,7 @@
       <h2
         id="notice-detail-title"
       >
-        [공지사항 제목]
+      [공지사항 제목]
       </h2>
 
       <div

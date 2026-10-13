@@ -410,7 +410,6 @@ function getNoticeKey(notice) {
   return `${notice.date}|${notice.title.ko || notice.title.en || ""}`;
 }
 
-
 /* ================================= */
 /* 공지별 읽음 상태 */
 /* ================================= */
@@ -432,7 +431,9 @@ function isNoticeRead(notice) {
 }
 
 function markNoticeAsRead(notice) {
-  if (!notice) return;
+  if (!notice) {
+    return;
+  }
 
   const readNotices = getReadNotices();
   const noticeKey = getNoticeKey(notice);
@@ -449,39 +450,34 @@ function markNoticeAsRead(notice) {
   updateNoticeUnreadDots();
 }
 
-/* ================================= */
 /* 공지 관련 버튼의 빨간 점 갱신 */
-/* ================================= */
-
 function updateNoticeUnreadDots() {
-  const readNotices = getReadNotices();
+  const hasUnreadNotice = notices.some(
+    (notice) => !isNoticeRead(notice)
+  );
 
   /* 메인 화면 최신 공지 버튼 */
   if (latestNoticeButton) {
-    const noticeKey = currentNotice
-      ? getNoticeKey(currentNotice)
-      : null;
-
     latestNoticeButton.classList.toggle(
       "notice-unread",
-      !!noticeKey && !readNotices.includes(noticeKey)
+      currentNotice
+        ? !isNoticeRead(currentNotice)
+        : hasUnreadNotice
     );
   }
 
   /* 공지 목록의 개별 공지 버튼 */
-  document.querySelectorAll(".notice-list-item").forEach((button) => {
-    const noticeKey = button.dataset.noticeKey;
+  document
+    .querySelectorAll(".notice-list-item")
+    .forEach((button) => {
+      const noticeKey = button.dataset.noticeKey;
 
-    button.classList.toggle(
-      "notice-unread",
-      !!noticeKey && !readNotices.includes(noticeKey)
-    );
-  });
-
-  /* 상단 배너 NOTICE 버튼에는 빨간 점 표시 안 함 */
-  if (noticeLink) {
-    noticeLink.classList.remove("notice-unread");
-  }
+      button.classList.toggle(
+        "notice-unread",
+        !!noticeKey &&
+          !getReadNotices().includes(noticeKey)
+      );
+    });
 }
 
 
@@ -628,33 +624,28 @@ function renderNoticeList(page = 1) {
       notice.title.ko ||
       "";
 
-  
-const preview =
-  document.createElement("div");
+    const preview =
+      document.createElement("div");
 
-preview.className = "notice-list-item-preview";
+    preview.className = "notice-list-item-preview";
 
-const content =
-  notice.content[currentLanguage] ||
-  notice.content.ko ||
-  "";
+    const content =
+      notice.content[currentLanguage] ||
+      notice.content.ko ||
+      "";
 
-preview.textContent =
-  content.replace(/\s+/g, " ").trim();
+    preview.textContent =
+      content.replace(/\s+/g, " ").trim();
 
-/* 공지별 식별값 지정 */
-item.dataset.noticeKey = getNoticeKey(notice);
+    item.append(top, title, preview);
 
-item.append(top, title, preview);
+    item.addEventListener("click", () => {
+      openNotice(notice);
+    });
 
-item.addEventListener("click", () => {
-  openNotice(notice);
-});
-
-noticeListContainer.appendChild(item);
-
-updateNoticeUnreadDots();
-});
+    noticeListContainer.appendChild(item);
+    updateNoticeUnreadDots();
+  });
 
   /* 페이지네이션 */
 
@@ -743,23 +734,30 @@ function openNotice(notice) {
 }
 
 
+/* ================================= */
+/* NOTICE 메뉴 클릭 */
+/* ================================= */
 
-/* 상단 배너 NOTICE 버튼 */
-if (noticeLink) {
-  noticeLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    currentNoticePage = 1;
-    openNoticeList();
-  });
-}
+noticeLink.addEventListener("click", () => {
 
-/* 메인 화면 최신 공지 버튼 */
-if (latestNoticeButton) {
-  latestNoticeButton.addEventListener("click", () => {
-    currentNoticePage = 1;
-    openNoticeList();
-  });
-}
+  currentNoticePage = 1;
+
+  openNoticeList();
+
+});
+
+
+/* ================================= */
+/* 메인 최신 공지 클릭 */
+/* ================================= */
+
+latestNoticeButton.addEventListener("click", () => {
+
+  currentNoticePage = 1;
+
+  openNoticeList();
+
+});
 
 
 /* ================================= */
@@ -801,7 +799,7 @@ const languageData = {
     navNotice: "NOTICE",
 
     guideDescription:
-      "다운로드, 투표 등 각종 가이드",
+      "다운로드/투표/음방/비활동기 가이드",
 
     streamingDescription:
       "MV/음원 스트리밍 가이드",
@@ -1530,7 +1528,6 @@ document.addEventListener("click", (event) => {
 });
 
 
-
 /* ================================= */
 /* 최초 실행 */
 /* ================================= */
@@ -1539,4 +1536,97 @@ applyLanguage(currentLanguage);
 
 updateLatestNotice();
 
-updateNoticeUnreadDots();
+
+/* ================================= */
+/* 모바일 햄버거 메뉴 기능 */
+/* ================================= */
+
+const mobileMenuToggle =
+  document.getElementById("mobile-menu-toggle");
+
+const mobileMenuLinks =
+  document.getElementById("mobile-menu-links");
+
+
+function closeMobileMenu() {
+  if (!mobileMenuToggle || !mobileMenuLinks) {
+    return;
+  }
+
+  mobileMenuLinks.classList.remove("active");
+
+  mobileMenuToggle.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  mobileMenuToggle.setAttribute(
+    "aria-label",
+    "메뉴 열기"
+  );
+}
+
+
+function toggleMobileMenu() {
+  if (!mobileMenuToggle || !mobileMenuLinks) {
+    return;
+  }
+
+  const isOpen =
+    mobileMenuLinks.classList.toggle("active");
+
+  mobileMenuToggle.setAttribute(
+    "aria-expanded",
+    isOpen ? "true" : "false"
+  );
+
+  mobileMenuToggle.setAttribute(
+    "aria-label",
+    isOpen ? "메뉴 닫기" : "메뉴 열기"
+  );
+}
+
+
+/* 햄버거 버튼 클릭 */
+if (mobileMenuToggle && mobileMenuLinks) {
+  mobileMenuToggle.addEventListener(
+    "click",
+    (event) => {
+      event.stopPropagation();
+      toggleMobileMenu();
+    }
+  );
+
+  /* 메뉴 항목 선택 후 닫기 */
+  mobileMenuLinks.addEventListener(
+    "click",
+    (event) => {
+      if (event.target.closest("a")) {
+        closeMobileMenu();
+      }
+    }
+  );
+
+  /* 메뉴 바깥을 누르면 닫기 */
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (
+        !mobileMenuLinks.contains(event.target) &&
+        !mobileMenuToggle.contains(event.target)
+      ) {
+        closeMobileMenu();
+      }
+    }
+  );
+
+  /* 컴퓨터 화면으로 바뀌면 메뉴 닫기 */
+  window.addEventListener(
+    "resize",
+    () => {
+      if (window.innerWidth > 700) {
+        closeMobileMenu();
+      }
+    }
+  );
+}

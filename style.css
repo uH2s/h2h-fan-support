@@ -1049,64 +1049,6 @@ footer {
   }
 
 
-  /* 모바일 가로 넘침 방지 */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* 메인 영역 */
-  main {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    padding: 0 20px;
-  }
-
-  /* 메인 메뉴 카드: 모바일에서는 한 줄에 하나씩 */
-  .menu-section {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .menu-card {
-    width: 100%;
-    min-width: 0;
-    padding: 24px;
-    overflow-wrap: anywhere;
-  }
-
-  .menu-card h3 {
-    font-size: 20px;
-  }
-
-  .menu-card p {
-    overflow-wrap: anywhere;
-    word-break: keep-all;
-  }
-
-  /* 상단 메뉴가 화면 너비를 초과하지 않도록 조정 */
-  nav {
-    max-width: 100%;
-    column-gap: 14px;
-    row-gap: 12px;
-  }
-
-  nav a,
-  .notice-nav-btn {
-    white-space: nowrap;
-  }
-
   /* 메인 */
 
   main {
@@ -1288,85 +1230,186 @@ footer {
 
 }
 
-
-/* ================================= */
-/* 읽지 않은 공지 빨간 점 */
-/* ================================= */
-
-.latest-notice-button,
-.notice-list-item {
-  position: relative;
-}
-
-.latest-notice-button.notice-unread::before,
+/* 공지 목록 카드의 빨간 점 위치 */
 .notice-list-item.notice-unread::before {
-  content: "";
-  position: absolute;
   top: 10px;
   left: 10px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #e53935;
-  z-index: 2;
-  pointer-events: none;
 }
 
 /* ================================= */
-/* 모바일 상단 메뉴 정렬 */
+/* 모바일 햄버거 메뉴 */
 /* ================================= */
 
+/* 기본: 컴퓨터에서는 기존 배너 유지 */
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-menu-links {
+  display: contents;
+}
+
+/* 모바일에서만 메뉴 변경 */
 @media (max-width: 700px) {
+
   header {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 16px;
-    gap: 14px;
+    position: relative;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 18px 16px;
+  }
+
+  header h1 {
+    flex-shrink: 0;
+    font-size: 14px;
+    letter-spacing: 0.3px;
   }
 
   nav {
-    box-sizing: border-box;
-    width: 100%;
+    position: relative;
+
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex: 1;
     align-items: center;
-    justify-content: flex-start;
-    column-gap: 14px;
-    row-gap: 12px;
+    justify-content: flex-end;
+
+    flex-wrap: nowrap;
+    gap: 12px;
+
+    width: auto;
+    min-width: 0;
   }
 
-  nav a,
-  nav button,
-  .language-selector {
+  /* HOME, NOTICE, 언어 버튼은 항상 표시 */
+  nav > #home-link {
+    display: inline-block;
     flex-shrink: 0;
+    font-size: 11px;
   }
 
-  .notice-nav-btn {
-    margin-left: auto;
-    white-space: nowrap;
+  nav > .notice-nav-btn {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 3px;
+
+    font-size: 10px;
   }
 
-  .language-selector {
-    margin-left: 0;
+  .notice-nav-icon {
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
   }
 
-  main {
-    box-sizing: border-box;
+  nav > .language-selector {
+    display: flex;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .language-toggle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .language-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* 햄버거 버튼 */
+  nav > .mobile-menu-toggle {
+    display: flex;
+    flex-shrink: 0;
+
+    width: 30px;
+    height: 30px;
+    padding: 5px 3px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background: transparent;
+    color: #222;
+
+    cursor: pointer;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+
+    width: 22px;
+    height: 2px;
+
+    background: currentColor;
+    border-radius: 1px;
+
+    transition: 0.2s ease;
+  }
+
+  .mobile-menu-toggle:hover {
+    color: #888;
+  }
+
+  /* 닫혀 있을 때 메뉴 숨김 */
+  nav > .mobile-menu-links {
+    display: none;
+  }
+
+  /* 열렸을 때 메뉴 표시 */
+  nav > .mobile-menu-links.active {
+    position: absolute;
+
+    top: calc(100% + 12px);
+    right: 0;
+
+    z-index: 2000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    width: 190px;
+    max-width: calc(100vw - 32px);
+
+    padding: 6px 0;
+
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  nav > .mobile-menu-links a {
+    display: block;
+
     width: 100%;
-    max-width: 100%;
-    padding-right: 16px;
-    padding-left: 16px;
+    padding: 13px 18px;
+
+    color: #222;
+    font-size: 12px;
+    text-align: left;
+    text-decoration: none;
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
+  nav > .mobile-menu-links a:hover {
+    background: #f7f7f7;
+    color: #888;
   }
 
-  .latest-notice-button {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
+  /* 언어 메뉴가 햄버거 메뉴와 겹치지 않도록 */
+  .language-menu {
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 2100;
   }
 }
