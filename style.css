@@ -264,24 +264,21 @@ main {
 
 .latest-notice-button {
   display: flex;
-
-  width: 100%;
-
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 
+  width: 100%;
+  box-sizing: border-box;
   padding: 20px 22px;
 
   border: 1px solid #ddd;
   background: #fff;
-
   color: #222;
 
   text-align: left;
-
   cursor: pointer;
-
-  transition: 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .latest-notice-button:hover {
@@ -289,6 +286,7 @@ main {
 }
 
 .latest-notice-content {
+  flex: 1;
   min-width: 0;
 }
 
@@ -296,45 +294,72 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
-
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 .latest-notice-date {
-  font-size: 11px;
   color: #888;
+  font-size: 11px;
+  font-weight: 400;
   letter-spacing: 0.4px;
 }
 
 .latest-notice-label {
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1.5px;
   color: #888;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
-.latest-notice-title {
-  overflow: hidden;
+/* 안내 문구: 작고 연하게 */
+.latest-notice-button .latest-notice-guide {
+  margin: 0 0 7px;
+  color: #888;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* 공지 제목: 가장 크고 굵게 */
+.latest-notice-button .latest-notice-title {
+  display: block;
+  margin: 0 0 7px;
+  padding: 0;
 
   color: #222;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.45;
 
-  font-size: 14px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
+/* 내용 미리보기: 한 줄 */
+.latest-notice-button .latest-notice-preview {
+  display: -webkit-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  color: #777;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 
 .latest-notice-arrow {
   flex-shrink: 0;
-
-  margin-left: 20px;
-
   color: #555;
-
   font-size: 18px;
   font-weight: 300;
 }
-
 
 /* ================================= */
 /* 메인 메뉴 */
@@ -470,7 +495,7 @@ footer {
   padding: 20px;
 
   border: 1px solid #e2e2e2;
-  border-radius: 10px;
+  border-radius: 0;
   background: #fff;
 
   color: #222;
@@ -595,7 +620,7 @@ footer {
 @media (max-width: 600px) {
   .notice-list-item {
     padding: 17px;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .notice-list-item-title {
@@ -1032,66 +1057,45 @@ footer {
     padding: 0 20px;
   }
 
+/* 최신 공지 안내 문구 */
+.latest-notice-guide {
+  margin: 0 0 8px;
 
-  /* 최신 공지 */
+  color: #888;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
 
-  .latest-notice {
-    padding-top: 25px;
-    padding-bottom: 8px;
-  }
+/* 최신 공지 제목 */
+.latest-notice-title {
+  margin: 0 0 7px;
 
-  .latest-notice-button {
-    padding: 17px 16px;
-  }
+  color: #222;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.45;
 
-  .latest-notice-top {
-    gap: 8px;
-  }
+  overflow-wrap: anywhere;
+}
 
-  .latest-notice-date {
-    font-size: 10px;
-  }
+/* 최신 공지 내용 미리보기 */
+.latest-notice-preview {
+  display: -webkit-box;
+  overflow: hidden;
 
-  .latest-notice-label {
-    font-size: 9px;
-  }
+  margin: 0;
 
-  .latest-notice-title {
-    font-size: 13px;
-  }
+  color: #777;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
 
-  .latest-notice-arrow {
-    margin-left: 12px;
-
-    font-size: 17px;
-  }
-
-
-  /* 메뉴 */
-
-  .menu-section {
-    grid-template-columns: 1fr;
-
-    gap: 12px;
-
-    padding-top: 20px;
-    padding-bottom: 60px;
-  }
-
-  .menu-card {
-    padding: 24px;
-  }
-
-  .menu-card h3 {
-    margin: 14px 0 6px;
-
-    font-size: 18px;
-  }
-
-  .menu-card p {
-    font-size: 13px;
-  }
-
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
 
   /* 푸터 */
 
@@ -1224,4 +1228,12 @@ footer {
     gap: 10px;
   }
 
+}
+
+.notice-unread
+
+/* 공지 목록 카드의 빨간 점 위치 */
+.notice-list-item.notice-unread::before {
+  top: 10px;
+  left: 10px;
 }

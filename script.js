@@ -35,6 +35,9 @@ const noticeListBackButton =
 const latestNoticeSection =
   document.querySelector(".latest-notice");
 
+  const latestNoticePreview =
+  document.getElementById("latest-notice-preview");
+
 
 /* ================================= */
 /* 상단 메뉴 */
@@ -330,7 +333,7 @@ fanchantBackButton.addEventListener("click", () => {
 /* ================================= */
 
 /*
-  새 공지를 추가할 때는
+[  새 공지를 추가할 때는
   가장 위에 새로운 공지를 넣으면 됩니다.
 
   예:
@@ -361,16 +364,16 @@ const notices = [
     date: "2026.09.29",
 
     title: {
-      ko: "음원총공팀의 최신 공지사항을 확인해 주세요.",
-      en: "Please check the latest notice.",
-      id: "Silakan cek pengumuman terbaru.",
-      ja: "最新のお知らせをご確認ください。",
-      zh: "请查看最新公告。"
+      ko: "[공지사항 제목]",
+      en: "[notice title]",
+      id: "[judul pengumuman]",
+      ja: "[お知らせのタイトル]",
+      zh: "[最新公告]"
     },
 
     content: {
       ko:
-        "[공지사항 내용].",
+        "[공지사항 내용]",
 
       en:
         "Please enter the notice here.",
@@ -407,24 +410,112 @@ function getNoticeKey(notice) {
   return `${notice.date}|${notice.title.ko || notice.title.en || ""}`;
 }
 
+/* ================================= */
+/* 공지별 읽음 상태 */
+/* ================================= */
+
+function getReadNotices() {
+  try {
+    return JSON.parse(
+      localStorage.getItem("h2h-read-notices") || "[]"
+    );
+  } catch (error) {
+    return [];
+  }
+}
+
+function isNoticeRead(notice) {
+  return getReadNotices().includes(
+    getNoticeKey(notice)
+  );
+}
+
+function markNoticeAsRead(notice) {
+  if (!notice) {
+    return;
+  }
+
+  const readNotices = getReadNotices();
+  const noticeKey = getNoticeKey(notice);
+
+  if (!readNotices.includes(noticeKey)) {
+    readNotices.push(noticeKey);
+
+    localStorage.setItem(
+      "h2h-read-notices",
+      JSON.stringify(readNotices)
+    );
+  }
+
+  updateNoticeUnreadDots();
+}
+
+```javascript
+/* 공지 관련 버튼의 빨간 점 갱신 */
+function updateNoticeUnreadDots() {
+  const readNotices = getReadNotices();
+
+  const hasUnreadNotice = notices.some(
+    (notice) => !readNotices.includes(getNoticeKey(notice))
+  );
+
+  /* 메인 화면 최신 공지 버튼 */
+  if (latestNoticeButton) {
+    latestNoticeButton.classList.toggle(
+      "notice-unread",
+      currentNotice
+        ? !isNoticeRead(currentNotice)
+        : hasUnreadNotice
+    );
+  }
+
+  /* 공지 목록의 개별 공지 버튼 */
+  document.querySelectorAll(".notice-list-item").forEach((button) => {
+    const noticeKey = button.dataset.noticeKey;
+
+    button.classList.toggle(
+      "notice-unread",
+      !!noticeKey && !readNotices.includes(noticeKey)
+    );
+  });
+
+  /* 상단 배너 NOTICE 버튼만 빨간 점 제거 */
+  if (noticeLink) {
+    noticeLink.classList.remove("notice-unread");
+  }
+}
+```
 
 /* ================================= */
 /* 최신 공지 표시 */
 /* ================================= */
 
-function updateLatestNotice() {
 
+function updateLatestNotice() {
   if (!currentNotice) {
     return;
   }
 
-  latestNoticeDate.textContent =
-    currentNotice.date;
+  if (latestNoticeDate) {
+    latestNoticeDate.textContent = currentNotice.date;
+  }
 
-  latestNoticeTitle.textContent =
-    currentNotice.title[currentLanguage] ||
-    currentNotice.title.ko ||
-    "";
+  if (latestNoticeTitle) {
+    latestNoticeTitle.textContent =
+      currentNotice.title[currentLanguage] ||
+      currentNotice.title.ko ||
+      "";
+  }
+
+  if (latestNoticePreview) {
+    const content =
+      currentNotice.content[currentLanguage] ||
+      currentNotice.content.ko ||
+      "";
+
+    latestNoticePreview.textContent =
+      content.replace(/\s+/g, " ").trim();
+  }
 
   const seenNoticeKey =
     localStorage.getItem("h2h-seen-notice");
@@ -438,9 +529,7 @@ function updateLatestNotice() {
         ? "none"
         : "";
   }
-
 }
-
 
 
 /* ================================= */
@@ -510,6 +599,7 @@ function renderNoticeList(page = 1) {
 
     item.type = "button";
     item.className = "notice-list-item";
+    item.dataset.noticeKey = getNoticeKey(notice);
 
     const top =
       document.createElement("div");
@@ -559,7 +649,7 @@ function renderNoticeList(page = 1) {
     });
 
     noticeListContainer.appendChild(item);
-
+    updateNoticeUnreadDots();
   });
 
   /* 페이지네이션 */
@@ -630,7 +720,7 @@ function openNotice(notice) {
   }
 
   currentNotice = notice;
-
+  markNoticeAsRead(notice);
   noticeDetailDate.textContent =
     notice.date;
 
@@ -662,30 +752,17 @@ noticeLink.addEventListener("click", () => {
 });
 
 
-
 /* ================================= */
 /* 메인 최신 공지 클릭 */
 /* ================================= */
 
 latestNoticeButton.addEventListener("click", () => {
 
-  if (currentNotice) {
-    localStorage.setItem(
-      "h2h-seen-notice",
-      getNoticeKey(currentNotice)
-    );
-  }
-
-  if (latestNoticeSection) {
-    latestNoticeSection.style.display = "none";
-  }
-
   currentNoticePage = 1;
 
   openNoticeList();
 
 });
-
 
 
 /* ================================= */
@@ -1354,7 +1431,7 @@ function applyLanguage(languageCode) {
 
   noticeDetailContent.textContent =
     currentNotice.content[currentLanguage];
-
+  updateNoticeUnreadDots();
 
   /* 언어 메뉴 */
 
