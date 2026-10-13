@@ -1535,3 +1535,66 @@ footer {
   height: auto;
   min-height: 0;
 }
+
+/* ================================= */
+/* NOTICE 목록 - 얇은 버튼 디자인 */
+/* ================================= */
+
+.notice-list-item {
+  padding: 10px 16px;
+}
+
+/* 날짜와 상단 영역 */
+.notice-list-item-top {
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.notice-list-item-date {
+  font-size: 10px;
+}
+
+/* 오른쪽 화살표 */
+.notice-list-item-arrow {
+  font-size: 18px;
+}
+
+/* 공지사항 제목 */
+.notice-list-item-title {
+  margin: 0 0 3px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+/* 미리보기: 기존처럼 한 줄 유지 */
+.notice-list-item-preview {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+/* 공지 카드 사이 간격 */
+.notice-list-container {
+  gap: 8px;
+}
+
+/* 모바일에서도 동일한 디자인 적용 */
+@media (max-width: 600px) {
+  .notice-list-item {
+    padding: 10px 12px;
+  }
+
+  .notice-list-item-title {
+    font-size: 14px;
+  }
+
+  .notice-list-item-preview {
+    font-size: 11px;
+  }
+}
