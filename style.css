@@ -1049,6 +1049,64 @@ footer {
   }
 
 
+  /* 모바일 가로 넘침 방지 */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* 메인 영역 */
+  main {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  /* 메인 메뉴 카드: 모바일에서는 한 줄에 하나씩 */
+  .menu-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .menu-card {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    overflow-wrap: anywhere;
+  }
+
+  .menu-card h3 {
+    font-size: 20px;
+  }
+
+  .menu-card p {
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+
+  /* 상단 메뉴가 화면 너비를 초과하지 않도록 조정 */
+  nav {
+    max-width: 100%;
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  nav a,
+  .notice-nav-btn {
+    white-space: nowrap;
+  }
+
   /* 메인 */
 
   main {

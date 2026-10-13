@@ -801,7 +801,7 @@ const languageData = {
     navNotice: "NOTICE",
 
     guideDescription:
-      "다운로드/투표/음방/비활동기 가이드",
+      "다운로드, 투표 등 각종 가이드",
 
     streamingDescription:
       "MV/음원 스트리밍 가이드",
