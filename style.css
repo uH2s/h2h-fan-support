@@ -270,7 +270,7 @@ main {
 
   width: 100%;
   box-sizing: border-box;
-  padding: 20px 22px;
+  padding: 10px 22px;
 
   border: 1px solid #ddd;
   background: #fff;
@@ -279,6 +279,8 @@ main {
   text-align: left;
   cursor: pointer;
   transition: background 0.2s ease;
+
+  height: 150px;
 }
 
 .latest-notice-button:hover {
@@ -1447,4 +1449,55 @@ footer {
     max-width: 100%;
     overflow-wrap: anywhere;
   }
+}
+
+/* ================================= */
+/* 최신 공지 - 얇은 배너 형태 */
+/* ================================= */
+
+.latest-notice-button {
+  padding: 10px 18px;
+  gap: 12px;
+   height: auto;
+  min-height: 0;
+}
+
+/* 날짜 및 NOTICE */
+.latest-notice-top {
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.latest-notice-date {
+  font-size: 9px;
+}
+
+.latest-notice-label {
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* 안내 문구 */
+.latest-notice-button .latest-notice-guide {
+  margin-bottom: 3px;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+/* 공지 제목 */
+.latest-notice-button .latest-notice-title {
+  margin-bottom: 3px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+/* 내용 미리보기 */
+.latest-notice-button .latest-notice-preview {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* 오른쪽 화살표 */
+.latest-notice-arrow {
+  font-size: 15px;
 }
