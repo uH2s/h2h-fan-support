@@ -14,22 +14,142 @@
   <!-- ========================= -->
 
   <header>
-  <h1>
-  <a
-    href="https://linktr.ee/h2h_strm?utm_source=linktree_profile_share&ltsid=2bbcf414-8fbe-4b5d-84cc-4e755eb6edc0"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    H2H 음원총공팀
-  </a>
-</h1>
+
+    <h1>
+      <a
+        href="https://linktr.ee/h2h_strm?utm_source=linktree_profile_share&ltsid=2bbcf414-8fbe-4b5d-84cc-4e755eb6edc0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        H2H 음원총공팀
+      </a>
+    </h1>
 
     <nav>
+
       <a href="#home" id="home-link">HOME</a>
-      <a href="#guide">GUIDE</a>
-      <a href="#streaming" class="streaming-link">STREAMING</a>
-      <a href="#fanchant" class="fanchant-link">FANCHANT</a>
+
+      <a href="#guide" id="guide-link">
+        GUIDE
+      </a>
+
+      <a href="#streaming" class="streaming-link">
+        STREAMING
+      </a>
+
+      <a href="#fanchant" class="fanchant-link">
+        FANCHANT
+      </a>
+
+      <!-- NOTICE -->
+      <button
+        id="notice-link"
+        class="notice-nav-btn"
+        type="button"
+        aria-label="Notice"
+      >
+        <span class="notice-nav-icon">!</span>
+        <span class="notice-nav-text">NOTICE</span>
+      </button>
+
+      <!-- 언어 변환 -->
+      <div class="language-selector">
+
+        <button
+          id="language-toggle"
+          class="language-toggle"
+          type="button"
+          aria-label="언어 선택"
+          aria-expanded="false"
+        >
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="9"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+
+            <path
+              d="M3 12H21"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+
+            <path
+              d="M12 3C14.5 5.4 15.7 8.4 15.7 12C15.7 15.6 14.5 18.6 12 21"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+
+            <path
+              d="M12 3C9.5 5.4 8.3 8.4 8.3 12C8.3 15.6 9.5 18.6 12 21"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+
+          </svg>
+
+        </button>
+
+        <div
+          id="language-menu"
+          class="language-menu"
+        >
+
+          <button
+            class="language-option active"
+            type="button"
+            data-language="ko"
+          >
+            한국어
+          </button>
+
+          <button
+            class="language-option"
+            type="button"
+            data-language="en"
+          >
+            English
+          </button>
+
+          <button
+            class="language-option"
+            type="button"
+            data-language="id"
+          >
+            Bahasa Indonesia
+          </button>
+
+          <button
+            class="language-option"
+            type="button"
+            data-language="ja"
+          >
+            日本語
+          </button>
+
+          <button
+            class="language-option"
+            type="button"
+            data-language="zh"
+          >
+            简体中文
+          </button>
+
+        </div>
+
+      </div>
+
     </nav>
+
   </header>
 
 
@@ -40,32 +160,217 @@
   <div id="main-page" class="page active">
 
     <main>
+
+      <!-- ========================= -->
+      <!-- 최신 공지 -->
+      <!-- ========================= -->
+
+      <section
+        id="latest-notice"
+        class="latest-notice"
+      >
+
+        <button
+          id="latest-notice-button"
+          class="latest-notice-button"
+          type="button"
+        >
+
+          <div class="latest-notice-content">
+
+            <div class="latest-notice-top">
+
+              <span
+                id="latest-notice-date"
+                class="latest-notice-date"
+              >
+                2026.09.29
+              </span>
+
+              <span
+                id="latest-notice-label"
+                class="latest-notice-label"
+              >
+                NOTICE
+              </span>
+
+            </div>
+
+            <p
+              id="latest-notice-title"
+              class="latest-notice-title"
+            >
+              음원총공팀의 최신 공지사항을 확인해 주세요.
+            </p>
+
+          </div>
+
+          <span
+            class="latest-notice-arrow"
+            aria-hidden="true"
+          >
+            &gt;
+          </span>
+
+        </button>
+
+      </section>
+
+
+      <!-- ========================= -->
+      <!-- 메인 메뉴 -->
+      <!-- ========================= -->
+
       <section class="menu-section">
 
-        <a href="#guide" class="menu-card">
+        <a
+          href="#guide"
+          class="menu-card"
+          id="guide-card"
+        >
+
           <span>01</span>
+
           <h3>GUIDE</h3>
-          <p>팬 활동에 필요한 가이드</p>
+
+          <p>
+            다운로드/투표/음방/비활동기 가이드
+          </p>
+
         </a>
 
-        <a href="#streaming" class="menu-card streaming-link">
+
+        <a
+          href="#streaming"
+          class="menu-card"
+          id="streaming-card"
+        >
+
           <span>02</span>
+
           <h3>STREAMING</h3>
-          <p>MV/음원 스트리밍 가이드</p>
+
+          <p>
+            MV/음원 스트리밍 가이드
+          </p>
+
         </a>
 
-        <a href="#fanchant" class="menu-card fanchant-link">
+
+        <a
+          href="#fanchant"
+          class="menu-card"
+          id="fanchant-card"
+        >
+
           <span>03</span>
+
           <h3>FANCHANT</h3>
-          <p>공식 응원법 모음</p>
+
+          <p>
+            공식 응원법 모음
+          </p>
+
         </a>
 
       </section>
+
     </main>
 
+
     <footer>
-      <p>Made by H2H 음원총공팀</p>
+
+      <p>
+        Made by H2H 음원총공팀
+      </p>
+
     </footer>
+
+  </div>
+
+  <!-- ========================= -->
+  <!-- NOTICE 목록 화면 -->
+  <!-- ========================= -->
+
+  <div
+    id="notice-list-page"
+    class="page"
+  >
+
+    <div class="notice-inner">
+
+      <button
+        id="notice-list-back-btn"
+        class="back-btn"
+        type="button"
+      >
+        &lt;
+      </button>
+
+      <p class="small-text">
+        NOTICE
+      </p>
+
+      <h2 id="notice-list-heading">
+        공지사항
+      </h2>
+
+      <div
+        id="notice-list-container"
+        class="notice-list-container"
+      >
+      </div>
+
+    </div>
+
+  </div>
+  <!-- ========================= -->
+  <!-- NOTICE 상세 화면 -->
+  <!-- ========================= -->
+
+  <div
+    id="notice-page"
+    class="page"
+  >
+
+    <div class="notice-inner">
+
+      <button
+        id="notice-back-btn"
+        class="back-btn"
+        type="button"
+      >
+        &lt;
+      </button>
+
+      <p
+        id="notice-detail-label"
+        class="small-text"
+      >
+        NOTICE
+      </p>
+
+      <div
+        id="notice-detail-date"
+        class="notice-detail-date"
+      >
+        2026.09.29
+      </div>
+
+      <h2
+        id="notice-detail-title"
+      >
+        음원총공팀의 최신 공지사항을 확인해 주세요.
+      </h2>
+
+      <div
+        id="notice-detail-content"
+        class="notice-detail-content"
+      >
+        [공지사항 내용]
+      </div>
+
+    </div>
 
   </div>
 
@@ -78,10 +383,10 @@
 
     <div class="streaming-inner">
 
-      <!-- HOME으로 돌아가기 -->
       <button
         id="streaming-home-btn"
         class="back-btn"
+        type="button"
       >
         &lt;
       </button>
@@ -90,14 +395,16 @@
         MV/음원 스트리밍 가이드
       </p>
 
-      <h2>STREAMING GUIDE</h2>
+      <h2>
+        STREAMING GUIDE
+      </h2>
 
-      <!-- 스트리밍 버튼 -->
       <div class="streaming-guide-buttons">
 
         <button
           id="streaming-list-btn"
           class="streaming-list-btn"
+          type="button"
         >
           스트리밍 리스트
         </button>
@@ -105,6 +412,7 @@
         <button
           id="streaming-oneclick-btn"
           class="streaming-list-btn"
+          type="button"
         >
           원클릭 스트리밍
         </button>
@@ -124,10 +432,10 @@
 
     <div class="streaming-list-inner">
 
-      <!-- 스트리밍 가이드로 돌아가기 -->
       <button
         id="streaming-list-back-btn"
         class="back-btn"
+        type="button"
       >
         &lt;
       </button>
@@ -136,7 +444,9 @@
         H2H 음원총공팀에서 제공하는 권장 스트리밍리스트
       </p>
 
-      <h2>STREAMING LIST</h2>
+      <h2>
+        STREAMING LIST
+      </h2>
 
       <div class="streaming-list-image">
 
@@ -160,14 +470,17 @@
   <!-- 원클릭 스트리밍 화면 -->
   <!-- ========================= -->
 
-  <div id="oneclick-streaming-page" class="page">
+  <div
+    id="oneclick-streaming-page"
+    class="page"
+  >
 
     <div class="oneclick-streaming-inner">
 
-      <!-- 스트리밍 가이드로 돌아가기 -->
       <button
         id="oneclick-streaming-back-btn"
         class="back-btn"
+        type="button"
       >
         &lt;
       </button>
@@ -176,12 +489,12 @@
         음원 원클릭 스트리밍
       </p>
 
-      <h2>ONE CLICK STREAMING</h2>
+      <h2>
+        ONE CLICK STREAMING
+      </h2>
 
 
-      <!-- ========================= -->
       <!-- MELON ANDROID -->
-      <!-- ========================= -->
 
       <div class="oneclick-streaming-group">
 
@@ -224,9 +537,7 @@
       </div>
 
 
-      <!-- ========================= -->
       <!-- MELON iOS -->
-      <!-- ========================= -->
 
       <div class="oneclick-streaming-group">
 
@@ -248,9 +559,7 @@
       </div>
 
 
-      <!-- ========================= -->
       <!-- GENIE ANDROID -->
-      <!-- ========================= -->
 
       <div class="oneclick-streaming-group">
 
@@ -272,9 +581,7 @@
       </div>
 
 
-      <!-- ========================= -->
       <!-- GENIE iOS -->
-      <!-- ========================= -->
 
       <div class="oneclick-streaming-group">
 
@@ -296,9 +603,7 @@
       </div>
 
 
-      <!-- ========================= -->
-      <!-- FLO  -->
-      <!-- ========================= -->
+      <!-- FLO -->
 
       <div class="oneclick-streaming-group">
 
@@ -325,17 +630,17 @@
 
 
   <!-- ========================= -->
-  <!-- 응원법 메인 화면 -->
+  <!-- FANCHANT 메인 화면 -->
   <!-- ========================= -->
 
   <div id="fanchant-page" class="page">
 
     <div class="fanchant-inner">
 
-      <!-- 메인 화면으로 돌아가기 -->
       <button
         id="fanchant-home-btn"
         class="back-btn"
+        type="button"
       >
         &lt;
       </button>
@@ -344,7 +649,9 @@
         H2H 음원총공팀에서 제공하는 공식 응원법
       </p>
 
-      <h2>FANCHANT</h2>
+      <h2>
+        FANCHANT
+      </h2>
 
       <div class="fanchant-list">
 
@@ -419,10 +726,10 @@
 
     <div class="fanchant-detail-inner">
 
-      <!-- 메인 화면으로 돌아가기 -->
       <button
         id="fanchant-back-btn"
         class="back-btn"
+        type="button"
       >
         &lt;
       </button>

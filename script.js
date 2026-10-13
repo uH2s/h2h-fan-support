@@ -2,13 +2,49 @@
 /* 페이지 요소 */
 /* ================================= */
 
-const mainPage = document.getElementById("main-page");
+const mainPage =
+  document.getElementById("main-page");
 
-const streamingPage = document.getElementById("streaming-page");
-const streamingListPage = document.getElementById("streaming-list-page");
+const noticePage =
+  document.getElementById("notice-page");
 
-const fanchantPage = document.getElementById("fanchant-page");
-const fanchantDetailPage = document.getElementById("fanchant-detail-page");
+const streamingPage =
+  document.getElementById("streaming-page");
+
+const streamingListPage =
+  document.getElementById("streaming-list-page");
+
+const oneclickStreamingPage =
+  document.getElementById("oneclick-streaming-page");
+
+const fanchantPage =
+  document.getElementById("fanchant-page");
+
+const fanchantDetailPage =
+  document.getElementById("fanchant-detail-page");
+  
+const noticeListPage =
+  document.getElementById("notice-list-page");
+
+const noticeListContainer =
+  document.getElementById("notice-list-container");
+
+const noticeListBackButton =
+  document.getElementById("notice-list-back-btn");
+
+const latestNoticeSection =
+  document.querySelector(".latest-notice");
+
+
+/* ================================= */
+/* 상단 메뉴 */
+/* ================================= */
+
+const homeLink =
+  document.getElementById("home-link");
+
+const guideLink =
+  document.getElementById("guide-link");
 
 const streamingLinks =
   document.querySelectorAll(".streaming-link");
@@ -16,17 +52,65 @@ const streamingLinks =
 const fanchantLinks =
   document.querySelectorAll(".fanchant-link");
 
-const homeLink =
-  document.getElementById("home-link");
+const noticeLink =
+  document.getElementById("notice-link");
+
+
+/* ================================= */
+/* NOTICE */
+/* ================================= */
+
+const latestNoticeButton =
+  document.getElementById("latest-notice-button");
+
+const latestNoticeDate =
+  document.getElementById("latest-notice-date");
+
+const latestNoticeLabel =
+  document.getElementById("latest-notice-label");
+
+const latestNoticeTitle =
+  document.getElementById("latest-notice-title");
+
+const noticeBackButton =
+  document.getElementById("notice-back-btn");
+
+const noticeDetailLabel =
+  document.getElementById("notice-detail-label");
+
+const noticeDetailDate =
+  document.getElementById("notice-detail-date");
+
+const noticeDetailTitle =
+  document.getElementById("notice-detail-title");
+
+const noticeDetailContent =
+  document.getElementById("notice-detail-content");
+
+
+/* ================================= */
+/* STREAMING */
+/* ================================= */
 
 const streamingListButton =
   document.getElementById("streaming-list-btn");
+
+const oneclickStreamingButton =
+  document.getElementById("streaming-oneclick-btn");
 
 const streamingHomeButton =
   document.getElementById("streaming-home-btn");
 
 const streamingListBackButton =
   document.getElementById("streaming-list-back-btn");
+
+const oneclickStreamingBackButton =
+  document.getElementById("oneclick-streaming-back-btn");
+
+
+/* ================================= */
+/* FANCHANT */
+/* ================================= */
 
 const fanchantHomeButton =
   document.getElementById("fanchant-home-btn");
@@ -43,15 +127,6 @@ const fanchantSongTitle =
 const fanchantSongImage =
   document.getElementById("fanchant-song-image");
 
-const oneclickStreamingPage =
-  document.getElementById("oneclick-streaming-page");
-
-const oneclickStreamingButton =
-  document.getElementById("streaming-oneclick-btn");
-
-const oneclickStreamingBackButton =
-  document.getElementById("oneclick-streaming-back-btn");
-
 
 /* ================================= */
 /* 모든 페이지 숨기기 */
@@ -59,32 +134,52 @@ const oneclickStreamingBackButton =
 
 function hideAllPages() {
 
-  mainPage.classList.remove("active");
+  document.querySelectorAll(".page").forEach((page) => {
+    page.classList.remove("active");
+  });
 
-  streamingPage.classList.remove("active");
-  streamingListPage.classList.remove("active");
+}
 
-  fanchantPage.classList.remove("active");
-  fanchantDetailPage.classList.remove("active");
 
-  oneclickStreamingPage.classList.remove("active");
+
+/* ================================= */
+/* 페이지 이동 */
+/* ================================= */
+
+function showPage(page) {
+
+  hideAllPages();
+
+  page.classList.add("active");
+
+  window.scrollTo(0, 0);
 
 }
 
 
 /* ================================= */
-/* HOME 버튼 */
+/* HOME */
 /* ================================= */
+
+function goHome() {
+
+  showPage(mainPage);
+
+}
 
 homeLink.addEventListener("click", (event) => {
 
   event.preventDefault();
 
-  hideAllPages();
+  goHome();
 
-  mainPage.classList.add("active");
+});
 
-  window.scrollTo(0, 0);
+guideLink.addEventListener("click", (event) => {
+
+  event.preventDefault();
+
+  goHome();
 
 });
 
@@ -99,11 +194,7 @@ streamingLinks.forEach((link) => {
 
     event.preventDefault();
 
-    hideAllPages();
-
-    streamingPage.classList.add("active");
-
-    window.scrollTo(0, 0);
+    showPage(streamingPage);
 
   });
 
@@ -116,11 +207,7 @@ streamingLinks.forEach((link) => {
 
 streamingHomeButton.addEventListener("click", () => {
 
-  hideAllPages();
-
-  mainPage.classList.add("active");
-
-  window.scrollTo(0, 0);
+  showPage(mainPage);
 
 });
 
@@ -131,41 +218,7 @@ streamingHomeButton.addEventListener("click", () => {
 
 streamingListButton.addEventListener("click", () => {
 
-  hideAllPages();
-
-  streamingListPage.classList.add("active");
-
-  window.scrollTo(0, 0);
-
-});
-
-
-/* ================================= */
-/* ONE CLICK STREAMING */
-/* ================================= */
-
-oneclickStreamingButton.addEventListener("click", () => {
-
-  hideAllPages();
-
-  oneclickStreamingPage.classList.add("active");
-
-  window.scrollTo(0, 0);
-
-});
-
-
-/* ================================= */
-/* ONE CLICK STREAMING → STREAMING GUIDE */
-/* ================================= */
-
-oneclickStreamingBackButton.addEventListener("click", () => {
-
-  hideAllPages();
-
-  streamingPage.classList.add("active");
-
-  window.scrollTo(0, 0);
+  showPage(streamingListPage);
 
 });
 
@@ -176,11 +229,29 @@ oneclickStreamingBackButton.addEventListener("click", () => {
 
 streamingListBackButton.addEventListener("click", () => {
 
-  hideAllPages();
+  showPage(mainPage);
 
-  mainPage.classList.add("active");
+});
 
-  window.scrollTo(0, 0);
+
+/* ================================= */
+/* ONE CLICK STREAMING */
+/* ================================= */
+
+oneclickStreamingButton.addEventListener("click", () => {
+
+  showPage(oneclickStreamingPage);
+
+});
+
+
+/* ================================= */
+/* ONE CLICK STREAMING → STREAMING GUIDE */
+/* ================================= */
+
+oneclickStreamingBackButton.addEventListener("click", () => {
+
+  showPage(streamingPage);
 
 });
 
@@ -195,11 +266,7 @@ fanchantLinks.forEach((link) => {
 
     event.preventDefault();
 
-    hideAllPages();
-
-    fanchantPage.classList.add("active");
-
-    window.scrollTo(0, 0);
+    showPage(fanchantPage);
 
   });
 
@@ -212,11 +279,7 @@ fanchantLinks.forEach((link) => {
 
 fanchantHomeButton.addEventListener("click", () => {
 
-  hideAllPages();
-
-  mainPage.classList.add("active");
-
-  window.scrollTo(0, 0);
+  showPage(mainPage);
 
 });
 
@@ -229,10 +292,14 @@ fanchantSongButtons.forEach((button) => {
 
   button.addEventListener("click", () => {
 
-    const songName = button.dataset.song;
-    const songTitle = button.dataset.title;
+    const songName =
+      button.dataset.song;
 
-    fanchantSongTitle.textContent = songTitle;
+    const songTitle =
+      button.dataset.title;
+
+    fanchantSongTitle.textContent =
+      songTitle;
 
     fanchantSongImage.src =
       `images/${songName}-fanchant.jpg`;
@@ -240,11 +307,7 @@ fanchantSongButtons.forEach((button) => {
     fanchantSongImage.alt =
       `${songTitle} 공식 응원법`;
 
-    hideAllPages();
-
-    fanchantDetailPage.classList.add("active");
-
-    window.scrollTo(0, 0);
+    showPage(fanchantDetailPage);
 
   });
 
@@ -257,355 +320,831 @@ fanchantSongButtons.forEach((button) => {
 
 fanchantBackButton.addEventListener("click", () => {
 
-  hideAllPages();
-
-  fanchantPage.classList.add("active");
-
-  window.scrollTo(0, 0);
+  showPage(fanchantPage);
 
 });
 
 
 /* ================================= */
-/* 언어 변환 기능 */
+/* NOTICE 데이터 */
+/* ================================= */
+
+/*
+  새 공지를 추가할 때는
+  가장 위에 새로운 공지를 넣으면 됩니다.
+
+  예:
+
+  {
+    date: "2026.10.01",
+    title: {
+      ko: "새로운 공지 제목",
+      en: "New Notice",
+      id: "Judul Pengumuman Baru",
+      ja: "新しいお知らせ",
+      zh: "新公告"
+    },
+    content: {
+      ko: "공지 내용을 입력하세요.",
+      en: "Enter the notice here.",
+      id: "Masukkan isi pengumuman.",
+      ja: "お知らせの内容を入力してください。",
+      zh: "请输入公告内容。"
+    }
+  },
+
+*/
+
+const notices = [
+
+  {
+    date: "2026.09.29",
+
+    title: {
+      ko: "음원총공팀의 최신 공지사항을 확인해 주세요.",
+      en: "Please check the latest notice.",
+      id: "Silakan cek pengumuman terbaru.",
+      ja: "最新のお知らせをご確認ください。",
+      zh: "请查看最新公告。"
+    },
+
+    content: {
+      ko:
+        "[공지사항 내용].",
+
+      en:
+        "Please enter the notice here.",
+
+      id:
+        "Silakan masukkan isi pengumuman di sini.",
+      ja:
+        "こちらにお知らせの内容を入力してください。",
+      zh:
+        "请在此处填写公告内容。"
+      }  }
+
+];
+
+
+/* ================================= */
+/* 현재 보고 있는 공지 */
+/* ================================= */
+
+let currentNotice =
+  notices[0];
+
+
+
+/* ================================= */
+/* 최신 공지 확인 상태 */
+/* ================================= */
+
+function getNoticeKey(notice) {
+  if (!notice) {
+    return "";
+  }
+
+  return `${notice.date}|${notice.title.ko || notice.title.en || ""}`;
+}
+
+
+/* ================================= */
+/* 최신 공지 표시 */
+/* ================================= */
+
+function updateLatestNotice() {
+
+  if (!currentNotice) {
+    return;
+  }
+
+  latestNoticeDate.textContent =
+    currentNotice.date;
+
+  latestNoticeTitle.textContent =
+    currentNotice.title[currentLanguage] ||
+    currentNotice.title.ko ||
+    "";
+
+  const seenNoticeKey =
+    localStorage.getItem("h2h-seen-notice");
+
+  const currentNoticeKey =
+    getNoticeKey(currentNotice);
+
+  if (latestNoticeSection) {
+    latestNoticeSection.style.display =
+      seenNoticeKey === currentNoticeKey
+        ? "none"
+        : "";
+  }
+
+}
+
+
+
+/* ================================= */
+/* NOTICE 목록 */
+/* ================================= */
+
+let currentNoticePage = 1;
+
+const noticesPerPage = 5;
+
+
+/* ================================= */
+/* NOTICE 목록 렌더링 */
+/* ================================= */
+
+function renderNoticeList(page = 1) {
+
+  if (!noticeListContainer) {
+    return;
+  }
+
+  const totalPages = Math.ceil(
+    notices.length / noticesPerPage
+  );
+
+  currentNoticePage = Math.max(
+    1,
+    Math.min(page, Math.max(totalPages, 1))
+  );
+
+  noticeListContainer.innerHTML = "";
+
+  if (notices.length === 0) {
+
+    const emptyMessage =
+      document.createElement("div");
+
+    emptyMessage.className = "notice-list-empty";
+    emptyMessage.textContent =
+      currentLanguage === "en"
+        ? "There are no notices yet."
+        : currentLanguage === "id"
+        ? "Belum ada pengumuman."
+        : currentLanguage === "ja"
+        ? "お知らせはまだありません。"
+        : currentLanguage === "zh"
+        ? "暂无公告。"
+        : "등록된 공지사항이 없습니다.";
+
+    noticeListContainer.appendChild(emptyMessage);
+
+    return;
+  }
+
+  const startIndex =
+    (currentNoticePage - 1) * noticesPerPage;
+
+  const pageNotices = notices.slice(
+    startIndex,
+    startIndex + noticesPerPage
+  );
+
+  pageNotices.forEach((notice) => {
+
+    const item =
+      document.createElement("button");
+
+    item.type = "button";
+    item.className = "notice-list-item";
+
+    const top =
+      document.createElement("div");
+
+    top.className = "notice-list-item-top";
+
+    const date =
+      document.createElement("span");
+
+    date.className = "notice-list-item-date";
+    date.textContent = notice.date;
+
+    const arrow =
+      document.createElement("span");
+
+    arrow.className = "notice-list-item-arrow";
+    arrow.textContent = "›";
+
+    top.append(date, arrow);
+
+    const title =
+      document.createElement("h3");
+
+    title.className = "notice-list-item-title";
+    title.textContent =
+      notice.title[currentLanguage] ||
+      notice.title.ko ||
+      "";
+
+    const preview =
+      document.createElement("div");
+
+    preview.className = "notice-list-item-preview";
+
+    const content =
+      notice.content[currentLanguage] ||
+      notice.content.ko ||
+      "";
+
+    preview.textContent =
+      content.replace(/\s+/g, " ").trim();
+
+    item.append(top, title, preview);
+
+    item.addEventListener("click", () => {
+      openNotice(notice);
+    });
+
+    noticeListContainer.appendChild(item);
+
+  });
+
+  /* 페이지네이션 */
+
+  if (totalPages > 1) {
+
+    const pagination =
+      document.createElement("div");
+
+    pagination.className = "notice-pagination";
+
+    for (let i = 1; i <= totalPages; i++) {
+
+      const pageButton =
+        document.createElement("button");
+
+      pageButton.type = "button";
+      pageButton.className = "notice-page-btn";
+
+      pageButton.textContent = i;
+
+      if (i === currentNoticePage) {
+        pageButton.classList.add("active");
+        pageButton.setAttribute(
+          "aria-current",
+          "page"
+        );
+      }
+
+      pageButton.addEventListener("click", () => {
+
+        renderNoticeList(i);
+
+      });
+
+      pagination.appendChild(pageButton);
+
+    }
+
+    noticeListContainer.appendChild(pagination);
+
+  }
+
+}
+
+
+/* ================================= */
+/* NOTICE 목록 열기 */
+/* ================================= */
+
+function openNoticeList() {
+
+  renderNoticeList(currentNoticePage);
+
+  showPage(noticeListPage);
+
+}
+
+
+/* ================================= */
+/* NOTICE 상세 표시 */
+/* ================================= */
+
+function openNotice(notice) {
+
+  if (!notice) {
+    return;
+  }
+
+  currentNotice = notice;
+
+  noticeDetailDate.textContent =
+    notice.date;
+
+  noticeDetailTitle.textContent =
+    notice.title[currentLanguage] ||
+    notice.title.ko ||
+    "";
+
+  noticeDetailContent.textContent =
+    notice.content[currentLanguage] ||
+    notice.content.ko ||
+    "";
+
+  showPage(noticePage);
+
+}
+
+
+/* ================================= */
+/* NOTICE 메뉴 클릭 */
+/* ================================= */
+
+noticeLink.addEventListener("click", () => {
+
+  currentNoticePage = 1;
+
+  openNoticeList();
+
+});
+
+
+
+/* ================================= */
+/* 메인 최신 공지 클릭 */
+/* ================================= */
+
+latestNoticeButton.addEventListener("click", () => {
+
+  if (currentNotice) {
+    localStorage.setItem(
+      "h2h-seen-notice",
+      getNoticeKey(currentNotice)
+    );
+  }
+
+  if (latestNoticeSection) {
+    latestNoticeSection.style.display = "none";
+  }
+
+  currentNoticePage = 1;
+
+  openNoticeList();
+
+});
+
+
+
+/* ================================= */
+/* NOTICE 목록 → HOME */
+/* ================================= */
+
+noticeListBackButton.addEventListener("click", () => {
+
+  showPage(mainPage);
+
+});
+
+
+/* ================================= */
+/* NOTICE 상세 → 목록 */
+/* ================================= */
+
+noticeBackButton.addEventListener("click", () => {
+
+  openNoticeList();
+
+});
+
+
+/* ================================= */
+/* 언어 데이터 */
 /* ================================= */
 
 const languageData = {
 
   ko: {
+
     name: "한국어",
 
     navHome: "HOME",
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navNotice: "NOTICE",
 
-    guideDescription: "팬 활동에 필요한 가이드",
-    streamingDescription: "MV/음원 스트리밍 가이드",
-    fanchantDescription: "공식 응원법 모음",
+    guideDescription:
+      "다운로드/투표/음방/비활동기 가이드",
 
-    footer: "Made by H2H 음원총공팀",
+    streamingDescription:
+      "MV/음원 스트리밍 가이드",
 
-    streamingSmall: "MV/음원 스트리밍 가이드",
-    streamingTitle: "STREAMING GUIDE",
-    streamingList: "스트리밍 리스트",
-    oneClick: "원클릭 스트리밍",
+    fanchantDescription:
+      "공식 응원법 모음",
+
+    footer:
+      "Made by H2H 음원총공팀",
+
+    noticeLabel:
+      "NOTICE",
+
+    streamingSmall:
+      "MV/음원 스트리밍 가이드",
+
+    streamingList:
+      "스트리밍 리스트",
+
+    oneClick:
+      "원클릭 스트리밍",
 
     streamingListSmall:
       "H2H 음원총공팀에서 제공하는 권장 스트리밍리스트",
 
-    streamingListTitle: "STREAMING LIST",
+    streamingListTitle:
+      "STREAMING LIST",
+
     streamingListCaption:
       "MOONRIDE 스트리밍 리스트",
 
-    oneClickSmall: "음원 원클릭 스트리밍",
-    oneClickTitle: "ONE CLICK STREAMING",
+    oneClickSmall:
+      "음원 원클릭 스트리밍",
 
-    melonAndroid1: "멜론 (안드로이드) 1",
-    melonAndroid2: "멜론 (안드로이드) 2",
-    melonAndroid3: "멜론 (안드로이드) 3",
-    melonAndroid4: "멜론 (안드로이드) 4",
-    melonIOS: "멜론 (iOS)",
-    genieAndroid: "지니뮤직 (안드로이드)",
-    genieIOS: "지니뮤직 (iOS)",
+    oneClickTitle:
+      "ONE CLICK STREAMING",
+
+    melonAndroid1:
+      "멜론 (안드로이드) 1",
+
+    melonAndroid2:
+      "멜론 (안드로이드) 2",
+
+    melonAndroid3:
+      "멜론 (안드로이드) 3",
+
+    melonAndroid4:
+      "멜론 (안드로이드) 4",
+
+    melonIOS:
+      "멜론 (iOS)",
+
+    genieAndroid:
+      "지니뮤직 (안드로이드)",
+
+    genieIOS:
+      "지니뮤직 (iOS)",
+
+    flo:
+      "FLO MUSIC",
 
     fanchantSmall:
       "H2H 음원총공팀에서 제공하는 공식 응원법",
 
-    officialFanchant: "OFFICIAL FANCHANT",
+    officialFanchant:
+      "OFFICIAL FANCHANT"
 
-    fanchantAlt: "공식 응원법"
   },
 
 
   en: {
+
     name: "English",
 
     navHome: "HOME",
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navNotice: "NOTICE",
 
-    guideDescription: "Guides for fan activities",
-    streamingDescription: "MV / music streaming guide",
-    fanchantDescription: "Official fanchant collection",
+    guideDescription:
+      "Guides for fan activities",
 
-    footer: "Made by H2H 음원총공팀",
+    streamingDescription:
+      "MV / music streaming guide",
 
-    streamingSmall: "MV / music streaming guide",
-    streamingTitle: "STREAMING GUIDE",
-    streamingList: "Streaming List",
-    oneClick: "One-Click Streaming",
+    fanchantDescription:
+      "Official fanchant collection",
+
+    footer:
+      "Made by H2H 음원총공팀",
+
+    noticeLabel:
+      "NOTICE",
+
+    streamingSmall:
+      "MV / music streaming guide",
+
+    streamingList:
+      "Streaming List",
+
+    oneClick:
+      "One-Click Streaming",
 
     streamingListSmall:
       "Recommended streaming list provided by H2H 음원총공팀",
 
-    streamingListTitle: "STREAMING LIST",
+    streamingListTitle:
+      "STREAMING LIST",
+
     streamingListCaption:
       "MOONRIDE Streaming List",
 
-    oneClickSmall: "One-click music streaming",
-    oneClickTitle: "ONE CLICK STREAMING",
+    oneClickSmall:
+      "One-click music streaming",
 
-    melonAndroid1: "Melon (Android) 1",
-    melonAndroid2: "Melon (Android) 2",
-    melonAndroid3: "Melon (Android) 3",
-    melonAndroid4: "Melon (Android) 4",
-    melonIOS: "Melon (iOS)",
-    genieAndroid: "Genie Music (Android)",
-    genieIOS: "Genie Music (iOS)",
+    oneClickTitle:
+      "ONE CLICK STREAMING",
+
+    melonAndroid1:
+      "Melon (Android) 1",
+
+    melonAndroid2:
+      "Melon (Android) 2",
+
+    melonAndroid3:
+      "Melon (Android) 3",
+
+    melonAndroid4:
+      "Melon (Android) 4",
+
+    melonIOS:
+      "Melon (iOS)",
+
+    genieAndroid:
+      "Genie Music (Android)",
+
+    genieIOS:
+      "Genie Music (iOS)",
+
+    flo:
+      "FLO MUSIC",
 
     fanchantSmall:
       "Official fanchants provided by H2H 음원총공팀",
 
-    officialFanchant: "OFFICIAL FANCHANT",
+    officialFanchant:
+      "OFFICIAL FANCHANT"
 
-    fanchantAlt: "Official Fanchant"
   },
 
 
   id: {
+
     name: "Bahasa Indonesia",
 
     navHome: "HOME",
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navNotice: "NOTICE",
 
-    guideDescription: "Panduan untuk aktivitas penggemar",
-    streamingDescription: "Panduan streaming MV / musik",
-    fanchantDescription: "Kumpulan fanchant resmi",
+    guideDescription:
+      "Panduan untuk aktivitas penggemar",
 
-    footer: "Made by H2H 음원총공팀",
+    streamingDescription:
+      "Panduan streaming MV / musik",
 
-    streamingSmall: "Panduan streaming MV / musik",
-    streamingTitle: "STREAMING GUIDE",
-    streamingList: "Daftar Streaming",
-    oneClick: "Streaming Sekali Klik",
+    fanchantDescription:
+      "Kumpulan fanchant resmi",
+
+    footer:
+      "Made by H2H 음원총공팀",
+
+    noticeLabel:
+      "NOTICE",
+
+    streamingSmall:
+      "Panduan streaming MV / musik",
+
+    streamingList:
+      "Daftar Streaming",
+
+    oneClick:
+      "Streaming Sekali Klik",
 
     streamingListSmall:
       "Daftar streaming rekomendasi dari H2H 음원총공팀",
 
-    streamingListTitle: "STREAMING LIST",
+    streamingListTitle:
+      "STREAMING LIST",
+
     streamingListCaption:
       "Daftar Streaming MOONRIDE",
 
-    oneClickSmall: "Streaming musik sekali klik",
-    oneClickTitle: "ONE CLICK STREAMING",
+    oneClickSmall:
+      "Streaming musik sekali klik",
 
-    melonAndroid1: "Melon (Android) 1",
-    melonAndroid2: "Melon (Android) 2",
-    melonAndroid3: "Melon (Android) 3",
-    melonAndroid4: "Melon (Android) 4",
-    melonIOS: "Melon (iOS)",
-    genieAndroid: "Genie Music (Android)",
-    genieIOS: "Genie Music (iOS)",
+    oneClickTitle:
+      "ONE CLICK STREAMING",
+
+    melonAndroid1:
+      "Melon (Android) 1",
+
+    melonAndroid2:
+      "Melon (Android) 2",
+
+    melonAndroid3:
+      "Melon (Android) 3",
+
+    melonAndroid4:
+      "Melon (Android) 4",
+
+    melonIOS:
+      "Melon (iOS)",
+
+    genieAndroid:
+      "Genie Music (Android)",
+
+    genieIOS:
+      "Genie Music (iOS)",
+
+    flo:
+      "FLO MUSIC",
 
     fanchantSmall:
       "Fanchant resmi dari H2H 음원총공팀",
 
-    officialFanchant: "OFFICIAL FANCHANT",
+    officialFanchant:
+      "OFFICIAL FANCHANT"
 
-    fanchantAlt: "Fanchant Resmi"
   },
 
 
   ja: {
+
     name: "日本語",
 
     navHome: "HOME",
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navNotice: "NOTICE",
 
-    guideDescription: "ファン活動に必要なガイド",
-    streamingDescription: "MV・音源ストリーミングガイド",
-    fanchantDescription: "公式応援法まとめ",
+    guideDescription:
+      "ファン活動に必要なガイド",
 
-    footer: "Made by H2H 음원총공팀",
+    streamingDescription:
+      "MV・音源ストリーミングガイド",
 
-    streamingSmall: "MV・音源ストリーミングガイド",
-    streamingTitle: "STREAMING GUIDE",
-    streamingList: "ストリーミングリスト",
-    oneClick: "ワンクリックストリーミング",
+    fanchantDescription:
+      "公式応援法まとめ",
+
+    footer:
+      "Made by H2H 음원총공팀",
+
+    noticeLabel:
+      "NOTICE",
+
+    streamingSmall:
+      "MV・音源ストリーミングガイド",
+
+    streamingList:
+      "ストリーミングリスト",
+
+    oneClick:
+      "ワンクリックストリーミング",
 
     streamingListSmall:
       "H2H 음원총공팀が提供するおすすめストリーミングリスト",
 
-    streamingListTitle: "STREAMING LIST",
+    streamingListTitle:
+      "STREAMING LIST",
+
     streamingListCaption:
       "MOONRIDE ストリーミングリスト",
 
-    oneClickSmall: "音源ワンクリックストリーミング",
-    oneClickTitle: "ONE CLICK STREAMING",
+    oneClickSmall:
+      "音源ワンクリックストリーミング",
 
-    melonAndroid1: "Melon (Android) 1",
-    melonAndroid2: "Melon (Android) 2",
-    melonAndroid3: "Melon (Android) 3",
-    melonAndroid4: "Melon (Android) 4",
-    melonIOS: "Melon (iOS)",
-    genieAndroid: "Genie Music (Android)",
-    genieIOS: "Genie Music (iOS)",
+    oneClickTitle:
+      "ONE CLICK STREAMING",
+
+    melonAndroid1:
+      "Melon (Android) 1",
+
+    melonAndroid2:
+      "Melon (Android) 2",
+
+    melonAndroid3:
+      "Melon (Android) 3",
+
+    melonAndroid4:
+      "Melon (Android) 4",
+
+    melonIOS:
+      "Melon (iOS)",
+
+    genieAndroid:
+      "Genie Music (Android)",
+
+    genieIOS:
+      "Genie Music (iOS)",
+
+    flo:
+      "FLO MUSIC",
 
     fanchantSmall:
       "H2H 음원총공팀が提供する公式応援法",
 
-    officialFanchant: "OFFICIAL FANCHANT",
+    officialFanchant:
+      "OFFICIAL FANCHANT"
 
-    fanchantAlt: "公式応援法"
   },
 
 
   zh: {
+
     name: "简体中文",
 
     navHome: "HOME",
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navNotice: "NOTICE",
 
-    guideDescription: "粉丝活动指南",
-    streamingDescription: "MV / 音源串流指南",
-    fanchantDescription: "官方应援法合集",
+    guideDescription:
+      "粉丝活动指南",
 
-    footer: "Made by H2H 음원총공팀",
+    streamingDescription:
+      "MV / 音源串流指南",
 
-    streamingSmall: "MV / 音源串流指南",
-    streamingTitle: "STREAMING GUIDE",
-    streamingList: "串流列表",
-    oneClick: "一键串流",
+    fanchantDescription:
+      "官方应援法合集",
+
+    footer:
+      "Made by H2H 음원총공팀",
+
+    noticeLabel:
+      "NOTICE",
+
+    streamingSmall:
+      "MV / 音源串流指南",
+
+    streamingList:
+      "串流列表",
+
+    oneClick:
+      "一键串流",
 
     streamingListSmall:
       "H2H 음원총공팀提供的推荐串流列表",
 
-    streamingListTitle: "STREAMING LIST",
+    streamingListTitle:
+      "STREAMING LIST",
+
     streamingListCaption:
       "MOONRIDE 串流列表",
 
-    oneClickSmall: "音源一键串流",
-    oneClickTitle: "ONE CLICK STREAMING",
+    oneClickSmall:
+      "音源一键串流",
 
-    melonAndroid1: "Melon（Android）1",
-    melonAndroid2: "Melon（Android）2",
-    melonAndroid3: "Melon（Android）3",
-    melonAndroid4: "Melon（Android）4",
-    melonIOS: "Melon（iOS）",
-    genieAndroid: "Genie Music（Android）",
-    genieIOS: "Genie Music（iOS）",
+    oneClickTitle:
+      "ONE CLICK STREAMING",
+
+    melonAndroid1:
+      "Melon（Android）1",
+
+    melonAndroid2:
+      "Melon（Android）2",
+
+    melonAndroid3:
+      "Melon（Android）3",
+
+    melonAndroid4:
+      "Melon（Android）4",
+
+    melonIOS:
+      "Melon（iOS）",
+
+    genieAndroid:
+      "Genie Music（Android）",
+
+    genieIOS:
+      "Genie Music（iOS）",
+
+    flo:
+      "FLO MUSIC",
 
     fanchantSmall:
       "H2H 음원총공팀提供的官方应援法",
 
-    officialFanchant: "OFFICIAL FANCHANT",
+    officialFanchant:
+      "OFFICIAL FANCHANT"
 
-    fanchantAlt: "官方应援法"
   }
 
 };
 
 
 /* ================================= */
-/* 언어 선택기 만들기 */
+/* 현재 언어 */
 /* ================================= */
 
-const nav = document.querySelector("nav");
-
-const languageSelector =
-  document.createElement("div");
-
-languageSelector.className =
-  "language-selector";
+let currentLanguage =
+  localStorage.getItem("h2h-language") || "ko";
 
 
-/* 지구본 아이콘 */
+if (!languageData[currentLanguage]) {
 
-const languageToggle =
-  document.createElement("button");
+  currentLanguage = "ko";
 
-languageToggle.className =
-  "language-toggle";
-
-languageToggle.type = "button";
-
-languageToggle.setAttribute(
-  "aria-label",
-  "언어 선택"
-);
-
-languageToggle.innerHTML = `
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <circle
-      cx="12"
-      cy="12"
-      r="9"
-      stroke="currentColor"
-      stroke-width="1.5"
-    />
-
-    <path
-      d="M3 12H21"
-      stroke="currentColor"
-      stroke-width="1.5"
-    />
-
-    <path
-      d="M12 3C14.5 5.4 15.7 8.4 15.7 12C15.7 15.6 14.5 18.6 12 21"
-      stroke="currentColor"
-      stroke-width="1.5"
-    />
-
-    <path
-      d="M12 3C9.5 5.4 8.3 8.4 8.3 12C8.3 15.6 9.5 18.6 12 21"
-      stroke="currentColor"
-      stroke-width="1.5"
-    />
-  </svg>
-`;
-
-
-/* 언어 메뉴 */
-
-const languageMenu =
-  document.createElement("div");
-
-languageMenu.className =
-  "language-menu";
-
-
-Object.keys(languageData).forEach((languageCode) => {
-
-  const option =
-    document.createElement("button");
-
-  option.type = "button";
-
-  option.className =
-    "language-option";
-
-  option.dataset.language =
-    languageCode;
-
-  option.textContent =
-    languageData[languageCode].name;
-
-  languageMenu.appendChild(option);
-
-});
-
-
-languageSelector.appendChild(languageToggle);
-languageSelector.appendChild(languageMenu);
-
-nav.appendChild(languageSelector);
+}
 
 
 /* ================================= */
-/* 언어별 텍스트 변경 */
+/* 언어 적용 */
 /* ================================= */
 
 function applyLanguage(languageCode) {
@@ -618,7 +1157,9 @@ function applyLanguage(languageCode) {
   }
 
 
-  /* 브라우저 언어 설정 */
+  currentLanguage =
+    languageCode;
+
 
   document.documentElement.lang =
     languageCode;
@@ -629,26 +1170,47 @@ function applyLanguage(languageCode) {
   homeLink.textContent =
     language.navHome;
 
-  document.querySelector(
-    'nav a[href="#guide"]'
-  ).textContent =
+  guideLink.textContent =
     language.navGuide;
 
-  document.querySelector(
-    'nav a[href="#streaming"]'
-  ).textContent =
-    language.navStreaming;
+  document.querySelectorAll(
+    ".streaming-link"
+  ).forEach((element) => {
 
-  document.querySelector(
-    'nav a[href="#fanchant"]'
+    if (element.tagName === "A") {
+
+      element.textContent =
+        language.navStreaming;
+
+    }
+
+  });
+
+
+  document.querySelectorAll(
+    ".fanchant-link"
+  ).forEach((element) => {
+
+    if (element.tagName === "A") {
+
+      element.textContent =
+        language.navFanchant;
+
+    }
+
+  });
+
+
+  noticeLink.querySelector(
+    ".notice-nav-text"
   ).textContent =
-    language.navFanchant;
+    language.navNotice;
 
 
   /* 메인 카드 */
 
   document.querySelector(
-    '.menu-card[href="#guide"] p'
+    "#guide-card p"
   ).textContent =
     language.guideDescription;
 
@@ -671,7 +1233,16 @@ function applyLanguage(languageCode) {
     language.footer;
 
 
-  /* 스트리밍 가이드 */
+  /* NOTICE */
+
+  latestNoticeLabel.textContent =
+    language.noticeLabel;
+
+  noticeDetailLabel.textContent =
+    language.noticeLabel;
+
+
+  /* 스트리밍 */
 
   document.querySelector(
     "#streaming-page .small-text"
@@ -681,7 +1252,7 @@ function applyLanguage(languageCode) {
   document.querySelector(
     "#streaming-page h2"
   ).textContent =
-    language.streamingTitle;
+    "STREAMING GUIDE";
 
   streamingListButton.textContent =
     language.streamingList;
@@ -721,70 +1292,39 @@ function applyLanguage(languageCode) {
     language.oneClickTitle;
 
 
-  /* 멜론 */
+  /* 원클릭 버튼 */
 
-  const melonButtons =
+  const oneclickButtons =
     document.querySelectorAll(
       "#oneclick-streaming-page .oneclick-streaming-list a"
     );
 
 
-  if (melonButtons.length >= 4) {
+  if (oneclickButtons.length >= 8) {
 
-    melonButtons[0].textContent =
+    oneclickButtons[0].textContent =
       language.melonAndroid1;
 
-    melonButtons[1].textContent =
+    oneclickButtons[1].textContent =
       language.melonAndroid2;
 
-    melonButtons[2].textContent =
+    oneclickButtons[2].textContent =
       language.melonAndroid3;
 
-    melonButtons[3].textContent =
+    oneclickButtons[3].textContent =
       language.melonAndroid4;
 
-  }
-
-
-  /* 멜론 iOS */
-
-  const melonIOS =
-    document.querySelector(
-      "#oneclick-streaming-page .oneclick-streaming-group:nth-of-type(2) a"
-    );
-
-  if (melonIOS) {
-
-    melonIOS.textContent =
+    oneclickButtons[4].textContent =
       language.melonIOS;
 
-  }
-
-
-  /* 지니 */
-
-  const genieAndroid =
-    document.querySelector(
-      "#oneclick-streaming-page .oneclick-streaming-group:nth-of-type(3) a"
-    );
-
-  const genieIOS =
-    document.querySelector(
-      "#oneclick-streaming-page .oneclick-streaming-group:nth-of-type(4) a"
-    );
-
-
-  if (genieAndroid) {
-
-    genieAndroid.textContent =
+    oneclickButtons[5].textContent =
       language.genieAndroid;
 
-  }
-
-  if (genieIOS) {
-
-    genieIOS.textContent =
+    oneclickButtons[6].textContent =
       language.genieIOS;
+
+    oneclickButtons[7].textContent =
+      language.flo;
 
   }
 
@@ -796,18 +1336,27 @@ function applyLanguage(languageCode) {
   ).textContent =
     language.fanchantSmall;
 
-
   document.querySelector(
     "#fanchant-detail-page .small-text"
   ).textContent =
     language.officialFanchant;
 
 
-  fanchantSongImage.alt =
-    language.fanchantAlt;
+  /* 현재 공지 다시 표시 */
+
+  updateLatestNotice();
+
+  noticeDetailDate.textContent =
+    currentNotice.date;
+
+  noticeDetailTitle.textContent =
+    currentNotice.title[currentLanguage];
+
+  noticeDetailContent.textContent =
+    currentNotice.content[currentLanguage];
 
 
-  /* 언어 메뉴 현재 선택 표시 */
+  /* 언어 메뉴 */
 
   document.querySelectorAll(
     ".language-option"
@@ -815,57 +1364,81 @@ function applyLanguage(languageCode) {
 
     option.classList.toggle(
       "active",
-      option.dataset.language === languageCode
+      option.dataset.language === currentLanguage
     );
 
   });
 
 
-  /* 선택 언어 저장 */
+  /* 언어 저장 */
 
   localStorage.setItem(
     "h2h-language",
-    languageCode
+    currentLanguage
   );
 
 }
 
 
 /* ================================= */
-/* 언어 메뉴 열기 / 닫기 */
+/* 언어 변환 메뉴 */
 /* ================================= */
+
+const languageToggle =
+  document.getElementById("language-toggle");
+
+const languageMenu =
+  document.getElementById("language-menu");
+
+const languageSelector =
+  document.querySelector(".language-selector");
+
 
 languageToggle.addEventListener("click", (event) => {
 
   event.stopPropagation();
 
-  languageMenu.classList.toggle("active");
+  const isOpen =
+    languageMenu.classList.toggle("active");
+
+  languageToggle.setAttribute(
+    "aria-expanded",
+    isOpen ? "true" : "false"
+  );
 
 });
 
 
+/* ================================= */
 /* 언어 선택 */
+/* ================================= */
 
-languageMenu.addEventListener("click", (event) => {
+document.querySelectorAll(
+  ".language-option"
+).forEach((option) => {
 
-  const option =
-    event.target.closest(".language-option");
+  option.addEventListener("click", () => {
 
-  if (!option) {
-    return;
-  }
+    const languageCode =
+      option.dataset.language;
 
-  const languageCode =
-    option.dataset.language;
+    applyLanguage(languageCode);
 
-  applyLanguage(languageCode);
+    languageMenu.classList.remove("active");
 
-  languageMenu.classList.remove("active");
+    languageToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  });
 
 });
 
 
-/* 메뉴 바깥 클릭 */
+/* ================================= */
+/* 언어 메뉴 바깥 클릭 */
+/* ================================= */
 
 document.addEventListener("click", (event) => {
 
@@ -873,16 +1446,20 @@ document.addEventListener("click", (event) => {
 
     languageMenu.classList.remove("active");
 
+    languageToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
   }
 
 });
 
 
 /* ================================= */
-/* 저장된 언어 불러오기 */
+/* 최초 실행 */
 /* ================================= */
 
-const savedLanguage =
-  localStorage.getItem("h2h-language") || "ko";
+applyLanguage(currentLanguage);
 
-applyLanguage(savedLanguage);
+updateLatestNotice();
