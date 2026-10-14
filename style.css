@@ -395,35 +395,53 @@ main {
 .menu-card {
   display: block;
 
-  padding: 32px;
+  padding: 10px;
 
-  border: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid #a9c5d6;
 
   color: #222;
 
   text-decoration: none;
 
   transition: 0.2s;
+
+  background: linear-gradient(
+to bottom,
+#F0F8FD 0%,
+#F7FBFE 35%,
+#FFFFFF 100%
+);
+
+  border-radius: 12px;
 }
 
 .menu-card:hover {
-  background: #f7f7f7;
+  background: #e4f1fa;
 }
 
 .menu-card span {
+  display: block;
+  margin: 0;
   font-size: 12px;
-  color: #999;
+  line-height: 1.2;
+  color: #3e7188;
 }
 
 .menu-card h3 {
-  margin: 18px 0 8px;
-
-  font-size: 20px;
+  margin: 6px 0 4px;
+  font-size: 19=8px;
+  line-height: 1.3;
+  color: #3e7188;
 }
 
 .menu-card p {
-  color: #777;
-  font-size: 14px;
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 
@@ -438,7 +456,7 @@ footer {
 
   border-top: 1px solid #eee;
 
-  color: #999;
+  color: #929292;
 
   font-size: 12px;
 }
@@ -702,6 +720,13 @@ footer {
   }
 }
 
+/* 공지사항 내역 배경 */
+
+.notice-list-item {
+  background: #fff;
+
+}
+
 /* ================================= */
 /* 공통 돌아가기 버튼 */
 /* ================================= */
@@ -716,7 +741,7 @@ footer {
   background: transparent;
   border: none;
 
-  color: #222;
+  color: #3e7188;
 
   font-size: 24px;
   font-weight: 300;
@@ -751,6 +776,8 @@ footer {
   margin-bottom: 40px;
 
   font-size: clamp(32px, 5vw, 56px);
+
+  color: #222;
 }
 
 
@@ -778,23 +805,24 @@ footer {
 /* ================================= */
 
 .streaming-list-btn {
-  border: 1px solid #222;
+  border: 1px solid #bbd3e2;
 
   background: #fff;
 
-  padding: 16px 24px;
+  padding: 8px 15px;
 
   font-size: 14px;
 
   cursor: pointer;
 
   transition: 0.2s;
+
+  border-radius: 10px;
 }
 
 .streaming-list-btn:hover {
-  background: #f5f5f5;
+  background: #e4f1fa;
 }
-
 
 /* ================================= */
 /* 스트리밍 리스트 */
@@ -816,16 +844,21 @@ footer {
   font-size: clamp(32px, 5vw, 56px);
 }
 
+
 .streaming-list-image {
   width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .streaming-list-image img {
   display: block;
-
   width: 100%;
+  max-width: 100%;
   height: auto;
+  object-fit: contain;
 }
+
 
 .streaming-list-caption {
   margin-top: 10px;
@@ -1543,11 +1576,13 @@ footer {
 
 .latest-notice-date {
   font-size: 9px;
+  color: #98aebd;
 }
 
 .latest-notice-label {
   font-size: 9px;
   letter-spacing: 1px;
+  color: #98aebd
 }
 
 /* 안내 문구 */
@@ -1625,6 +1660,7 @@ footer {
 
 .notice-list-item-date {
   font-size: 10px;
+  color: #8eb6d1;
 }
 
 /* 오른쪽 화살표 */
@@ -1644,6 +1680,7 @@ footer {
   margin: 0;
   font-size: 11px;
   line-height: 1.4;
+  color: #c7c6c6;
 
   display: -webkit-box;
   overflow: hidden;
@@ -1935,3 +1972,143 @@ footer p {
   text-align: center;
   line-height: 1;
 }
+
+/* NOTICE 목록 화면 배경 그라데이션 */
+
+#notice-list-page {
+  background: linear-gradient(
+    to bottom,
+    #d3e9f7 0%,
+    #f7f9fa 30%,
+    #FAFCFE 65%,
+    #FFFFFF 100%
+  );
+}
+
+/* 공지사항 목록 화면 NOTICE 글자 색상 */
+
+#notice-list-page .small-text {
+color: #3e7188;
+}
+
+/* 스트리밍 가이드 페이지 - 작은 안내 글자 색상 */
+
+#streaming-page .streaming-inner > p.small-text {
+  color: #3e7188;
+}
+
+/* 스트리밍 가이드 멤버 사진 */
+#streaming-page .streaming-member {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  transform: translate(-473px, -200px);
+}
+
+#streaming-page .streaming-member img {
+  display: block;
+  width: 160px;
+  max-width: 80%;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+}
+
+/* 스트리밍 가이드 배경 그라데이션 */
+#streaming-page {
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #FAFCFE 30%,
+    #f7f9fa 65%,
+    #d3e9f7 100%
+  );
+}
+
+#streaming-page .streaming-inner {
+  background: transparent;
+}
+
+/* 공지사항 목록 제목 아래 연한 점선 */
+#notice-list-page .notice-divider {
+  width: 100%;
+  border-top: 2.5px dashed #d9e2e7;
+  margin: 14px 0 40px;
+}
+
+/* 스트리밍 가이드 제목 아래 연한 점선 */
+#streaming-page .streaming-guide-divider {
+  width: 100%;
+  border-top: 2.5px dashed #d9e2e7;
+  margin: 14px 0 40px;
+}
+
+/* 공지사항 제목과 안내 문구 한 줄 배치 */
+#notice-list-page .notice-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* 공지사항 제목 */
+#notice-list-page #notice-list-heading {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* 오른쪽 안내 문구 */
+#notice-list-page .notice-focus-text {
+  font-size: 11px;
+  color: #a5b3bc;
+  font-weight: 400;
+  text-align: right;
+}
+
+/* 스트리밍 가이드 위 작은 문구 - 형광펜 밑줄 */
+#streaming-page .small-text {
+  display: table;
+  position: relative;
+  z-index: 0;
+  margin-bottom: 10px;
+}
+
+#streaming-page .small-text::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: 0px;
+  height: 10px;
+  background: #bbd3e2;
+  opacity: 0.35;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* 스트리밍 리스트 이미지 넘기기 */
+#streaming-list-page .streaming-slide-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 12px;
+}
+
+#streaming-list-page .streaming-slide-controls button {
+  border: none;
+  background: transparent;
+  color: #647d8a;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 10px;
+}
+
+#streaming-list-page #streaming-slide-number {
+  font-size: 13px;
+  color: #8b9aa3;
+}
+

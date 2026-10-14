@@ -850,7 +850,7 @@ const languageData = {
       "원클릭 스트리밍",
 
     streamingListSmall:
-      "H2H 음원총공팀에서 제공하는 권장 스트리밍리스트",
+      "스트리밍리스트",
 
     streamingListTitle:
       "STREAMING LIST",
@@ -1491,5 +1491,69 @@ if (mobileMenuToggle && mobileMenuLinks) {
       }
     }
   );
+}
+
+// 스트리밍 리스트 이미지 전환
+const streamingSlides = [
+  {
+    image: "images/Iconic Heart-STREAMING.png",
+    caption: "아이코닉하트 스트리밍 리스트"
+  },
+  {
+    image: "images/Moonride-STREAMING.jpg",
+    caption: "MOONRIDE 스트리밍 리스트"
+  }
+];
+
+let currentStreamingSlide = 0;
+
+function showStreamingSlide(index) {
+  const image = document.getElementById("streaming-slide-image");
+  const caption = document.getElementById("streaming-slide-caption");
+  const number = document.getElementById("streaming-slide-number");
+
+  if (!image || !caption || !number) return;
+
+  currentStreamingSlide = index;
+
+  image.src = streamingSlides[index].image;
+  image.alt = streamingSlides[index].caption;
+  caption.textContent = streamingSlides[index].caption;
+  number.textContent = index + 1;
+}
+
+function initStreamingSlider() {
+  const prevButton = document.getElementById("streaming-slide-prev");
+  const nextButton = document.getElementById("streaming-slide-next");
+
+  if (!prevButton || !nextButton) return;
+
+  // 중복 이벤트 등록 방지
+  if (prevButton.dataset.sliderReady === "true") return;
+
+  prevButton.dataset.sliderReady = "true";
+  nextButton.dataset.sliderReady = "true";
+
+  prevButton.addEventListener("click", () => {
+    showStreamingSlide(
+      (currentStreamingSlide - 1 + streamingSlides.length) %
+      streamingSlides.length
+    );
+  });
+
+  nextButton.addEventListener("click", () => {
+    showStreamingSlide(
+      (currentStreamingSlide + 1) % streamingSlides.length
+    );
+  });
+
+  showStreamingSlide(0);
+}
+
+// HTML 로딩이 끝난 후 초기화
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initStreamingSlider);
+} else {
+  initStreamingSlider();
 }
 
