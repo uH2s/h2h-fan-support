@@ -381,17 +381,12 @@ fanchantBackButton.addEventListener("click", () => {
     title: {
       ko: "새로운 공지 제목",
       en: "New Notice",
-      id: "Judul Pengumuman Baru",
-      ja: "新しいお知らせ",
-      zh: "新公告"
+      id: "Judul Pengumuman Baru"
     },
     content: {
       ko: "공지 내용을 입력하세요.",
       en: "Enter the notice here.",
-      id: "Masukkan isi pengumuman.",
-      ja: "お知らせの内容を入力してください。",
-      zh: "请输入公告内容。"
-    }
+      id: "Masukkan isi pengumuman."
   },
 
 */
@@ -404,9 +399,7 @@ const notices = [
     title: {
       ko: "[공지사항 제목]",
       en: "[notice title]",
-      id: "[judul pengumuman]",
-      ja: "[お知らせのタイトル]",
-      zh: "[最新公告]"
+      id: "[judul pengumuman]"
     },
 
     content: {
@@ -417,11 +410,7 @@ const notices = [
         "Please enter the notice here.",
 
       id:
-        "Silakan masukkan isi pengumuman di sini.",
-      ja:
-        "こちらにお知らせの内容を入力してください。",
-      zh:
-        "请在此处填写公告内容。"
+        "Silakan masukkan isi pengumuman di sini."
       }  }
 
 ];
@@ -846,7 +835,7 @@ const languageData = {
       "공식 응원법 모음",
 
     footer:
-      "Made by H2H 음원총공팀",
+      "SNS: https://linktr.ee/h2h_strm",
 
     noticeLabel:
       "NOTICE",
