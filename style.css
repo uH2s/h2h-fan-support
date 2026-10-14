@@ -1714,19 +1714,19 @@ footer {
   justify-content: center;
   gap: 6px;
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
   color: #777;
 }
 
 .copyright-symbol {
-  font-size: 15px;
+  font-size: 10px;
   line-height: 1;
 }
 
 /* SNS 문구 */
 footer .footer-sns {
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
   color: #777;
   text-align: center;
 }
