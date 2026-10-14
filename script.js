@@ -1492,3 +1492,4 @@ if (mobileMenuToggle && mobileMenuLinks) {
     }
   );
 }
+

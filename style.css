@@ -30,7 +30,7 @@ header {
   align-items: center;
 
   width: 100%;
-  padding: 24px 6%;
+  padding: 2px 6%;
 
   border-bottom: 1px solid #eee;
   background: #fff;
@@ -83,6 +83,19 @@ nav a:hover {
   color: #888;
 }
 
+/* PC 배너 로고·제목 세로 정렬 */
+@media (min-width: 701px) {
+  header > h1 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  header > h1 > a {
+    display: flex;
+    align-items: center;
+  }
+}
 
 /* ================================= */
 /* NOTICE 헤더 버튼 */
@@ -272,7 +285,7 @@ main {
   box-sizing: border-box;
   padding: 10px 22px;
 
-  border: 1px solid #ddd;
+  border: 1px solid #c9dae4;
   background: #fff;
   color: #222;
 
@@ -1760,4 +1773,165 @@ footer .footer-sns {
 
 footer p {
   margin: 0;
+}
+
+/* ================================= */
+/* 메인 배너 창 */
+/* ================================= */
+
+.main-banner-window {
+  width: 100%;
+  margin: 24px 0;
+  overflow: hidden;
+
+  border: 1px solid #bbd3e2;
+  border-radius: 0px;
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+/* 창 상단 하늘색 바 */
+
+.banner-window-bar {
+  height: 36px;
+
+   background: linear-gradient(
+    to bottom,
+    #ffffff 20%,
+    #c7e3f5 100%
+  );
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* 창 표시 가로 정렬 */
+
+.banner-window-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  color: #3e7188;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.window-minimize,
+.window-maximize,
+.window-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 20px;
+
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* 배너 이미지 영역 */
+
+.banner-window-content {
+  padding: 10px;
+}
+
+.banner-window-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  border-radius: 7px;
+}
+
+/* 창 표시를 일반 텍스트처럼 정렬 */
+
+.banner-window-bar .banner-window-controls {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  font-size: 20px;
+  line-height: 1;
+}
+
+.banner-window-bar .banner-window-controls span {
+  display: inline !important;
+
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  line-height: 1 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+.window-maximize {
+  position: relative !important;
+  top: -5px;
+}
+
+/* 배너 이미지 틀 상단 바 */
+.banner-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 왼쪽: 동그라미 + FOCUS! */
+.banner-window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 동그라미 */
+.banner-window-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3e7188;
+  flex-shrink: 0;
+}
+
+/* FOCUS! 문장 */
+.banner-window-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3e7188
+}
+
+/* 오른쪽: − ㅁ × */
+.banner-window-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-left: auto;
+}
+
+/* 세 기호 정렬 */
+.banner-window-controls span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  text-align: center;
+  line-height: 1;
 }
