@@ -258,7 +258,7 @@ main {
 /* ================================= */
 
 .latest-notice {
-  padding-top: 35px;
+  padding-top: 15px;
   padding-bottom: 10px;
 }
 
@@ -281,6 +281,7 @@ main {
   transition: background 0.2s ease;
 
   height: 150px;
+  border-radius: 999px;
 }
 
 .latest-notice-button:hover {
@@ -1232,10 +1233,52 @@ footer {
 
 }
 
-/* 공지 목록 카드의 빨간 점 위치 */
+/* 공지 목록 카드의 안 읽은 점 */
+.notice-list-item.notice-unread {
+  position: relative;
+}
+
 .notice-list-item.notice-unread::before {
+  content: "";
+  position: absolute;
+
   top: 10px;
   left: 10px;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background-color: #a9daf9;
+}
+
+/* 메인 화면 최신 공지의 안 읽은 점 */
+.latest-notice-button.notice-unread {
+  position: relative;
+}
+
+.latest-notice-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.latest-notice-button.notice-unread .latest-notice-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.latest-notice-button.notice-unread .latest-notice-date::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background-color: #a9daf9;
 }
 
 /* ================================= */

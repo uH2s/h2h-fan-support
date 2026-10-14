@@ -188,6 +188,44 @@ guideLink.addEventListener("click", (event) => {
 
 
 /* ================================= */
+/* 메인 메뉴 카드 */
+/* ================================= */
+
+const guideCard =
+  document.getElementById("guide-card");
+
+const streamingCard =
+  document.getElementById("streaming-card");
+
+const fanchantCard =
+  document.getElementById("fanchant-card");
+
+
+guideCard.addEventListener("click", (event) => {
+
+  event.preventDefault();
+
+  showPage(guidePage);
+
+});
+
+streamingCard.addEventListener("click", (event) => {
+
+  event.preventDefault();
+
+  showPage(streamingPage);
+
+});
+
+fanchantCard.addEventListener("click", (event) => {
+
+  event.preventDefault();
+
+  showPage(fanchantPage);
+
+});
+
+/* ================================= */
 /* STREAMING 메뉴 */
 /* ================================= */
 
@@ -373,7 +411,7 @@ const notices = [
 
     content: {
       ko:
-        "[공지사항 내용]",
+        "[공지사항 내용 1줄 미리보기]",
 
       en:
         "Please enter the notice here.",
@@ -799,7 +837,7 @@ const languageData = {
     navNotice: "NOTICE",
 
     guideDescription:
-      "다운로드/투표/음방/비활동기 가이드",
+      "다운로드/투표 등 각종 가이드",
 
     streamingDescription:
       "MV/음원 스트리밍 가이드",
@@ -1031,172 +1069,7 @@ const languageData = {
     officialFanchant:
       "OFFICIAL FANCHANT"
 
-  },
-
-
-  ja: {
-
-    name: "日本語",
-
-    navHome: "HOME",
-    navGuide: "GUIDE",
-    navStreaming: "STREAMING",
-    navFanchant: "FANCHANT",
-    navNotice: "NOTICE",
-
-    guideDescription:
-      "ファン活動に必要なガイド",
-
-    streamingDescription:
-      "MV・音源ストリーミングガイド",
-
-    fanchantDescription:
-      "公式応援法まとめ",
-
-    footer:
-      "Made by H2H 음원총공팀",
-
-    noticeLabel:
-      "NOTICE",
-
-    streamingSmall:
-      "MV・音源ストリーミングガイド",
-
-    streamingList:
-      "ストリーミングリスト",
-
-    oneClick:
-      "ワンクリックストリーミング",
-
-    streamingListSmall:
-      "H2H 음원총공팀が提供するおすすめストリーミングリスト",
-
-    streamingListTitle:
-      "STREAMING LIST",
-
-    streamingListCaption:
-      "MOONRIDE ストリーミングリスト",
-
-    oneClickSmall:
-      "音源ワンクリックストリーミング",
-
-    oneClickTitle:
-      "ONE CLICK STREAMING",
-
-    melonAndroid1:
-      "Melon (Android) 1",
-
-    melonAndroid2:
-      "Melon (Android) 2",
-
-    melonAndroid3:
-      "Melon (Android) 3",
-
-    melonAndroid4:
-      "Melon (Android) 4",
-
-    melonIOS:
-      "Melon (iOS)",
-
-    genieAndroid:
-      "Genie Music (Android)",
-
-    genieIOS:
-      "Genie Music (iOS)",
-
-    flo:
-      "FLO MUSIC",
-
-    fanchantSmall:
-      "H2H 음원총공팀が提供する公式応援法",
-
-    officialFanchant:
-      "OFFICIAL FANCHANT"
-
-  },
-
-
-  zh: {
-
-    name: "简体中文",
-
-    navHome: "HOME",
-    navGuide: "GUIDE",
-    navStreaming: "STREAMING",
-    navFanchant: "FANCHANT",
-    navNotice: "NOTICE",
-
-    guideDescription:
-      "粉丝活动指南",
-
-    streamingDescription:
-      "MV / 音源串流指南",
-
-    fanchantDescription:
-      "官方应援法合集",
-
-    footer:
-      "Made by H2H 음원총공팀",
-
-    noticeLabel:
-      "NOTICE",
-
-    streamingSmall:
-      "MV / 音源串流指南",
-
-    streamingList:
-      "串流列表",
-
-    oneClick:
-      "一键串流",
-
-    streamingListSmall:
-      "H2H 음원총공팀提供的推荐串流列表",
-
-    streamingListTitle:
-      "STREAMING LIST",
-
-    streamingListCaption:
-      "MOONRIDE 串流列表",
-
-    oneClickSmall:
-      "音源一键串流",
-
-    oneClickTitle:
-      "ONE CLICK STREAMING",
-
-    melonAndroid1:
-      "Melon（Android）1",
-
-    melonAndroid2:
-      "Melon（Android）2",
-
-    melonAndroid3:
-      "Melon（Android）3",
-
-    melonAndroid4:
-      "Melon（Android）4",
-
-    melonIOS:
-      "Melon（iOS）",
-
-    genieAndroid:
-      "Genie Music（Android）",
-
-    genieIOS:
-      "Genie Music（iOS）",
-
-    flo:
-      "FLO MUSIC",
-
-    fanchantSmall:
-      "H2H 음원총공팀提供的官方应援法",
-
-    officialFanchant:
-      "OFFICIAL FANCHANT"
-
   }
-
 };
 
 
