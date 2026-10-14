@@ -1666,7 +1666,7 @@ footer {
   font-size: inherit;
   font-weight: 700;
   white-space: nowrap;
-  margin-left: -15px;
+  margin-left: 0px;
 }
 
 .site-logo-title {
