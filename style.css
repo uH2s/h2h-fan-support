@@ -2461,3 +2461,33 @@ main .menu-section > .menu-card p {
   overflow-wrap: anywhere;
 }
 }
+
+/* ================================= */
+/* 모바일 공지사항 제목 및 안내 문구 */
+/* ================================= */
+
+@media screen and (max-width: 700px) {
+
+  /* 하츄(S2U)의 우체통 */
+  .notice-mailbox-title .mailbox-title-text {
+    font-size: 10px !important;
+  }
+
+  /* 하츄(S2U) 여러분, 공지사항에 focus해 주세요! */
+  .notice-heading-row .notice-focus-text {
+    font-size: 9px !important;
+    line-height: 1.5 !important;
+  }
+
+}
+
+
+/* 모바일 우체통 아이콘 크기 조절 */
+@media screen and (max-width: 700px) {
+
+  .notice-mailbox-title .mailbox-icon {
+    transform: scale(0.65);
+    transform-origin: left center;
+  }
+
+}
