@@ -2377,52 +2377,73 @@ transform-origin: top center;
   }
 }
 
-
 /* ================================= */
-/* 모바일 메인 메뉴 3열 정렬 */
-/* ================================= */
-
-@media (max-width: 768px) {
-
-  .menu-section {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .menu-section > * {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-}
-
-
-/* ================================= */
-/* 모바일 메인 메뉴 3열 */
-/* ================================= */
-
-
-/* ================================= */
-/* 모바일 메인 메뉴 3열 정렬 */
+/* 모바일 메인 메뉴 */
 /* ================================= */
 
 @media screen and (max-width: 768px) {
   .menu-section {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 8px;
+    grid-auto-flow: row;
+    align-items: stretch;
+
+    column-gap: 16px;
+    row-gap: 12px;
+
     width: 100%;
+    padding: 25px 12px 100px;
     box-sizing: border-box;
   }
 
-  .menu-section > .menu-card {
+  .menu-section > a.menu-card {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
     width: 100% !important;
     min-width: 0;
+    height: auto !important;
+    min-height: 0;
+
+    padding: 5px 4px;
+    margin: 0;
+
+    aspect-ratio: auto;
     box-sizing: border-box;
   }
-}
 
+  .menu-section > a.menu-card span {
+    display: block;
+    margin: 0 0 2px;
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  .menu-section > a.menu-card h3 {
+    display: block;
+    width: 100%;
+    margin: 2px 0;
+
+    font-size: clamp(9px, 2.6vw, 15px);
+    line-height: 1.15;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu-section > a.menu-card p {
+    display: block;
+    width: 100%;
+    margin: 0;
+
+    font-size: clamp(7px, 1.9vw, 10px);
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
