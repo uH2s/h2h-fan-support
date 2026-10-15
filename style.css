@@ -2592,3 +2592,16 @@ main .menu-section > .menu-card p {
     background-color: inherit;
   }
 }
+
+
+/* ================================= */
+/* 모바일 스트리밍 버튼 글자색 */
+/* ================================= */
+
+@media (max-width: 768px) {
+  #streaming-page .streaming-guide-buttons button {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+}
+
