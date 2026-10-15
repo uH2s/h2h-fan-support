@@ -2486,7 +2486,7 @@ main .menu-section > .menu-card p {
 @media screen and (max-width: 700px) {
 
   .notice-mailbox-title .mailbox-icon {
-    transform: scale(0.65);
+    transform: scale(0.6);
     transform-origin: left center;
   }
 
