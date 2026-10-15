@@ -3150,10 +3150,47 @@ main .menu-section > .menu-card p {
   z-index: -1;
 }
 
-
 /* 공식 응원법 안내 문구 */
 p.small-text {
   color: #a0b8c4 !important;
   font-size: 16px !important;
   margin-bottom: 0px;
+}
+
+/* ================================= */
+/* VOTE 형광펜 밑줄 */
+/* ================================= */
+
+#vote-page h2 {
+  display: table;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+}
+
+#vote-page h2::after {
+  content: "";
+  position: absolute;
+
+  /* 밑줄 위치와 길이 */
+  left: 0%;
+  bottom: 10px;
+  width: 106%;
+  height: 20px;
+
+  /* 형광펜 디자인 */
+  background: #d7ecf8;
+  border-radius: 1px;
+
+  /* 글자 뒤쪽에 배치 */
+  z-index: -1;
+}
+
+/* 하츠투하츠 투표 안내 문구 */
+#vote-page .support-page-inner > .small-text {
+  margin-top: 0 !important;
+  margin-bottom: 0px !important;
+  color: #a0b8c4 !important;
+  font-size: 16px !important;
+  line-height: 1.7;
 }
