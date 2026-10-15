@@ -2065,14 +2065,6 @@ color: #3e7188;
   text-align: right;
 }
 
-/* 스트리밍 가이드 위 작은 문구 - 형광펜 밑줄 */
-#streaming-page .small-text {
-  display: table;
-  position: relative;
-  z-index: 0;
-  margin-bottom: 10px;
-}
-
 #streaming-page .small-text::after {
   content: "";
   position: absolute;
@@ -2491,3 +2483,84 @@ main .menu-section > .menu-card p {
   }
 
 }
+
+
+/* ================================= */
+/* STREAMING GUIDE 형광펜 밑줄 */
+/* ================================= */
+
+#streaming-page h2 {
+  display: table;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+}
+
+#streaming-page h2::after {
+  content: "";
+  position: absolute;
+
+  /* 밑줄 위치와 길이 */
+  left: 0%;
+  bottom: 10px;
+  width: 106%;
+  height: 15px;
+
+  /* 형광펜 디자인 */
+  background: #d7ecf8;
+  border-radius: 1px;
+
+  /* 글자 뒤쪽에 배치 */
+  z-index: -1;
+}
+
+
+/* ================================= */
+/* NOTICE 배경 이미지 */
+/* ================================= */
+
+#notice-list-page,
+#notice-page {
+  position: relative;
+  isolation: isolate;
+}
+
+/* 배경 이미지 레이어 */
+#notice-list-page::before,
+#notice-page::before {
+  content: "";
+  position: absolute;
+
+  /* 이미지 영역 */
+  width: 100%;
+  height: 100%;
+
+  /* 이미지 경로 */
+  background-image: url("./images/notice-bg.png");
+  background-repeat: no-repeat;
+
+  /* PC 이미지 크기 */
+  background-size: 200px auto;
+
+  /* 이미지 위치 */
+  background-position: 76% 30px;
+
+  /* 이미지 투명도 */
+  opacity: 0.48;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+  #notice-list-page::before,
+  #notice-page::before {
+    /* 화면 너비에 따라 이미지 크기 조절 */
+    background-size: min(75vw, 100px) auto;
+
+    /* 모바일 이미지 위치 */
+    background-position: 95% 30px;
+  }
+}
+
