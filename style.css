@@ -2405,37 +2405,24 @@ transform-origin: top center;
 /* 모바일 메인 메뉴 3열 */
 /* ================================= */
 
+
+/* ================================= */
+/* 모바일 메인 메뉴 3열 정렬 */
+/* ================================= */
+
 @media screen and (max-width: 768px) {
   .menu-section {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 8px;
-
     width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-
     box-sizing: border-box;
   }
 
   .menu-section > .menu-card {
-    display: block;
     width: 100% !important;
     min-width: 0;
-    padding: 10px 6px;
-
     box-sizing: border-box;
   }
-
-  .menu-section > .menu-card h3 {
-    font-size: clamp(10px, 3vw, 16px);
-    overflow-wrap: anywhere;
-  }
-
-  .menu-section > .menu-card p {
-    font-size: 10px;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-    word-break: keep-all;
-  }
 }
+
