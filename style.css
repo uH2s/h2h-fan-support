@@ -2504,7 +2504,7 @@ main .menu-section > .menu-card p {
   left: 0%;
   bottom: 10px;
   width: 106%;
-  height: 15px;
+  height: 20px;
 
   /* 형광펜 디자인 */
   background: #d7ecf8;
@@ -2564,3 +2564,18 @@ main .menu-section > .menu-card p {
   }
 }
 
+/* ================================= */
+/* 모바일 스밍 가이드 버튼 글씨 색상 */
+/* ================================= */
+
+@media (max-width: 768px) {
+  #streaming-page .streaming-guide-buttons a,
+  #streaming-page .streaming-guide-buttons a:link,
+  #streaming-page .streaming-guide-buttons a:visited,
+  #streaming-page .streaming-guide-buttons a:hover,
+  #streaming-page .streaming-guide-buttons a:active {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000;
+    text-decoration: none;
+  }
+}
