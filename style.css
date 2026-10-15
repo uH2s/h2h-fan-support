@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+
 /* ================================= */
 /* 기본 설정 */
 /* ================================= */
@@ -33,7 +37,7 @@ header {
   padding: 2px 6%;
 
   border-bottom: 1px solid #eee;
-  background: #fff;
+  background: #ffffff;
 }
 
 header h1 {
@@ -1994,28 +1998,9 @@ color: #3e7188;
 /* 스트리밍 가이드 페이지 - 작은 안내 글자 색상 */
 
 #streaming-page .streaming-inner > p.small-text {
-  color: #3e7188;
+  color: #a0b8c4;
 }
 
-/* 스트리밍 가이드 멤버 사진 */
-#streaming-page .streaming-member {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 0;
-  padding: 0;
-  transform: translate(-473px, -200px);
-}
-
-#streaming-page .streaming-member img {
-  display: block;
-  width: 160px;
-  max-width: 80%;
-  height: auto;
-  object-fit: contain;
-  margin: 0;
-  padding: 0;
-}
 
 /* 스트리밍 가이드 배경 그라데이션 */
 #streaming-page {
@@ -2046,6 +2031,15 @@ color: #3e7188;
   margin: 14px 0 40px;
 }
 
+/* 메인 배너와 메뉴 사이 점선 */
+
+.main-divider {
+  width: 100%;
+  border-top: 2.5px dashed #d9e2e7;
+  margin: 14px 0 0px;
+}
+
+
 /* 공지사항 제목과 안내 문구 한 줄 배치 */
 #notice-list-page .notice-heading-row {
   display: flex;
@@ -2063,7 +2057,7 @@ color: #3e7188;
 /* 오른쪽 안내 문구 */
 #notice-list-page .notice-focus-text {
   font-size: 11px;
-  color: #a5b3bc;
+  color: #a0b8c4;
   font-weight: 400;
   text-align: right;
 }
@@ -2112,3 +2106,289 @@ color: #3e7188;
   color: #8b9aa3;
 }
 
+
+/* 하츄의 우체통 제목 옆 아이콘 */
+
+.notice-mailbox-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 작은 우체통 아이콘 */
+
+.mailbox-icon {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+
+  background: #c2e2f7;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.mailbox-slot {
+  width: 15px;
+  height: 3px;
+  margin-bottom: 3px;
+  background: #a6d8f0;
+  border-radius: 3px;
+}
+
+.mailbox-post {
+  color: #ffffff;
+  font-size: 6px;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+
+
+/* 하츄(S2U)의 우체통 - 레트로 굴림체 느낌 */
+
+.notice-mailbox-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.mailbox-title-text {
+  font-family:
+    "Gulim",
+    "굴림",
+    "Malgun Gothic",
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+
+  display: inline-block;
+  transform: scaleX(1.08);
+  transform-origin: left center;
+  color: #a0b8c4;
+}
+
+
+/* ================================= */
+/* S2 ERROR 장식 창 */
+/* ================================= */
+
+
+/* 앞쪽에 표시할 메인화면 요소 */
+#latest-notice,
+.main-banner-window,
+.menu-section {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.s2-error-window {
+  /* 창을 레이아웃에서 분리 */
+  position: absolute;
+
+  /* 위치 조절 */
+  top: 100px;
+  left: 28%;
+  transform: translateX(-50%) scale(0.9);
+transform-origin: top center;
+
+  /* 레이어 */
+  z-index: 1;
+
+  /* 크기 */
+  width: min(370px, 88%);
+  box-sizing: border-box;
+
+  /* 테두리와 디자인 */
+  border: 1px solid #cadeeb;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 16px rgba(252, 252, 252, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  color: #fff;
+  font-family: Arial, "Malgun Gothic", sans-serif;
+}
+
+
+/* 제목 표시줄 */
+.s2-error-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 36px;
+  padding: 0 10px 0 13px;
+  box-sizing: border-box;
+
+  background: #d8e9f5;
+  border-bottom: 1px solid #d8e9f5;
+}
+
+.s2-error-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* 최소화 / 네모 / X */
+.s2-error-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  color: #444;
+  font-size: 17px;
+  line-height: 1;
+  user-select: none;
+}
+
+.s2-error-controls span:last-child {
+  font-size: 20px;
+}
+
+
+/* 빨간 하트 + 흰색 X */
+.s2-error-heart {
+  display: block;
+  flex: 0 0 45px;
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
+  overflow: visible;
+}
+
+.s2-error-heart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+
+/* 오류 메시지 본문 */
+.s2-error-body {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 27px 24px 22px;
+}
+
+/* 하트 오른쪽 문장 영역 */
+.s2-error-message {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  color: #292929;
+  text-align: left;
+}
+
+.s2-error-message p {
+  display: block;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.s2-error-message p:first-child {
+  font-weight: 600;
+}
+
+/* OK / Cancel 버튼 */
+.s2-error-window .s2-error-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 140px;
+
+  position: relative;
+  width: 100%;
+  min-height: 55px;
+  box-sizing: border-box;
+  padding: 10px 20px 20px;
+}
+
+.s2-error-window .s2-error-actions button {
+  display: inline-block;
+  flex: 0 0 82px;
+
+  width: 82px;
+  height: 30px;
+  box-sizing: border-box;
+
+  padding: 7px 10px;
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #333;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: inset 0 1px 0 #fff;
+}
+
+/* 공지사항과 메인 배너는 S2 Error 창보다 앞쪽 */
+#latest-notice,
+.main-banner-window {
+  position: relative;
+  z-index: 2;
+}
+
+/* 메뉴 버튼도 앞쪽 레이어 유지 */
+.menu-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* 모바일 화면에서 S2 Error 창 숨기기 */
+@media screen and (max-width: 768px) {
+  .s2-error-window {
+    display: none !important;
+  }
+}
+
+
+/* ================================= */
+/* 모바일 메인 메뉴 3열 정렬 */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+  .menu-section {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menu-section > * {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+}

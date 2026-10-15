@@ -167,6 +167,65 @@
 
   <div id="main-page" class="page active">
 
+    <!-- S2 Error 장식 창 -->
+    <section class="s2-error-window" aria-label="S2 Error 장식 창">
+
+      <!-- 창 제목 표시줄 -->
+      <div class="s2-error-titlebar">
+        <span class="s2-error-title">S2 Error</span>
+
+        <div class="s2-error-controls" aria-hidden="true">
+          <span>−</span>
+          <span>□</span>
+          <span>×</span>
+        </div>
+      </div>
+
+      <!-- 오류 메시지 -->
+      <div class="s2-error-body">
+
+        <div class="s2-error-heart" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            
+<path
+  d="M32 57
+     C27 52 4 36 4 20
+     C4 10 11 4 20 4
+     C25 4 29 7 32 13
+     C35 7 39 4 44 4
+     C53 4 60 10 60 20
+     C60 36 37 52 32 57 Z"
+  fill="#dd9999"
+/>
+            
+<path
+  d="M23 21 L41 39 M41 21 L23 39"
+  stroke="#ffffff"
+  stroke-width="5"
+  stroke-linecap="round"
+/>
+
+
+
+          </svg>
+        </div>
+
+        <div class="s2-error-message">
+  <p>Heart Error Output</p>
+  <p>Please contact support.</p>
+</div>
+
+      </div>
+
+      <!-- 장식용 버튼: 기능 없음 -->
+      <div class="s2-error-actions">
+        <button type="button" tabindex="-1">OK</button>
+        <button type="button" tabindex="-1">Cancel</button>
+      </div>
+
+    </section>
+    <!-- S2 Error 장식 창 끝 -->
+
     <main>
     
       <!-- ========================= -->
@@ -234,39 +293,38 @@
       <!-- 최신 공지 끝 -->
       <!-- ========================= -->
 
-<!-- 메인 배너 창 -->
+    <!-- 메인 배너 창 -->
+    <section class="main-banner-window">
 
-<section class="main-banner-window">
+      <div class="banner-window-bar">
 
-  <div class="banner-window-bar">
+        <div class="banner-window-title">
+          <span class="banner-window-circle"></span>
+          <span class="banner-window-text">FOCUS!</span>
+        </div>
 
-  <!-- 왼쪽: 동그라미 + FOCUS! -->
-  <div class="banner-window-title">
-    <span class="banner-window-circle"></span>
-    <span class="banner-window-text">FOCUS!</span>
-  </div>
+        <div class="banner-window-controls">
+          <span>−</span>
+          <span>ㅁ</span>
+          <span>×</span>
+        </div>
 
-  <!-- 오른쪽: 창 제어 버튼 -->
-  <div class="banner-window-controls">
-    <span>−</span>
-    <span>ㅁ</span>
-    <span>×</span>
-  </div>
+      </div>
 
-</div>
+      <div class="banner-window-content">
+        <img
+          src="images/main-banner.png"
+          alt="H2H FAN SUPPORT 메인 배너"
+        >
+      </div>
 
-  <!-- 배너 이미지 -->
-  <div class="banner-window-content">
-    <img
-      src="images/main-banner.png"
-      alt="H2H FAN SUPPORT 메인 배너"
-    >
-  </div>
+    </section>
+    <!-- 메인 배너 창 끝 -->
 
-</section>
+    <!-- 점선 구분선 -->
+    <div class="main-divider"></div>
 
-<!-- 메인 배너 창 끝 -->
-
+    <!-- 메인 메뉴 -->
 </section>
       <!-- ========================= -->
       <!-- 메인 메뉴 -->
@@ -365,9 +423,16 @@
         &lt;
       </button>
 
-      <p class="small-text">
-        NOTICE
-      </p>
+      
+
+<p class="small-text notice-mailbox-title">
+  <span class="mailbox-title-text">하츄(S2U)의 우체통</span>
+
+  <span class="mailbox-icon" aria-hidden="true">
+    <span class="mailbox-slot"></span>
+    <span class="mailbox-post">POST</span>
+  </span>
+</p>
 
             <div class="notice-heading-row">
         <h2 id="notice-list-heading">
@@ -375,7 +440,7 @@
         </h2>
 
         <span class="notice-focus-text">
-          공지사항에 focus해 주세요!
+          하츄(S2U) 여러분, 공지사항에 focus해 주세요!
         </span>
       </div>
 
@@ -389,6 +454,8 @@
     </div>
 
   </div>
+
+
   <!-- ========================= -->
   <!-- NOTICE 상세 화면 -->
   <!-- ========================= -->
@@ -484,16 +551,6 @@
       </button>
 
     </div>
-
-    <!-- 멤버 누끼 사진 -->
-    <div class="streaming-member">
-      <img src="images/jiwoo.jpg" alt="하츠투하츠 지우">
-    </div>
-
-  </div>
-
-</div>
-
 
   <!-- ========================= -->
   <!-- 스트리밍 리스트 화면 -->
