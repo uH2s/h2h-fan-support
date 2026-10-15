@@ -847,24 +847,33 @@ to bottom,
   transform: translateY(1px);
 }
 
-
 /* ================================= */
 /* 스트리밍 가이드 버튼 */
 /* ================================= */
 
 .streaming-guide-buttons {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
+
+  gap: 10px;
 
   width: 100%;
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
 }
 
 .streaming-guide-buttons .streaming-list-btn {
+  flex: 0 1 150px;
   width: 150px;
+  min-width: 0;
   margin: 0;
+
+  box-sizing: border-box;
 }
 
 
@@ -874,72 +883,43 @@ to bottom,
 
 .streaming-list-btn {
   border: 1px solid #bbd3e2;
-
   background: #fff;
 
-  padding: 8px 15px;
+  padding: 8px 8px;
 
   font-size: 14px;
-
   cursor: pointer;
-
   transition: 0.2s;
-
   border-radius: 10px;
+
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .streaming-list-btn:hover {
   background: #e4f1fa;
 }
 
+
 /* ================================= */
-/* 스트리밍 리스트 */
+/* 모바일 및 아이패드 */
 /* ================================= */
 
-.streaming-list-inner {
-  width: 100%;
+@media (max-width: 768px) {
+  .streaming-guide-buttons {
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
 
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  padding: 80px 6%;
+  .streaming-guide-buttons .streaming-list-btn {
+    flex: 0 1 150px;
+    width: 150px;
+    min-width: 0;
+    padding: 8px 5px;
+    font-size: 13px;
+  }
 }
-
-.streaming-list-inner h2 {
-  margin-bottom: 40px;
-
-  font-size: clamp(32px, 5vw, 56px);
-}
-
-
-.streaming-list-image {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.streaming-list-image img {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-
-.streaming-list-caption {
-  margin-top: 10px;
-
-  font-size: 11px;
-
-  color: #888;
-
-  text-align: center;
-
-  letter-spacing: 0.5px;
-}
-
 
 /* ================================= */
 /* FANCHANT */

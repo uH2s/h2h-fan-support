@@ -836,13 +836,16 @@ const languageData = {
     navNotice: "NOTICE",
 
     guideDescription:
-      "다운로드/투표 등 각종 가이드",
+      "각종 가이드를 확인해 보세요",
 
     streamingDescription:
       "MV/음원 스트리밍 가이드",
 
     fanchantDescription:
       "공식 응원법 모음",
+
+    voteDescription:
+      "하츠투하츠 투표 안내",
 
     footer:
       "SNS: https://linktr.ee/h2h_strm",
