@@ -5,6 +5,9 @@
 const mainPage =
   document.getElementById("main-page");
 
+const guidePage =
+  document.getElementById("guide-page");
+
 const noticePage =
   document.getElementById("notice-page");
 
@@ -131,33 +134,40 @@ const fanchantSongImage =
   document.getElementById("fanchant-song-image");
 
 
+
 /* ================================= */
 /* 모든 페이지 숨기기 */
 /* ================================= */
 
 function hideAllPages() {
-
   document.querySelectorAll(".page").forEach((page) => {
     page.classList.remove("active");
   });
-
 }
-
-
 
 /* ================================= */
 /* 페이지 이동 */
 /* ================================= */
 
 function showPage(page) {
+  if (!page) {
+    console.error(
+      "페이지 이동 실패: 대상 페이지를 찾을 수 없습니다."
+    );
+    console.trace("showPage 호출 위치");
+    return;
+  }
 
   hideAllPages();
 
   page.classList.add("active");
 
-  window.scrollTo(0, 0);
-
+  window.scrollTo({
+    top: 0,
+    behavior: "auto"
+  });
 }
+
 
 
 /* ================================= */
