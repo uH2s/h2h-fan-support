@@ -2043,22 +2043,7 @@ color: #3e7188;
 
 #streaming-page .streaming-inner > p.small-text {
   color: #a0b8c4;
-}
-
-
-/* 스트리밍 가이드 배경 그라데이션 */
-#streaming-page {
-  background: linear-gradient(
-    to bottom,
-    #FFFFFF 0%,
-    #FAFCFE 30%,
-    #f7f9fa 65%,
-    #d3e9f7 100%
-  );
-}
-
-#streaming-page .streaming-inner {
-  background: transparent;
+  font-size: 16px;
 }
 
 /* 공지사항 목록 제목 아래 연한 점선 */
@@ -2674,4 +2659,501 @@ main .menu-section > .menu-card p {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px;
   }
+}
+
+
+/* ================================= */
+/* GUIDE · STREAMING · FANCHANT · VOTE 공통 디자인 */
+/* ================================= */
+
+.support-standard-page.active {
+  display: flex !important;
+  flex-direction: column;
+  min-height: calc(100vh - 75px);
+  background: linear-gradient(
+    180deg,
+    #f5f9fc 0%,
+    #ffffff 65%
+  );
+}
+
+.support-page-inner {
+  width: 100%;
+  max-width: 900px;
+  flex: 1;
+  margin: 0 auto;
+  padding: 60px 24px 30px;
+  color: #65798e;
+}
+
+.support-page-inner > .small-text {
+  margin-top: 26px;
+  margin-bottom: 12px;
+  color: #0c75df;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.support-page-inner > h2 {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  color: #526a82;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.support-page-divider {
+  width: 100%;
+  margin: 22px 0 30px;
+  border-top: 2px dotted #cbd9e5;
+}
+
+.support-page-content {
+  color: #65798e;
+  font-size: 15px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+/* 공통 하단 이미지 */
+
+.page-bottom-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 24px 35px;
+  pointer-events: none;
+}
+
+.page-bottom-image img {
+  display: block;
+  width: min(180px, 35vw);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.48;
+}
+
+/* 모바일 및 아이패드 대응 */
+
+@media (max-width: 768px) {
+  .support-page-inner {
+    padding: 38px 20px 24px;
+  }
+
+  .support-page-inner > .small-text {
+    margin-top: 22px;
+    font-size: 13px;
+  }
+
+  .support-page-divider {
+    margin: 18px 0 24px;
+  }
+
+  .support-page-content {
+    font-size: 14px;
+  }
+
+  .page-bottom-image {
+    padding: 16px 20px 28px;
+  }
+
+  .page-bottom-image img {
+    width: min(130px, 30vw);
+  }
+}
+
+
+/* ================================= */
+/* 스트리밍 리스트 이미지 비율 수정 */
+/* ================================= */
+
+#streaming-list-page .streaming-list-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 100px;
+  box-sizing: border-box;
+}
+
+#streaming-list-page .streaming-list-image {
+  width: 100%;
+  max-width: 100%;
+  margin: 24px auto 0;
+  text-align: center;
+}
+
+#streaming-list-page .streaming-list-image img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+#streaming-list-page .streaming-list-caption {
+  width: 100%;
+  margin: 12px auto 0;
+  text-align: center;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#streaming-list-page .streaming-slide-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+
+/* ========================================= */
+/* GUIDE · STREAMING · FANCHANT · VOTE 공통 디자인 */
+/* STREAMING 페이지를 기준으로 통일 */
+/* ========================================= */
+
+#guide-page.support-standard-page.active,
+#streaming-page.support-standard-page.active,
+#fanchant-page.support-standard-page.active,
+#vote-page.support-standard-page.active {
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 75px);
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    #f5f9fc 0%,
+    #ffffff 65%
+  );
+}
+
+/* 각 페이지의 내부 너비와 여백 통일 */
+#guide-page .support-page-inner,
+#streaming-page .streaming-inner,
+#fanchant-page .fanchant-inner,
+#vote-page .support-page-inner {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 6%;
+  box-sizing: border-box;
+}
+
+/* 제목 디자인 통일 */
+#guide-page .support-page-inner h2,
+#streaming-page .streaming-inner h2,
+#fanchant-page .fanchant-inner h2,
+#vote-page .support-page-inner h2 {
+  margin-bottom: 40px;
+  font-size: clamp(32px, 5vw, 56px);
+  color: #222;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+/* 설명 문구 통일 */
+#guide-page .small-text,
+#streaming-page .small-text,
+#fanchant-page .small-text,
+#vote-page .small-text {
+  color: #526f85;
+  line-height: 1.6;
+}
+
+/* 제목 아래 점선 통일 */
+#guide-page .support-page-divider,
+#streaming-page .support-page-divider,
+#fanchant-page .support-page-divider,
+#vote-page .support-page-divider {
+  width: 100%;
+  margin: 0 0 24px;
+  border-top: 1px dashed #bbd3e2;
+}
+
+/* 돌아가기 버튼 공통 배치 */
+#guide-page .back-btn,
+#streaming-page .back-btn,
+#fanchant-page .back-btn,
+#vote-page .back-btn {
+  align-self: flex-start;
+  margin-bottom: 24px;
+}
+
+/* 각 페이지 하단 이미지 */
+#guide-page .page-bottom-image,
+#streaming-page .page-bottom-image,
+#fanchant-page .page-bottom-image,
+#vote-page .page-bottom-image {
+  width: 100%;
+  margin-top: auto;
+  padding: 0 6% 24px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#guide-page .page-bottom-image img,
+#streaming-page .page-bottom-image img,
+#fanchant-page .page-bottom-image img,
+#vote-page .page-bottom-image img {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* FANCHANT 곡 버튼 배치 유지 */
+#fanchant-page .fanchant-list {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================= */
+/* 스트리밍 리스트 이미지 비율 */
+/* ========================================= */
+
+#streaming-list-page .streaming-list-inner {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 6% 100px;
+  box-sizing: border-box;
+}
+
+#streaming-list-page .streaming-list-image {
+  width: 100%;
+  max-width: 100%;
+  margin: 24px auto 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#streaming-list-page .streaming-list-image img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+#streaming-list-page .streaming-list-caption {
+  width: 100%;
+  margin: 12px auto 0;
+  text-align: center;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#streaming-list-page .streaming-slide-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  #guide-page .support-page-inner,
+  #streaming-page .streaming-inner,
+  #fanchant-page .fanchant-inner,
+  #vote-page .support-page-inner,
+  #streaming-list-page .streaming-list-inner {
+    padding: 48px 6% 80px;
+  }
+
+  #guide-page .support-page-inner h2,
+  #streaming-page .streaming-inner h2,
+  #fanchant-page .fanchant-inner h2,
+  #vote-page .support-page-inner h2 {
+    font-size: clamp(30px, 7vw, 42px);
+    margin-bottom: 28px;
+  }
+
+  #guide-page .page-bottom-image,
+  #streaming-page .page-bottom-image,
+  #fanchant-page .page-bottom-image,
+  #vote-page .page-bottom-image {
+    padding: 0 6% 20px;
+  }
+}
+
+
+/* ========================================= */
+/* GUIDE · STREAMING · FANCHANT · VOTE 공통 배경 */
+/* ========================================= */
+
+#guide-page.support-standard-page.active,
+#streaming-page.support-standard-page.active,
+#fanchant-page.support-standard-page.active,
+#vote-page.support-standard-page.active {
+  background-color: #ffffff !important;
+
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #FAFCFE 30%,
+    #f7f9fa 65%,
+    #d3e9f7 100%
+  ),
+    url("./images/notice-bg.png") !important;
+
+  background-position:
+    center,
+    center 100!important;
+
+  background-size:
+    100% 100%,
+    80% auto !important;
+
+  background-repeat:
+    no-repeat,
+    no-repeat !important;
+}
+
+/* ========================================= */
+/* 공통 하단 이미지 */
+/* ========================================= */
+
+#guide-page .page-bottom-image,
+#streaming-page .page-bottom-image,
+#fanchant-page .page-bottom-image,
+#vote-page .page-bottom-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: auto;
+  padding: 20px 24px 35px;
+  box-sizing: border-box;
+}
+
+#guide-page .page-bottom-image img,
+#streaming-page .page-bottom-image img,
+#fanchant-page .page-bottom-image img,
+#vote-page .page-bottom-image img {
+  display: block;
+  width: 50%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+  opacity: 0.48;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  #guide-page .page-bottom-image,
+  #streaming-page .page-bottom-image,
+  #fanchant-page .page-bottom-image,
+  #vote-page .page-bottom-image {
+    padding: 16px 20px 28px;
+  }
+
+  #guide-page .page-bottom-image img,
+  #streaming-page .page-bottom-image img,
+  #fanchant-page .page-bottom-image img,
+  #vote-page .page-bottom-image img {
+    width: 50%;
+  }
+}
+
+
+/* ========================================= */
+/* PC 전용 공통 이미지 설정 */
+/* ========================================= */
+
+@media (min-width: 769px) {
+  #guide-page .page-bottom-image img,
+  #streaming-page .page-bottom-image img,
+  #fanchant-page .page-bottom-image img,
+  #vote-page .page-bottom-image img {
+    width: 0%;
+    max-width: 650px;
+    margin-right: -400px;
+  }
+}
+
+
+/* GUIDE 페이지 안내 문구 */
+#guide-page .support-page-inner > .small-text {
+  color: #a0b8c4 !important;
+  font-size: 16px !important;
+   margin-bottom: 0px;
+}
+
+/* ================================= */
+/* GUIDE 형광펜 밑줄 */
+/* ================================= */
+
+#guide-page h2 {
+  display: table;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+}
+
+#guide-page h2::after {
+  content: "";
+  position: absolute;
+
+  /* 밑줄 위치와 길이 */
+  left: 0%;
+  bottom: 10px;
+  width: 106%;
+  height: 20px;
+
+  /* 형광펜 디자인 */
+  background: #d7ecf8;
+  border-radius: 1px;
+
+  /* 글자 뒤쪽에 배치 */
+  z-index: -1;
+}
+
+/* ================================= */
+/* FANCHANRT 형광펜 밑줄 */
+/* ================================= */
+
+#fanchant-page h2 {
+  display: table;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+}
+
+#fanchant-page h2::after {
+  content: "";
+  position: absolute;
+
+  /* 밑줄 위치와 길이 */
+  left: 0%;
+  bottom: 10px;
+  width: 106%;
+  height: 20px;
+
+  /* 형광펜 디자인 */
+  background: #d7ecf8;
+  border-radius: 1px;
+
+  /* 글자 뒤쪽에 배치 */
+  z-index: -1;
+}
+
+
+/* 공식 응원법 안내 문구 */
+p.small-text {
+  color: #a0b8c4 !important;
+  font-size: 16px !important;
+  margin-bottom: 0px;
 }

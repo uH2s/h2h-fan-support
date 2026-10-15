@@ -8,6 +8,15 @@ const mainPage =
 const guidePage =
   document.getElementById("guide-page");
 
+const votePage =
+  document.getElementById("vote-page");
+
+const guideHomeButton =
+  document.getElementById("guide-home-btn");
+
+const voteHomeButton =
+  document.getElementById("vote-home-btn");
+
 const noticePage =
   document.getElementById("notice-page");
 
@@ -94,6 +103,7 @@ const noticeDetailContent =
   document.getElementById("notice-detail-content");
 
 
+
 /* ================================= */
 /* STREAMING */
 /* ================================= */
@@ -112,6 +122,47 @@ const streamingListBackButton =
 
 const oneclickStreamingBackButton =
   document.getElementById("oneclick-streaming-back-btn");
+
+
+/* STREAMING GUIDE → HOME */
+if (streamingHomeButton) {
+  streamingHomeButton.addEventListener("click", () => {
+    showPage(mainPage);
+  });
+}
+
+
+/* STREAMING LIST 열기 */
+if (streamingListButton) {
+  streamingListButton.addEventListener("click", () => {
+    showPage(streamingListPage);
+  });
+}
+
+
+/* STREAMING LIST → STREAMING GUIDE */
+if (streamingListBackButton) {
+  streamingListBackButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    showPage(streamingPage);
+  });
+}
+
+
+/* ONE CLICK STREAMING 열기 */
+if (oneclickStreamingButton) {
+  oneclickStreamingButton.addEventListener("click", () => {
+    showPage(oneclickStreamingPage);
+  });
+}
+
+
+/* ONE CLICK STREAMING → STREAMING GUIDE */
+if (oneclickStreamingBackButton) {
+  oneclickStreamingBackButton.addEventListener("click", () => {
+    showPage(streamingPage);
+  });
+}
 
 
 /* ================================= */
@@ -192,9 +243,10 @@ guideLink.addEventListener("click", (event) => {
 
   event.preventDefault();
 
-  goHome();
+  showPage(guidePage);
 
 });
+
 
 
 /* ================================= */
@@ -210,29 +262,41 @@ const streamingCard =
 const fanchantCard =
   document.getElementById("fanchant-card");
 
+const voteCard =
+  document.getElementById("vote-card");
+
 
 guideCard.addEventListener("click", (event) => {
-
   event.preventDefault();
-
   showPage(guidePage);
-
 });
 
 streamingCard.addEventListener("click", (event) => {
-
   event.preventDefault();
-
   showPage(streamingPage);
-
 });
 
 fanchantCard.addEventListener("click", (event) => {
-
   event.preventDefault();
-
   showPage(fanchantPage);
+});
 
+voteCard.addEventListener("click", (event) => {
+  event.preventDefault();
+  showPage(votePage);
+});
+
+
+/* ================================= */
+/* GUIDE · VOTE → HOME */
+/* ================================= */
+
+guideHomeButton.addEventListener("click", () => {
+  showPage(mainPage);
+});
+
+voteHomeButton.addEventListener("click", () => {
+  showPage(mainPage);
 });
 
 /* ================================= */
@@ -270,17 +334,6 @@ streamingHomeButton.addEventListener("click", () => {
 streamingListButton.addEventListener("click", () => {
 
   showPage(streamingListPage);
-
-});
-
-
-/* ================================= */
-/* STREAMING LIST → HOME */
-/* ================================= */
-
-streamingListBackButton.addEventListener("click", () => {
-
-  showPage(mainPage);
 
 });
 
@@ -922,6 +975,9 @@ const languageData = {
 
     guideDescription:
       "Guides for fan activities",
+      
+    voteDescription:
+      "Hearts2Hearts voting guide",
 
     streamingDescription:
       "MV / music streaming guide",
@@ -1004,6 +1060,9 @@ const languageData = {
 
     guideDescription:
       "Panduan untuk aktivitas penggemar",
+
+    voteDescription:
+      "Panduan voting Hearts2Hearts",
 
     streamingDescription:
       "Panduan streaming MV / musik",
@@ -1147,6 +1206,10 @@ function applyLanguage(languageCode) {
 
   });
 
+document.querySelector(
+  "#vote-card p"
+).textContent =
+  language.voteDescription;
 
   noticeLink.querySelector(
     ".notice-nav-text"
@@ -1171,6 +1234,23 @@ function applyLanguage(languageCode) {
   ).textContent =
     language.fanchantDescription;
 
+/* GUIDE · VOTE 페이지 설명 */
+
+const guidePageDescription =
+  document.getElementById("guide-page-description");
+
+if (guidePageDescription) {
+  guidePageDescription.textContent =
+    language.guideDescription;
+}
+
+const votePageDescription =
+  document.getElementById("vote-page-description");
+
+if (votePageDescription) {
+  votePageDescription.textContent =
+    language.voteDescription;
+}
 
   /* 푸터 */
 
