@@ -2569,13 +2569,26 @@ main .menu-section > .menu-card p {
 /* ================================= */
 
 @media (max-width: 768px) {
-  #streaming-page .streaming-guide-buttons a,
-  #streaming-page .streaming-guide-buttons a:link,
-  #streaming-page .streaming-guide-buttons a:visited,
-  #streaming-page .streaming-guide-buttons a:hover,
-  #streaming-page .streaming-guide-buttons a:active {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000;
+  #streaming-page .streaming-guide-buttons a {
+    color: #000 !important;
+    -webkit-text-fill-color: #000;
     text-decoration: none;
+  }
+
+  #streaming-page .streaming-guide-buttons a:visited {
+    color: #000 !important;
+    -webkit-text-fill-color: #000;
+  }
+}
+
+/* ================================= */
+/* 모바일 스밍 가이드 배경색 유지 */
+/* ================================= */
+
+@media (max-width: 768px) {
+  #streaming-page,
+  #streaming-list-page,
+  #oneclick-streaming-page {
+    background-color: inherit;
   }
 }
