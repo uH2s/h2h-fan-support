@@ -3989,12 +3989,46 @@ p.small-text {
     transform: none;
   }
 
+
+  /* 모바일 제목 표시줄 오른쪽 점 */
+  .home-oneclick-window-bar .banner-window-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+  }
+
   .home-oneclick-window-bar .banner-window-title > .banner-window-text:last-child {
-  position: relative;
-  left: 150px;
-  top: 0px;
-  font-size: 20px;
-  color: #fafada;
-  font-weight: 800;
+    display: inline-block !important;
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 20px !important;
+    color: #fafada !important;
+    font-weight: 800 !important;
+  }
 }
+.home-oneclick-window-bar .banner-window-title {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.home-oneclick-window-bar .home-oneclick-dots {
+  display: block !important;
+  position: static !important;
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: #fafada !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
