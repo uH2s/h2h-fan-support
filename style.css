@@ -3691,7 +3691,7 @@ p.small-text {
   display: inline;
 }
 
-/* 원클릭 스트리밍 제목 두 줄 간격 */
-#oneclick-streaming-page h1 {
-  line-height: 0.6;
+/* 원클릭 스트리밍 제목 줄 간격 조정 */
+#oneclick-streaming-page h2 {
+  line-height: 0.9 !important;
 }
