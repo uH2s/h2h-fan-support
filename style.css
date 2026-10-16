@@ -2510,11 +2510,12 @@ main .menu-section > .menu-card p {
   left: 0%;
   bottom: 10px;
   width: 106%;
-  height: 18px;
+  height: 20px;
 
   /* 형광펜 디자인 */
   background: #d7ecf8;
   border-radius: 1px;
+  height: 20px;
 
   /* 글자 뒤쪽에 배치 */
   z-index: -1;

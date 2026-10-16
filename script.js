@@ -75,6 +75,40 @@ const voteLink =
 const noticeLink =
   document.getElementById("notice-link");
 
+/* ================================= */
+/* 상단 메뉴 - 투표 페이지 이동 */
+/* ================================= */
+
+if (voteLink) {
+  voteLink.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const mobileMenu = document.getElementById("mobile-menu-links");
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const votePage = document.getElementById("vote-page");
+
+    // 모바일 메뉴 닫기
+    if (mobileMenu) {
+      mobileMenu.classList.remove("active");
+    }
+
+    if (menuToggle) {
+      menuToggle.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    // 다른 페이지 숨기기
+    document.querySelectorAll(".page").forEach(function (page) {
+      page.classList.remove("active");
+    });
+
+    // 투표 페이지 표시
+    if (votePage) {
+      votePage.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  });
+}
 
 /* ================================= */
 /* NOTICE */
