@@ -588,11 +588,13 @@ footer {
   margin-bottom: 10px;
 }
 
+
 .notice-list-item-date {
-  color: #888;
+  color: #b2c8d6 !important;
   font-size: 11px;
   letter-spacing: 0.4px;
 }
+
 
 .notice-list-item-arrow {
   flex-shrink: 0;
@@ -2019,7 +2021,7 @@ color: #3e7188;
 
 #streaming-page .streaming-inner > p.small-text {
   color: #a0b8c4;
-  font-size: 16px;
+  font-size: 6px;
   margin-bottom: -10px;
 }
 
@@ -2508,7 +2510,7 @@ main .menu-section > .menu-card p {
   left: 0%;
   bottom: 10px;
   width: 106%;
-  height: 20px;
+  height: 18px;
 
   /* 형광펜 디자인 */
   background: #d7ecf8;
@@ -3091,7 +3093,7 @@ main .menu-section > .menu-card p {
 /* GUIDE 페이지 안내 문구 */
 #guide-page .support-page-inner > .small-text {
   color: #a0b8c4 !important;
-  font-size: 16px !important;
+  font-size: 12px !important;
    margin-bottom: 0px;
 }
 
@@ -3114,7 +3116,7 @@ main .menu-section > .menu-card p {
   left: 0%;
   bottom: 10px;
   width: 106%;
-  height: 20px;
+  height: 17px;
 
   /* 형광펜 디자인 */
   background: #d7ecf8;
@@ -3143,7 +3145,7 @@ main .menu-section > .menu-card p {
   left: 0%;
   bottom: 10px;
   width: 106%;
-  height: 20px;
+  height: 17px;
 
   /* 형광펜 디자인 */
   background: #d7ecf8;
@@ -3156,7 +3158,7 @@ main .menu-section > .menu-card p {
 /* 공식 응원법 안내 문구 */
 p.small-text {
   color: #a0b8c4 !important;
-  font-size: 16px !important;
+  font-size: 12px !important;
   margin-bottom: 0px;
 }
 
@@ -3179,7 +3181,7 @@ p.small-text {
   left: 0%;
   bottom: 10px;
   width: 106%;
-  height: 20px;
+  height: 17px;
 
   /* 형광펜 디자인 */
   background: #d7ecf8;
@@ -3194,11 +3196,9 @@ p.small-text {
   margin-top: 0 !important;
   margin-bottom: 0px !important;
   color: #a0b8c4 !important;
-  font-size: 16px !important;
+  font-size: 12px !important;
   line-height: 1.7;
 }
-
-
 
 /* ================================= */
 /* 하늘색 서류철 + 무지 종이 */
@@ -3214,7 +3214,7 @@ p.small-text {
   box-sizing: border-box;
 
   /* 서류철 표면에만 은은한 질감 */
-  background-color: #b8d8e9;
+  background-color: #d4e7f1;
   background-image:
     radial-gradient(
       ellipse at 18% 12%,
@@ -3236,7 +3236,7 @@ p.small-text {
       transparent 6px
     );
 
-  border: 1px solid #9fc4d9;
+  border: 1px solid #bbd3e2;
   border-radius: 5px 10px 10px 5px;
 
   box-shadow:
@@ -3254,9 +3254,9 @@ p.small-text {
   left: 25px;
 
   width: 105px;
-  height: 13px;
+  height: 30px !important;
 
-  background-color: #b8d8e9;
+  background-color: #fcf7df;
   background-image:
     repeating-linear-gradient(
       12deg,
@@ -3266,7 +3266,7 @@ p.small-text {
       transparent 4px
     );
 
-  border: 1px solid #9fc4d9;
+  border: 1px solid #dfd9ba;
   border-bottom: none;
   border-radius: 6px 6px 0 0;
 }
@@ -3674,4 +3674,18 @@ p.small-text {
     height: 200px;   /* 모바일 높이 */
     opacity: 0.5; /* 이미지 불투명도 */
   }
+}
+
+
+/* 최신 공지사항 확성기 */
+.latest-notice-title .notice-megaphone {
+  display: inline-block;
+  margin-right: 6px;
+  color: #dbdbdb;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+.latest-notice-title .notice-title-text {
+  display: inline;
 }

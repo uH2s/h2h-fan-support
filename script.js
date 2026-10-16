@@ -69,6 +69,9 @@ const streamingLinks =
 const fanchantLinks =
   document.querySelectorAll(".fanchant-link");
 
+const voteLink =
+  document.getElementById("vote-link");
+
 const noticeLink =
   document.getElementById("notice-link");
 
@@ -570,16 +573,21 @@ function updateLatestNotice() {
     return;
   }
 
-  if (latestNoticeDate) {
-    latestNoticeDate.textContent = currentNotice.date;
-  }
+  
+if (latestNoticeTitle) {
+  const noticeTitleText =
+    currentNotice.title[currentLanguage] ||
+    currentNotice.title.ko ||
+    "";
 
-  if (latestNoticeTitle) {
-    latestNoticeTitle.textContent =
-      currentNotice.title[currentLanguage] ||
-      currentNotice.title.ko ||
-      "";
-  }
+  latestNoticeTitle.innerHTML =
+    `<span class="notice-megaphone">✉</span>` +
+    `<span class="notice-title-text"></span>`;
+
+  latestNoticeTitle.querySelector(
+    ".notice-title-text"
+  ).textContent = noticeTitleText;
+}
 
   if (latestNoticePreview) {
     const content =
