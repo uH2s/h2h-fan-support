@@ -1,3 +1,5 @@
+
+
 /* ================================= */
 /* 페이지 요소 */
 /* ================================= */
@@ -304,60 +306,53 @@ voteHomeButton.addEventListener("click", () => {
 /* ================================= */
 
 streamingLinks.forEach((link) => {
-
   link.addEventListener("click", (event) => {
-
     event.preventDefault();
-
     showPage(streamingPage);
-
   });
-
 });
-
 
 /* ================================= */
 /* STREAMING GUIDE → HOME */
 /* ================================= */
 
-streamingHomeButton.addEventListener("click", () => {
-
-  showPage(mainPage);
-
-});
-
+if (streamingHomeButton) {
+  streamingHomeButton.addEventListener("click", () => {
+    showPage(mainPage);
+  });
+}
 
 /* ================================= */
 /* STREAMING LIST */
 /* ================================= */
 
-streamingListButton.addEventListener("click", () => {
-
-  showPage(streamingListPage);
-
-});
+if (streamingListButton) {
+  streamingListButton.addEventListener("click", () => {
+    showPage(streamingListPage);
+  });
+}
 
 
 /* ================================= */
 /* ONE CLICK STREAMING */
 /* ================================= */
 
-oneclickStreamingButton.addEventListener("click", () => {
-
-  showPage(oneclickStreamingPage);
-
-});
+if (oneclickStreamingButton) {
+  oneclickStreamingButton.addEventListener("click", () => {
+    showPage(oneclickStreamingPage);
+  });
+}
 
 
 /* ================================= */
 /* ONE CLICK STREAMING → STREAMING GUIDE */
 /* ================================= */
 
-oneclickStreamingBackButton.addEventListener("click", () => {
-
-  showPage(streamingPage);
-
-});
+if (oneclickStreamingBackButton) {
+  oneclickStreamingBackButton.addEventListener("click", () => {
+    showPage(streamingPage);
+  });
+}
 
 
 /* ================================= */
@@ -365,15 +360,10 @@ oneclickStreamingBackButton.addEventListener("click", () => {
 /* ================================= */
 
 fanchantLinks.forEach((link) => {
-
   link.addEventListener("click", (event) => {
-
     event.preventDefault();
-
     showPage(fanchantPage);
-
   });
-
 });
 
 
@@ -381,12 +371,11 @@ fanchantLinks.forEach((link) => {
 /* FANCHANT 목록 → HOME */
 /* ================================= */
 
-fanchantHomeButton.addEventListener("click", () => {
-
-  showPage(mainPage);
-
-});
-
+if (fanchantHomeButton) {
+  fanchantHomeButton.addEventListener("click", () => {
+    showPage(mainPage);
+  });
+}
 
 /* ================================= */
 /* 곡 버튼 → 응원법 이미지 */
@@ -895,10 +884,10 @@ const languageData = {
       "MV/음원 스트리밍 가이드",
 
     fanchantDescription:
-      "공식 응원법 모음",
+      "하츠투하츠 공식 응원법 모음",
 
     voteDescription:
-      "하츠투하츠 투표 안내",
+      "하츠투하츠 각종 투표 안내",
 
     footer:
       "SNS: https://linktr.ee/h2h_strm",
@@ -922,7 +911,7 @@ const languageData = {
       "STREAMING LIST",
 
     streamingListCaption:
-      "MOONRIDE 스트리밍 리스트",
+      "아이코닉 하트 스트리밍 리스트",
 
     oneClickSmall:
       "음원 원클릭 스트리밍",
@@ -955,7 +944,7 @@ const languageData = {
       "FLO MUSIC",
 
     fanchantSmall:
-      "H2H 음원총공팀에서 제공하는 공식 응원법",
+      "하츠투하츠 공식 응원법 모음",
 
     officialFanchant:
       "OFFICIAL FANCHANT"
@@ -1007,7 +996,7 @@ const languageData = {
       "STREAMING LIST",
 
     streamingListCaption:
-      "MOONRIDE Streaming List",
+      "Iconic Heart Streaming List",
 
     oneClickSmall:
       "One-click music streaming",
@@ -1092,7 +1081,7 @@ const languageData = {
       "STREAMING LIST",
 
     streamingListCaption:
-      "Daftar Streaming MOONRIDE",
+      "Daftar Streaming Iconic Heart",
 
     oneClickSmall:
       "Streaming musik sekali klik",
@@ -1268,105 +1257,88 @@ if (votePageDescription) {
   noticeDetailLabel.textContent =
     language.noticeLabel;
 
+  /* STREAMING */
 
-  /* 스트리밍 */
+  const streamingSmallText =
+    document.querySelector("#streaming-page .small-text");
 
-  document.querySelector(
-    "#streaming-page .small-text"
-  ).textContent =
-    language.streamingSmall;
+  if (streamingSmallText) {
+    streamingSmallText.textContent = language.streamingSmall;
+  }
 
-  document.querySelector(
-    "#streaming-page h2"
-  ).textContent =
-    "STREAMING GUIDE";
+  const streamingTitle =
+    document.querySelector("#streaming-page h2");
 
-  streamingListButton.textContent =
-    language.streamingList;
+  if (streamingTitle) {
+    streamingTitle.textContent = "STREAMING GUIDE";
+  }
 
-  oneclickStreamingButton.textContent =
-    language.oneClick;
+  if (streamingListButton) {
+    streamingListButton.textContent = language.streamingList;
+  }
 
-
-  /* 스트리밍 리스트 */
-
-  document.querySelector(
-    "#streaming-list-page .small-text"
-  ).textContent =
-    language.streamingListSmall;
-
-  document.querySelector(
-    "#streaming-list-page h2"
-  ).textContent =
-    language.streamingListTitle;
-
-  document.querySelector(
-    ".streaming-list-caption"
-  ).textContent =
-    language.streamingListCaption;
-
-
-  /* 원클릭 스트리밍 */
-
-  document.querySelector(
-    "#oneclick-streaming-page .small-text"
-  ).textContent =
-    language.oneClickSmall;
-
-  document.querySelector(
-    "#oneclick-streaming-page h2"
-  ).textContent =
-    language.oneClickTitle;
-
-
-  /* 원클릭 버튼 */
-
-  const oneclickButtons =
-    document.querySelectorAll(
-      "#oneclick-streaming-page .oneclick-streaming-list a"
-    );
-
-
-  if (oneclickButtons.length >= 8) {
-
-    oneclickButtons[0].textContent =
-      language.melonAndroid1;
-
-    oneclickButtons[1].textContent =
-      language.melonAndroid2;
-
-    oneclickButtons[2].textContent =
-      language.melonAndroid3;
-
-    oneclickButtons[3].textContent =
-      language.melonAndroid4;
-
-    oneclickButtons[4].textContent =
-      language.melonIOS;
-
-    oneclickButtons[5].textContent =
-      language.genieAndroid;
-
-    oneclickButtons[6].textContent =
-      language.genieIOS;
-
-    oneclickButtons[7].textContent =
-      language.flo;
-
+  if (oneclickStreamingButton) {
+    oneclickStreamingButton.textContent = language.oneClick;
   }
 
 
-  /* FANCHANT */
+  /* STREAMING LIST */
 
-  document.querySelector(
-    "#fanchant-page .small-text"
-  ).textContent =
-    language.fanchantSmall;
+  const streamingListSmallText =
+    document.querySelector("#streaming-list-page .small-text");
 
-  document.querySelector(
-    "#fanchant-detail-page .small-text"
-  ).textContent =
-    language.officialFanchant;
+  if (streamingListSmallText) {
+    streamingListSmallText.textContent = language.streamingListSmall;
+  }
+
+  const streamingListTitle =
+    document.querySelector("#streaming-list-page h2");
+
+  if (streamingListTitle) {
+    streamingListTitle.textContent = language.streamingListTitle;
+  }
+
+  const streamingListCaption =
+    document.querySelector(".streaming-list-caption");
+
+  if (streamingListCaption) {
+    streamingListCaption.textContent = language.streamingListCaption;
+  }
+
+
+  
+  /* ONE CLICK STREAMING */
+
+  const oneclickSmallText =
+    document.querySelector("#oneclick-streaming-page .small-text");
+
+  if (oneclickSmallText) {
+    oneclickSmallText.textContent = language.oneClickSmall;
+  }
+
+  const oneclickTitle =
+    document.querySelector("#oneclick-streaming-page h2");
+
+  if (oneclickTitle) {
+    oneclickTitle.textContent = language.oneClickTitle;
+  }
+
+  /* ONE CLICK BUTTONS */
+
+  const oneclickButtons = document.querySelectorAll(
+    "#oneclick-streaming-page .oneclick-streaming-list a"
+  );
+
+  if (oneclickButtons.length >= 8) {
+    oneclickButtons[0].textContent = language.melonAndroid1;
+    oneclickButtons[1].textContent = language.melonAndroid2;
+    oneclickButtons[2].textContent = language.melonAndroid3;
+    oneclickButtons[3].textContent = language.melonAndroid4;
+    oneclickButtons[4].textContent = language.melonIOS;
+    oneclickButtons[5].textContent = language.genieAndroid;
+    oneclickButtons[6].textContent = language.genieIOS;
+    oneclickButtons[7].textContent = language.flo;
+  }
 
 
   /* 현재 공지 다시 표시 */
@@ -1381,7 +1353,9 @@ if (votePageDescription) {
 
   noticeDetailContent.textContent =
     currentNotice.content[currentLanguage];
+
   updateNoticeUnreadDots();
+
 
   /* 언어 메뉴 */
 
@@ -1585,68 +1559,3 @@ if (mobileMenuToggle && mobileMenuLinks) {
     }
   );
 }
-
-// 스트리밍 리스트 이미지 전환
-const streamingSlides = [
-  {
-    image: "images/Iconic Heart-STREAMING.png",
-    caption: "아이코닉하트 스트리밍 리스트"
-  },
-  {
-    image: "images/Moonride-STREAMING.jpg",
-    caption: "MOONRIDE 스트리밍 리스트"
-  }
-];
-
-let currentStreamingSlide = 0;
-
-function showStreamingSlide(index) {
-  const image = document.getElementById("streaming-slide-image");
-  const caption = document.getElementById("streaming-slide-caption");
-  const number = document.getElementById("streaming-slide-number");
-
-  if (!image || !caption || !number) return;
-
-  currentStreamingSlide = index;
-
-  image.src = streamingSlides[index].image;
-  image.alt = streamingSlides[index].caption;
-  caption.textContent = streamingSlides[index].caption;
-  number.textContent = index + 1;
-}
-
-function initStreamingSlider() {
-  const prevButton = document.getElementById("streaming-slide-prev");
-  const nextButton = document.getElementById("streaming-slide-next");
-
-  if (!prevButton || !nextButton) return;
-
-  // 중복 이벤트 등록 방지
-  if (prevButton.dataset.sliderReady === "true") return;
-
-  prevButton.dataset.sliderReady = "true";
-  nextButton.dataset.sliderReady = "true";
-
-  prevButton.addEventListener("click", () => {
-    showStreamingSlide(
-      (currentStreamingSlide - 1 + streamingSlides.length) %
-      streamingSlides.length
-    );
-  });
-
-  nextButton.addEventListener("click", () => {
-    showStreamingSlide(
-      (currentStreamingSlide + 1) % streamingSlides.length
-    );
-  });
-
-  showStreamingSlide(0);
-}
-
-// HTML 로딩이 끝난 후 초기화
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initStreamingSlider);
-} else {
-  initStreamingSlider();
-}
-

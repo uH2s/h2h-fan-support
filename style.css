@@ -876,31 +876,6 @@ to bottom,
   box-sizing: border-box;
 }
 
-
-/* ================================= */
-/* 공통 스트리밍 버튼 */
-/* ================================= */
-
-.streaming-list-btn {
-  border: 1px solid #bbd3e2;
-  background: #fff;
-
-  padding: 8px 8px;
-
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
-  border-radius: 10px;
-
-  box-sizing: border-box;
-  white-space: nowrap;
-}
-
-.streaming-list-btn:hover {
-  background: #e4f1fa;
-}
-
-
 /* ================================= */
 /* 모바일 및 아이패드 */
 /* ================================= */
@@ -1277,6 +1252,7 @@ to bottom,
     margin-bottom: 28px;
 
     font-size: 32px;
+    color: #222;
   }
 
 
@@ -2044,6 +2020,7 @@ color: #3e7188;
 #streaming-page .streaming-inner > p.small-text {
   color: #a0b8c4;
   font-size: 16px;
+  margin-bottom: -10px;
 }
 
 /* 공지사항 목록 제목 아래 연한 점선 */
@@ -2092,7 +2069,7 @@ color: #3e7188;
 }
 
 #streaming-page .small-text::after {
-  content: "";
+  content: none !important;
   position: absolute;
   left: -2px;
   right: -2px;
@@ -2102,6 +2079,7 @@ color: #3e7188;
   opacity: 0.35;
   border-radius: 2px;
   z-index: -1;
+  display: none !important;
 }
 
 /* 스트리밍 리스트 이미지 넘기기 */
@@ -2698,7 +2676,7 @@ main .menu-section > .menu-card p {
   position: relative;
   display: inline-block;
   margin: 0;
-  color: #526a82;
+  color: #222;
   font-size: clamp(28px, 5vw, 42px);
   font-weight: 700;
   line-height: 1.35;
@@ -2888,16 +2866,21 @@ main .menu-section > .menu-card p {
   margin-bottom: 24px;
 }
 
+
 /* 각 페이지 하단 이미지 */
 #guide-page .page-bottom-image,
 #streaming-page .page-bottom-image,
 #fanchant-page .page-bottom-image,
 #vote-page .page-bottom-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   width: 100%;
-  margin-top: auto;
-  padding: 0 6% 24px;
+  max-width: 900px;
+  margin: auto auto 0;
+  padding: 20px 24px 35px;
   box-sizing: border-box;
-  text-align: center;
+  pointer-events: none;
 }
 
 #guide-page .page-bottom-image img,
@@ -2905,12 +2888,31 @@ main .menu-section > .menu-card p {
 #fanchant-page .page-bottom-image img,
 #vote-page .page-bottom-image img {
   display: block;
-  width: 100%;
-  max-width: 900px;
+  width: min(180px, 35vw);
+  max-width: 100%;
   height: auto;
   object-fit: contain;
-  margin: 0 auto;
+  margin: 0;
+  opacity: 0.48;
 }
+
+/* 모바일 및 아이패드 */
+@media (max-width: 768px) {
+  #guide-page .page-bottom-image,
+  #streaming-page .page-bottom-image,
+  #fanchant-page .page-bottom-image,
+  #vote-page .page-bottom-image {
+    padding: 16px 20px 28px;
+  }
+
+  #guide-page .page-bottom-image img,
+  #streaming-page .page-bottom-image img,
+  #fanchant-page .page-bottom-image img,
+  #vote-page .page-bottom-image img {
+    width: min(130px, 30vw);
+  }
+}
+
 
 /* FANCHANT 곡 버튼 배치 유지 */
 #fanchant-page .fanchant-list {
@@ -3078,9 +3080,10 @@ main .menu-section > .menu-card p {
   #streaming-page .page-bottom-image img,
   #fanchant-page .page-bottom-image img,
   #vote-page .page-bottom-image img {
-    width: 0%;
-    max-width: 650px;
-    margin-right: -400px;
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    margin-right: 0;
   }
 }
 
@@ -3193,4 +3196,402 @@ p.small-text {
   color: #a0b8c4 !important;
   font-size: 16px !important;
   line-height: 1.7;
+}
+
+
+/* ================================= */
+/* iOS 스타일 세로 스케치북 */
+/* ================================= */
+
+#streaming-list-page .streaming-list-sketchbook {
+  --paper-color: #fffefa;
+
+  position: relative;
+  width: min(82%, 480px);
+  margin: 30px auto 50px;
+  padding: 0 0 0 17px;
+  box-sizing: border-box;
+  isolation: isolate;
+}
+
+/* 스프링이 들어갈 왼쪽 공간 */
+#streaming-list-page .sketchbook-spiral {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+/* 금속 스프링 */
+#streaming-list-page .sketchbook-spiral span {
+  display: block;
+  width: 17px;
+  height: 12px;
+
+  border: 2px solid #a7a9b2;
+  border-radius: 8px;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d9dbe2 48%,
+    #f7f7fa 100%
+  );
+
+  box-shadow:
+    0 1px 2px rgba(40, 45, 60, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+/* 스케치북 종이 */
+#streaming-list-page .sketchbook-paper {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px 20px 20px 29px;
+  border: 1px solid #e8e5df;
+  border-radius: 7px 19px 19px 7px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(220, 216, 208, 0.38) 0,
+      rgba(255, 255, 255, 0) 13px
+    ),
+    var(--paper-color);
+
+  box-shadow:
+    0 18px 38px rgba(50, 50, 70, 0.12),
+    0 5px 12px rgba(50, 50, 70, 0.06),
+    inset 1px 0 2px rgba(255, 255, 255, 0.95);
+}
+
+/* 종이 오른쪽의 부드러운 빛 */
+#streaming-list-page .sketchbook-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.42),
+    transparent 35%,
+    transparent 85%,
+    rgba(235, 231, 223, 0.18)
+  );
+
+  pointer-events: none;
+}
+
+/* 상단의 작은 iOS 스타일 장식 */
+#streaming-list-page .sketchbook-top {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 0 0 20px;
+}
+
+#streaming-list-page .sketchbook-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #dedbd5;
+}
+
+/* 이미지가 들어가는 영역 */
+#streaming-list-page .sketchbook-image {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(40, 40, 55, 0.07);
+}
+
+#streaming-list-page .sketchbook-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+/* 하단 장식 */
+#streaming-list-page .sketchbook-bottom {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  margin-top: 19px;
+}
+
+#streaming-list-page .sketchbook-line {
+  width: 32px;
+  height: 1px;
+  background: #e5e1d9;
+}
+
+#streaming-list-page .sketchbook-star {
+  color: #c5b8d9;
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  #streaming-list-page .streaming-list-sketchbook {
+    width: min(88%, 400px);
+    margin: 24px auto 38px;
+    padding-left: 15px;
+  }
+
+  #streaming-list-page .sketchbook-paper {
+    padding: 23px 14px 17px 24px;
+    border-radius: 5px 15px 15px 5px;
+  }
+
+  #streaming-list-page .sketchbook-spiral {
+    width: 22px;
+    top: 18px;
+    bottom: 18px;
+  }
+
+  #streaming-list-page .sketchbook-spiral span {
+    width: 15px;
+    height: 10px;
+  }
+
+  #streaming-list-page .sketchbook-top {
+    margin-bottom: 15px;
+  }
+
+  #streaming-list-page .sketchbook-bottom {
+    margin-top: 15px;
+  }
+}
+
+/* ================================= */
+/* 스트리밍 가이드 버튼 원래 배치 복구 */
+/* ================================= */
+
+#streaming-page .streaming-guide-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 10px;
+}
+
+#streaming-page .streaming-guide-buttons .streaming-list-btn {
+  flex: 0 1 150px !important;
+  width: 150px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 모바일·아이패드에서도 원래처럼 가로 배치 */
+@media (max-width: 768px) {
+  #streaming-page .streaming-guide-buttons {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+
+  #streaming-page .streaming-guide-buttons .streaming-list-btn {
+    flex: 0 1 150px !important;
+    width: 150px !important;
+    padding: 8px 5px !important;
+    font-size: 13px !important;
+  }
+}
+
+
+/* ========================================= */
+/* STREAMING 안내 화면 디자인 통일 */
+/* GUIDE · VOTE와 동일한 공통 스타일 사용 */
+/* ========================================= */
+
+/* GUIDE와 같은 점선 스타일 사용 */
+
+#streaming-page .support-page-divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px dashed #bbd3e2;
+  box-sizing: border-box;
+}
+
+
+/* 버튼 기능은 유지하고 기존 배치만 사용 */
+#streaming-page .streaming-guide-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+#streaming-page .streaming-list-btn {
+  box-sizing: border-box;
+}
+
+/* 하단 이미지 */
+#streaming-page .page-bottom-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 작은 문구와 제목 사이 간격 줄이기 */
+#streaming-page .support-page-inner > h2 {
+  margin-top: -15px !important;
+}
+
+
+/* 제목과 점선 사이 간격 넓히기 */
+#streaming-page .support-page-divider {
+  margin-top: 28px !important;
+}
+
+
+/* STREAMING 제목 크기 조절 */
+#streaming-page .support-page-inner > h2 {
+  font-size: 34px !important;
+}
+
+
+/* STREAMING 상단 요소 전체를 아래로 이동 */
+#streaming-page .support-page-inner {
+  transform: translateY(10px);
+}
+
+
+/* STREAMING 배경을 다른 공통 페이지와 동일하게 */
+#streaming-page.support-standard-page,
+#streaming-page.support-standard-page.active {
+  background: unset !important;
+  background-color: transparent !important;
+}
+
+
+/* STREAMING 페이지 배경 및 하단 이미지 복구 */
+#streaming-page.support-standard-page.active {
+  background:
+    linear-gradient(
+      to bottom,
+      #FFFFFF 0%,
+      #FAFCFE 30%,
+      #f7f9fa 65%,
+      #d3e9f7 100%
+    ) !important;
+}
+
+#streaming-page .page-bottom-image {
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: auto;
+  padding: 20px 24px 35px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+#streaming-page .page-bottom-image img {
+  display: block !important;
+  width: 50%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.48;
+}
+
+
+/* 하단 장식 이미지 표시 복구 */
+#guide-page .page-bottom-image,
+#streaming-page .page-bottom-image,
+#fanchant-page .page-bottom-image,
+#vote-page .page-bottom-image {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+#guide-page .page-bottom-image img,
+#streaming-page .page-bottom-image img,
+#fanchant-page .page-bottom-image img,
+#vote-page .page-bottom-image img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.48 !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+
+
+/* ========================================= */
+/* PC 전용 하단 이미지 최종 보정 */
+/* ========================================= */
+
+@media (min-width: 769px) {
+
+  /* 가이드 · 투표: 현재 정상 상태 유지 */
+  #guide-page .page-bottom-image img,
+  #vote-page .page-bottom-image img {
+    width: 180px !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* 스트리밍: 커진 이미지 크기 복구 */
+  #streaming-page .page-bottom-image img {
+    width: 180px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+  }
+
+  /* 응원법: 크기는 유지하고 위치만 정렬 */
+  #fanchant-page .page-bottom-image {
+    justify-content: flex-end !important;
+  }
+
+  #fanchant-page .page-bottom-image img {
+    width: 180px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* ========================================= */
+/* 응원법 페이지 하단 이미지 위치 보정 */
+/* ========================================= */
+
+#fanchant-page .page-bottom-image {
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+  justify-content: flex-end !important;
 }
