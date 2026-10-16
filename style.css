@@ -3693,5 +3693,5 @@ p.small-text {
 
 /* 원클릭 스트리밍 제목 줄 간격 조정 */
 #oneclick-streaming-page h2 {
-  line-height: 0.9 !important;
+  line-height: 1 !important;
 }
