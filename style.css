@@ -423,8 +423,13 @@ main {
   border-radius: 12px;
 }
 
-.menu-card:hover {
-  background: #e4f1fa;
+/* 메인 화면 메뉴 버튼 호버 효과 */
+#main-page .menu-card:hover {
+  background: linear-gradient(
+    180deg,
+    #f2f8fc 0%,
+    #e4f1fa 100%
+  );
 }
 
 .menu-card span {
@@ -1114,6 +1119,12 @@ to bottom,
 
     min-width: 145px;
   }
+
+  /* 원클릭 스트리밍 제목 줄 간격 조정 */
+#oneclick-streaming-page h2 {
+  line-height: 1 !important;
+}
+
 
 
   /* 임시 간격 확인 */
@@ -3677,21 +3688,313 @@ p.small-text {
   }
 }
 
+/* ================================= */
+/* 원클릭 스밍 - 플랫폼별 상세 화면 */
+/* ================================= */
 
-/* 최신 공지사항 확성기 */
-.latest-notice-title .notice-megaphone {
-  display: inline-block;
-  margin-right: 6px;
-  color: #dbdbdb;
-  font-size: 1.2em;
-  vertical-align: middle;
+.oneclick-platform-detail {
+  display: none;
 }
 
-.latest-notice-title .notice-title-text {
-  display: inline;
+.oneclick-platform-detail.active {
+  display: block;
 }
 
-/* 원클릭 스트리밍 제목 줄 간격 조정 */
-#oneclick-streaming-page h2 {
-  line-height: 1 !important;
+/* 기기 구분 제목 */
+.oneclick-device-title {
+  margin: 18px 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #888;
+}
+
+/* ================================= */
+/* 메인 원클릭 스밍 */
+/* ================================= */
+
+/* 메인 원클릭 스트리밍 창 */
+.home-oneclick-section {
+  isolation: isolate;
+  width: min(calc(100% - 40px), 870px);
+  margin: 36px auto 48px;
+  padding: 28px 24px;
+  border: 1px solid #d8e9f5;
+  border-radius: 18px;
+  box-sizing: border-box;
+  background: #fffafa;
+  position: relative;
+  top: -100px;
+  transform: none;
+}
+
+.home-oneclick-window-bar {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.home-oneclick-heading {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.home-oneclick-heading h2 {
+  margin: 0;
+  color: #222;
+  font-size: 19px;
+  font-weight: 700;
+  transform: translate(-280px, -10px);
+}
+
+.home-oneclick-platforms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.home-oneclick-platform-btn {
+  width: 90%;
+  height: 70px;
+  box-sizing: border-box;
+  padding: 17px 12px;
+  border: 1px solid #d8e9f5;
+  border-radius: 13px;
+  background: #e6eff7;
+  background-color: rgba(255, 255, 255, 0.57);
+  color: #393030;
+  font-size: 16px;
+  font-weight: 100;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* PC 원클릭 스트리밍 버튼 비율 복구 */
+.home-oneclick-platforms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.home-oneclick-platform-btn {
+  width: 100%;
+  min-width: 0;
+  height: 70px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+}
+
+.home-oneclick-platform-btn .platform-korean-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.home-oneclick-platform-btn .platform-korean-label img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.home-oneclick-platform-btn .platform-korean-label {
+  color: #3e7188;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* 원클릭 플랫폼 상세 */
+.oneclick-platform-detail {
+  display: none;
+}
+
+.oneclick-platform-detail.active {
+  display: block;
+}
+
+/* 원클릭 스밍 창 제목 표시줄 */
+.home-oneclick-window-bar {
+  width: calc(100% + 48px);
+  box-sizing: border-box;
+  margin: -28px -24px 24px;
+  border-radius: 17px 17px 0 0;
+}
+
+.home-oneclick-window-bar .banner-window-text {
+  font-size: 14px;
+}
+
+/* 원클릭 스밍 제목 표시줄 - 단색 배경 */
+.home-oneclick-window-bar {
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #f3f8fc 10%,
+    #eff4f7 20%,
+    #e1ecf3 30%,
+    #d3e9f7 100%
+  );
+}
+
+.home-oneclick-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("images/oneclick-bg.WEBP");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* 원클릭 스밍 플랫폼 버튼 테두리 제거 */
+.home-oneclick-platform-btn {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* 원클릭 스밍 제목 왼쪽 동그라미 제거 */
+.home-oneclick-window-bar .banner-window-circle {
+  display: none;
+}
+
+
+/* 원클릭 스밍 한글 글자 위치 조정 */
+.home-oneclick-platform-btn span {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+
+/* 원클릭 스밍 플랫폼 한글 글자 디자인 */
+.home-oneclick-platform-btn span {
+  position: relative;
+  left: 0px;
+  top: 0px;
+
+  color: #3e7188;       /* 글자 색상 */
+  font-size: 20px;      /* 글자 크기 */
+  font-weight: 500;     /* 글자 굵기 */
+  font-family: inherit; /* 글꼴 */
+  letter-spacing: 0px;  /* 글자 사이 간격 */
+  line-height: 1.5;     /* 줄 간격 */
+}
+
+
+/* 원클릭 스밍 창 제목 색상 */
+.home-oneclick-window-bar .banner-window-text {
+  color: #222222;
+}
+
+/* 창 제목 표시줄 오른쪽 텍스트 */
+.home-oneclick-window-bar .banner-window-title > .banner-window-text:last-child {
+  position: relative;
+  left: 580px;
+  top: 0px;
+  font-size: 20px;
+  color: #fafada;
+  font-weight: 800;
+}
+
+/* 창 제목 표시줄 아래 동그라미 점선 */
+.home-oneclick-window-bar {
+  border-bottom: 2px dotted #b0d6e7;
+}
+
+
+/* 모바일 */
+@media (max-width: 600px) {
+  .home-oneclick-section {
+    width: calc(100% - 30px);
+    margin: 28px auto 36px;
+    padding: 23px 16px;
+    box-sizing: border-box;
+    transform: translateY(-30px);
+    position: relative;
+  top: -60px;
+  }
+
+  .home-oneclick-window-bar {
+    width: calc(100% + 32px);
+    margin: -23px -16px 20px;
+    padding: 14px 16px;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+
+  .home-oneclick-window-bar .banner-window-text {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .home-oneclick-window-bar .banner-window-text:last-child {
+    position: relative;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+    max-width: none;
+  }
+
+  .home-oneclick-platforms {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+
+  .home-oneclick-platform-btn {
+    width: 100%;
+    height: 70px;
+    min-width: 0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .home-oneclick-platform-btn .platform-korean-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding-left: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .home-oneclick-platform-btn .platform-korean-label img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .home-oneclick-heading h2 {
+    font-size: 22px;
+    transform: none;
+  }
+
+  .home-oneclick-window-bar .banner-window-title > .banner-window-text:last-child {
+  position: relative;
+  left: 150px;
+  top: 0px;
+  font-size: 20px;
+  color: #fafada;
+  font-weight: 800;
+}
 }

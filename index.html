@@ -7,7 +7,7 @@
 
   <title>H2H FAN SUPPORT</title>
   <link rel="stylesheet" href="style.css">
-  
+
 </head>
 
 
@@ -276,7 +276,7 @@
   id="latest-notice-title"
   class="latest-notice-title"
 >
-  <span class="notice-megaphone">✉</span><span id="latest-notice-title-text">공지사항 제목</span>
+  <span id="latest-notice-title-text">공지사항 제목</span>
 </p>
 
 
@@ -401,11 +401,65 @@
       하츠투하츠 각종 투표 안내
     </p>
   </a>
-
 </section>
-
+<div class="menu-card-divider"></div>
     </main>
 
+
+<!-- ========================= -->
+<!-- 메인 원클릭 스트리밍 플랫폼 -->
+<!-- ========================= -->
+
+<section class="home-oneclick-section">
+
+  <div class="banner-window-bar home-oneclick-window-bar">
+    <div class="banner-window-title">
+      <span class="banner-window-circle"></span>
+      <span class="banner-window-text">♬ Lemon Tang 원클릭 스트리밍</span>
+      <span class="banner-window-text">• • • </span>
+    </div>
+  </div>
+
+  <div class="home-oneclick-platforms">
+
+  <!-- 멜론 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="melon"
+  >
+    <span class="platform-korean-label">
+      <img src="images/melon-logo.png" alt="">
+      멜론
+    </span>
+  </button>
+
+  <!-- 지니뮤직 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="genie"
+  >
+    <span class="platform-korean-label">
+      <img src="images/genie-logo.png" alt="">
+      지니뮤직
+    </span>
+  </button>
+
+  <!-- 플로 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="flo"
+  >
+    <span class="platform-korean-label">
+      <img src="images/flo-logo.png" alt="">
+      플로
+    </span>
+  </button>
+
+</div>
+</section>
 
     <footer>
   <div class="footer-logo">
@@ -629,24 +683,10 @@
     스트리밍 리스트
   </button>
 
-  <button
-    id="streaming-oneclick-btn"
-    class="streaming-list-btn"
-    type="button"
-  >
-    원클릭 스트리밍
-  </button>
+</div>
+  </div>
 
 </div>
-
-</div>
-
-<div class="page-bottom-image">
-  <img src="images/notice-bg.png" alt="">
-</div>
-
-</div>
-
 <!-- ========================= -->
 <!-- 스트리밍 리스트 화면 -->
 <!-- ========================= -->
@@ -710,39 +750,44 @@
 
 
   <!-- ========================= -->
-  <!-- 원클릭 스트리밍 화면 -->
-  <!-- ========================= -->
+<!-- 원클릭 스트리밍 화면 -->
+<!-- ========================= -->
 
-  <div
-  id="oneclick-streaming-page"
-  class="page"
->
+<div id="oneclick-streaming-page" class="page">
 
-    <div class="oneclick-streaming-inner">
+  <div class="oneclick-streaming-inner">
 
-      <button
-        id="oneclick-streaming-back-btn"
-        class="back-btn"
-        type="button"
-      >
-        &lt;
-      </button>
+    <button
+      id="oneclick-streaming-back-btn"
+      class="back-btn"
+      type="button"
+    >
+      &lt;
+    </button>
 
-      <p class="small-text">
-        음원 원클릭 스트리밍
-      </p>
+    <p class="small-text">
+      음원 원클릭 스트리밍
+    </p>
 
-      <h2>
-        ONE CLICK STREAMING
-      </h2>
+    <h2>ONE CLICK STREAMING</h2>
 
+    <!-- ========================= -->
+    <!-- MELON 상세 -->
+    <!-- ========================= -->
 
-      <!-- MELON ANDROID -->
+    <section
+      class="oneclick-platform-detail"
+      data-streaming-platform="melon"
+    >
+
+      <h3 class="streaming-platform-title">
+        MELON
+      </h3>
 
       <div class="oneclick-streaming-group">
 
-        <p class="streaming-platform-title">
-          MELON ANDROID
+        <p class="oneclick-device-title">
+          ANDROID
         </p>
 
         <div class="oneclick-streaming-list">
@@ -779,13 +824,10 @@
 
       </div>
 
-
-      <!-- MELON iOS -->
-
       <div class="oneclick-streaming-group">
 
-        <p class="streaming-platform-title">
-          MELON iOS
+        <p class="oneclick-device-title">
+          iOS
         </p>
 
         <div class="oneclick-streaming-list">
@@ -801,13 +843,26 @@
 
       </div>
 
+    </section>
 
-      <!-- GENIE ANDROID -->
+
+    <!-- ========================= -->
+    <!-- GENIE 상세 -->
+    <!-- ========================= -->
+
+    <section
+      class="oneclick-platform-detail"
+      data-streaming-platform="genie"
+    >
+
+      <h3 class="streaming-platform-title">
+        GENIE MUSIC
+      </h3>
 
       <div class="oneclick-streaming-group">
 
-        <p class="streaming-platform-title">
-          GENIE MUSIC ANDROID
+        <p class="oneclick-device-title">
+          ANDROID
         </p>
 
         <div class="oneclick-streaming-list">
@@ -823,13 +878,10 @@
 
       </div>
 
-
-      <!-- GENIE iOS -->
-
       <div class="oneclick-streaming-group">
 
-        <p class="streaming-platform-title">
-          GENIE MUSIC iOS
+        <p class="oneclick-device-title">
+          iOS
         </p>
 
         <div class="oneclick-streaming-list">
@@ -845,14 +897,23 @@
 
       </div>
 
+    </section>
 
-      <!-- FLO -->
+
+    <!-- ========================= -->
+    <!-- FLO 상세 -->
+    <!-- ========================= -->
+
+    <section
+      class="oneclick-platform-detail"
+      data-streaming-platform="flo"
+    >
+
+      <h3 class="streaming-platform-title">
+        FLO MUSIC
+      </h3>
 
       <div class="oneclick-streaming-group">
-
-        <p class="streaming-platform-title">
-          FLO MUSIC
-        </p>
 
         <div class="oneclick-streaming-list">
 
@@ -860,17 +921,18 @@
             href="flomusic://play/track?ids=594237946,606836978,576104327,558807581,594237947,594237946,576104327,601629304,558807581,594237950,594237946,606836978,576104327,558807581,594237949,594237946,576104327,601629304,544564174,594237948"
             class="streaming-list-btn"
           >
-            FLO MUSIC
+            FLO MUSIC 원클릭 스밍
           </a>
 
         </div>
 
       </div>
 
-    </div>
+    </section>
 
   </div>
 
+</div>
 
   <!-- ========================= -->
   <!-- FANCHANT 메인 화면 -->

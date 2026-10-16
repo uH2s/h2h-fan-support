@@ -152,6 +152,16 @@ const streamingListButton =
 
 const oneclickStreamingButton =
   document.getElementById("streaming-oneclick-btn");
+  
+const homeOneclickPlatformButtons =
+  document.querySelectorAll(
+    ".home-oneclick-platform-btn"
+  );
+
+const oneclickPlatformDetails =
+  document.querySelectorAll(
+    ".oneclick-platform-detail"
+  );
 
 const streamingHomeButton =
   document.getElementById("streaming-home-btn");
@@ -188,18 +198,10 @@ if (streamingListBackButton) {
 }
 
 
-/* ONE CLICK STREAMING 열기 */
-if (oneclickStreamingButton) {
-  oneclickStreamingButton.addEventListener("click", () => {
-    showPage(oneclickStreamingPage);
-  });
-}
-
-
-/* ONE CLICK STREAMING → STREAMING GUIDE */
+/* ONE CLICK STREAMING → HOME */
 if (oneclickStreamingBackButton) {
   oneclickStreamingBackButton.addEventListener("click", () => {
-    showPage(streamingPage);
+    showPage(mainPage);
   });
 }
 
@@ -371,26 +373,47 @@ if (streamingListButton) {
 
 
 /* ================================= */
-/* ONE CLICK STREAMING */
+/* 메인 플랫폼 버튼 → 플랫폼별 원클릭 화면 */
 /* ================================= */
 
-if (oneclickStreamingButton) {
-  oneclickStreamingButton.addEventListener("click", () => {
-    showPage(oneclickStreamingPage);
+homeOneclickPlatformButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedPlatform =
+      button.dataset.streamingPlatform;
+
+    // 모든 플랫폼 상세 화면 숨기기
+    oneclickPlatformDetails.forEach((detail) => {
+      detail.classList.remove("active");
+    });
+
+    // 선택한 플랫폼 상세 화면만 표시
+    const selectedDetail =
+      document.querySelector(
+        `.oneclick-platform-detail[data-streaming-platform="${selectedPlatform}"]`
+      );
+
+    if (selectedDetail) {
+      selectedDetail.classList.add("active");
+      showPage(oneclickStreamingPage);
+    } else {
+      console.error(
+        "플랫폼 상세 화면을 찾을 수 없습니다:",
+        selectedPlatform
+      );
+    }
   });
-}
+});
 
 
 /* ================================= */
-/* ONE CLICK STREAMING → STREAMING GUIDE */
+/* 원클릭 플랫폼 상세 → HOME */
 /* ================================= */
 
 if (oneclickStreamingBackButton) {
   oneclickStreamingBackButton.addEventListener("click", () => {
-    showPage(streamingPage);
+    showPage(mainPage);
   });
 }
-
 
 /* ================================= */
 /* FANCHANT 메뉴 */
@@ -615,7 +638,6 @@ if (latestNoticeTitle) {
     "";
 
   latestNoticeTitle.innerHTML =
-    `<span class="notice-megaphone">✉</span>` +
     `<span class="notice-title-text"></span>`;
 
   latestNoticeTitle.querySelector(
