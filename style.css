@@ -3690,3 +3690,8 @@ p.small-text {
 .latest-notice-title .notice-title-text {
   display: inline;
 }
+
+/* 원클릭 스트리밍 제목 두 줄 간격 */
+#oneclick-streaming-page h1 {
+  line-height: 1.1;
+}
