@@ -3606,3 +3606,39 @@ p.small-text {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+
+/* FANCHANT 제목 왼쪽 정렬 */
+.fanchant-title-row {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.fanchant-title-row h2 {
+  margin: 0;
+  text-align: left;
+}
+
+.fanchant-lightstick {
+  position: relative;
+  top: -15px; /* 상하 위치 조절 */
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+
+/* PC 전용 FANCHANT 응원봉 설정 */
+@media (min-width: 601px) {
+  .fanchant-lightstick {
+    width: 56px;       /* PC 응원봉 크기 */
+    margin-left: 12px; /* 제목과의 좌우 간격 */
+    top: -15px;         /* 상하 위치: 음수는 위쪽 */
+  }
+}
