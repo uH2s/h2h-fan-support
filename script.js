@@ -31,6 +31,15 @@ const streamingListPage =
 const oneclickStreamingPage =
   document.getElementById("oneclick-streaming-page");
 
+const chartPage =
+  document.getElementById("chart-page");
+
+const chartHomeButton =
+  document.getElementById("chart-home-btn");
+
+const chartViewAllButton =
+  document.getElementById("chart-view-all-btn");
+
 const fanchantPage =
   document.getElementById("fanchant-page");
 
@@ -204,6 +213,364 @@ if (oneclickStreamingBackButton) {
     showPage(mainPage);
   });
 }
+
+
+/* ================================= */
+/* CHART */
+/* ================================= */
+
+/* 차트 전체보기 → 차트 페이지 */
+if (chartViewAllButton) {
+  chartViewAllButton.addEventListener("click", () => {
+    console.log("차트 전체보기 버튼 클릭");
+    console.log("chartPage:", chartPage);
+
+    if (!chartPage) {
+      console.error("차트 페이지 요소를 찾을 수 없습니다.");
+      return;
+    }
+
+    showPage(chartPage);
+
+    console.log(
+      "차트 페이지 active 여부:",
+      chartPage.classList.contains("active")
+    );
+  });
+}
+
+/* 차트 페이지 → HOME */
+if (chartHomeButton) {
+  chartHomeButton.addEventListener("click", () => {
+    showPage(mainPage);
+  });
+}
+
+
+
+/* ================================= */
+/* 차트 순위 데이터 표시 */
+/* ================================= */
+
+
+const chartRankElements = {
+  "Lemon Tang": {
+    TOP100: document.getElementById("chart-lemon-tang-top100"),
+    HOT100: document.getElementById("chart-lemon-tang-hot100"),
+    GENIE: document.getElementById("chart-lemon-tang-genie"),
+    BUGS: document.getElementById("chart-lemon-tang-bugs"),
+    FLO: document.getElementById("chart-lemon-tang-flo"),
+    VIBE: document.getElementById("chart-lemon-tang-vibe"),
+  },
+  "15-LOVE": {
+    TOP100: document.getElementById("chart-15-love-top100"),
+    HOT100: document.getElementById("chart-15-love-hot100"),
+    GENIE: document.getElementById("chart-15-love-genie"),
+    BUGS: document.getElementById("chart-15-love-bugs"),
+    FLO: document.getElementById("chart-15-love-flo"),
+    VIBE: document.getElementById("chart-15-love-vibe"),
+  },
+  "처음투성이 (Baby Steps)": {
+    TOP100: document.getElementById("chart-first-top100"),
+    HOT100: document.getElementById("chart-first-hot100"),
+    GENIE: document.getElementById("chart-first-genie"),
+    BUGS: document.getElementById("chart-first-bugs"),
+    FLO: document.getElementById("chart-first-flo"),
+    VIBE: document.getElementById("chart-first-vibe"),
+  },
+  "heart emoji (♡)": {
+    TOP100: document.getElementById("chart-heart-emoji-top100"),
+    HOT100: document.getElementById("chart-heart-emoji-hot100"),
+    GENIE: document.getElementById("chart-heart-emoji-genie"),
+    BUGS: document.getElementById("chart-heart-emoji-bugs"),
+    FLO: document.getElementById("chart-heart-emoji-flo"),
+    VIBE: document.getElementById("chart-heart-emoji-vibe"),
+  },
+  "Secret Recipe": {
+    TOP100: document.getElementById("chart-secret-recipe-top100"),
+    HOT100: document.getElementById("chart-secret-recipe-hot100"),
+    GENIE: document.getElementById("chart-secret-recipe-genie"),
+    BUGS: document.getElementById("chart-secret-recipe-bugs"),
+    FLO: document.getElementById("chart-secret-recipe-flo"),
+    VIBE: document.getElementById("chart-secret-recipe-vibe"),
+  },
+};
+
+
+const homeMelonTop100Rank =
+  document.getElementById("home-melon-top100-rank");
+
+const homeMelonHot100Rank =
+  document.getElementById("home-melon-hot100-rank");
+
+const homeGenieRank =
+  document.getElementById("home-genie-rank");
+
+const homeBugsRank =
+  document.getElementById("home-bugs-rank");
+
+const homeFloRank =
+  document.getElementById("home-flo-rank");
+
+const homeVibeRank =
+  document.getElementById("home-vibe-rank");
+  
+const homeChartUpdated =
+  document.getElementById("home-chart-updated");
+
+
+function getChartSong(charts, chartName, songTitle) {
+  const chart = charts?.find(
+    (item) => item.chart === chartName
+  );
+
+  if (!chart || chart.success !== true) {
+    return { status: "error", rank: null };
+  }
+
+  // 추출된 곡이 너무 적으면 수집 데이터가 불완전한 것으로 처리
+  if (
+    !Number.isInteger(chart.extractedCount) ||
+    chart.extractedCount < 50
+  ) {
+    return { status: "error", rank: null };
+  }
+
+  const song = chart.songs?.find(
+    (item) => item.title === songTitle
+  );
+
+  if (!song) {
+    return { status: "error", rank: null };
+  }
+
+  if (Number.isInteger(song.rank) && song.rank > 0) {
+    return { status: "ranked", rank: song.rank };
+  }
+
+  return {
+    status: "not-ranked",
+    rank: null,
+  };
+}
+
+
+function formatRank(current, previous) {
+  if (current.status === "error") {
+    return "집계 오류";
+  }
+
+  if (current.status === "not-ranked") {
+  return "-";
+}
+
+  const rankText = `${current.rank}위`;
+
+  if (!previous || previous.status === "error") {
+    return rankText;
+  }
+
+  if (previous.status === "not-ranked") {
+    return `${rankText} NEW`;
+  }
+
+  if (previous.status !== "ranked") {
+    return rankText;
+  }
+
+  const difference = previous.rank - current.rank;
+
+  if (difference > 0) {
+    return `${rankText} ↑ ${difference}`;
+  }
+
+  if (difference < 0) {
+    return `${rankText} ↓ ${Math.abs(difference)}`;
+  }
+
+  return `${rankText} → 변동 없음`;
+}
+
+async function loadChartRanks() {
+  const updatedElement =
+    document.getElementById("chart-data-updated");
+
+  try {
+    const response = await fetch(
+  "https://h2h-chart-collector.vgong-oo5.workers.dev/chart-data",
+  { cache: "no-store" }
+);
+
+    if (!response.ok) {
+      throw new Error("차트 데이터를 불러오지 못했습니다.");
+    }
+
+    const data = await response.json();
+    const latest = data.latest;
+    const previous = data.previous;
+
+    if (!latest || !Array.isArray(latest.charts)) {
+      throw new Error("차트 데이터 형식이 올바르지 않습니다.");
+    }
+
+    for (const [songTitle, elements] of Object.entries(chartRankElements)) {
+     
+for (const chartName of [
+  "TOP100",
+  "HOT100",
+  "GENIE",
+  "BUGS",
+  "FLO",
+  "VIBE",
+]) {
+
+        const element = elements[chartName];
+
+        if (!element) continue;
+
+        const current = getChartSong(
+          latest.charts,
+          chartName,
+          songTitle
+        );
+
+        const prior = previous
+          ? getChartSong(previous.charts, chartName, songTitle)
+          : null;
+
+        element.textContent = formatRank(current, prior);
+      }
+    }
+
+    const lemonTop100 = getChartSong(
+      latest.charts, "TOP100", "Lemon Tang"
+    );
+
+    const lemonHot100 = getChartSong(
+      latest.charts, "HOT100", "Lemon Tang"
+    );
+
+    if (homeMelonTop100Rank) {
+      homeMelonTop100Rank.textContent =
+        formatRank(
+          lemonTop100,
+          previous
+            ? getChartSong(previous.charts, "TOP100", "Lemon Tang")
+            : null
+        );
+    }
+
+    if (homeMelonHot100Rank) {
+      homeMelonHot100Rank.textContent =
+        formatRank(
+          lemonHot100,
+          previous
+            ? getChartSong(previous.charts, "HOT100", "Lemon Tang")
+            : null
+        );
+
+        // 지니
+const lemonGenie = getChartSong(
+  latest.charts,
+  "GENIE",
+  "Lemon Tang"
+);
+
+if (homeGenieRank) {
+  homeGenieRank.textContent = formatRank(
+    lemonGenie,
+    previous
+      ? getChartSong(previous.charts, "GENIE", "Lemon Tang")
+      : null
+  );
+}
+
+// 벅스
+const lemonBugs = getChartSong(
+  latest.charts,
+  "BUGS",
+  "Lemon Tang"
+);
+
+if (homeBugsRank) {
+  homeBugsRank.textContent = formatRank(
+    lemonBugs,
+    previous
+      ? getChartSong(previous.charts, "BUGS", "Lemon Tang")
+      : null
+  );
+}
+
+// FLO
+const lemonFlo = getChartSong(
+  latest.charts,
+  "FLO",
+  "Lemon Tang"
+);
+
+if (homeFloRank) {
+  homeFloRank.textContent = formatRank(
+    lemonFlo,
+    previous
+      ? getChartSong(previous.charts, "FLO", "Lemon Tang")
+      : null
+  );
+
+  // VIBE
+const lemonVibe = getChartSong(
+  latest.charts,
+  "VIBE",
+  "Lemon Tang"
+);
+
+if (homeVibeRank) {
+  homeVibeRank.textContent = formatRank(
+    lemonVibe,
+    previous
+      ? getChartSong(
+          previous.charts,
+          "VIBE",
+          "Lemon Tang"
+        )
+      : null
+  );
+}
+}
+    }
+
+    const updatedText = latest.checkedAt
+      ? "마지막 집계: " +
+        new Date(latest.checkedAt).toLocaleString("ko-KR", {
+          timeZone: "Asia/Seoul",
+        })
+      : "집계 시각 확인 불가";
+
+    if (updatedElement) {
+      updatedElement.textContent = updatedText;
+    }
+
+    if (homeChartUpdated) {
+      homeChartUpdated.textContent = updatedText;
+    }
+  } catch (error) {
+    console.error("차트 순위 불러오기 오류:", error);
+
+    if (updatedElement) {
+      updatedElement.textContent = "차트 데이터를 불러오지 못했습니다.";
+    }
+
+    if (homeChartUpdated) {
+      homeChartUpdated.textContent = "차트 데이터를 불러오지 못했습니다.";
+    }
+  }
+}
+
+loadChartRanks();
+
+// 5분마다 저장된 최신 차트 데이터 확인
+setInterval(loadChartRanks, 5 * 60 * 1000);
+
+
 
 
 /* ================================= */

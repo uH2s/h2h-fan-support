@@ -4032,3 +4032,350 @@ p.small-text {
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+
+/* ================================= */
+/* 메인 실시간 차트 요약 */
+/* ================================= */
+
+.home-chart-section {
+  width: min(870px, calc(100% - 30px));
+  margin: 0 auto 48px;
+  padding: 24px;
+  box-sizing: border-box;
+
+  border: 1px solid #d8e9f5;
+  border-radius: 18px;
+  background: #fff;
+  color: #222;
+
+  transform: translate(0px, -110px);
+}
+
+.home-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.home-chart-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.home-chart-icon {
+  color: #6d9fbd;
+  font-size: 23px;
+}
+
+.home-chart-heading h2 {
+  margin: 0;
+  color: #222;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.chart-view-all-btn {
+  flex-shrink: 0;
+  padding: 8px 12px;
+
+  border: 1px solid #c9dfed;
+  border-radius: 8px;
+  background: #f3f9fd;
+  color: #426f8a;
+
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chart-view-all-btn:hover {
+  background: #e4f1fa;
+}
+
+.home-chart-song {
+  padding: 17px;
+  border: 1px solid #e0ebf2;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    #f5faff 0%,
+    #fff 100%
+  );
+}
+
+.home-chart-song-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.home-chart-song-label {
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: #e5f1fa;
+  color: #507e9a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.home-chart-song-title strong {
+  font-size: 17px;
+}
+
+
+.home-chart-ranks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.home-chart-rank {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  padding: 10px;
+  box-sizing: border-box;
+
+  border: 1px solid #e5edf3;
+  border-radius: 9px;
+  background: #fff;
+}
+
+
+.home-chart-platform {
+  color: #888;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.home-chart-rank strong {
+  color: #3e7188;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.home-chart-updated {
+  margin: 13px 0 0;
+  color: #999;
+  font-size: 11px;
+  text-align: right;
+}
+
+
+/* ================================= */
+/* 차트 전체보기 페이지 */
+/* ================================= */
+
+.chart-page-inner {
+  width: min(870px, calc(100% - 30px));
+  margin: 0 auto;
+  padding: 28px 0 50px;
+  box-sizing: border-box;
+}
+
+.chart-page-title {
+  margin: 8px 0;
+  color: #222;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.chart-page-description {
+  margin: 0 0 26px;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.chart-song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.chart-song-card {
+  padding: 18px;
+  border: 1px solid #d8e9f5;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.chart-song-card h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  margin: 0 0 15px;
+  color: #222;
+  font-size: 16px;
+}
+
+.chart-song-card h3 span {
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #e5f1fa;
+  color: #507e9a;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.chart-song-ranks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.chart-song-ranks p {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+
+  border-radius: 8px;
+  background: #f5f9fc;
+  color: #888;
+  font-size: 11px;
+}
+
+.chart-song-ranks strong {
+  color: #3e7188;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.chart-data-updated {
+  margin: 18px 0 0;
+  color: #999;
+  font-size: 11px;
+  text-align: right;
+}
+
+
+/* ================================= */
+/* 차트 모바일 대응 */
+/* ================================= */
+
+@media (max-width: 600px) {
+  .home-chart-section {
+    width: calc(100% - 30px);
+    margin-bottom: 32px;
+    padding: 18px 15px;
+  }
+
+  .home-chart-heading {
+    gap: 6px;
+  }
+
+  .home-chart-heading h2 {
+    font-size: 16px;
+  }
+
+  .home-chart-icon {
+    font-size: 20px;
+  }
+
+  .chart-view-all-btn {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+
+  .home-chart-song {
+    padding: 13px 10px;
+  }
+
+  @media (max-width: 600px) {
+  .home-chart-ranks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+  .home-chart-rank {
+    padding: 10px 8px;
+  }
+
+  .home-chart-platform {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .home-chart-rank strong {
+    font-size: 14px;
+  }
+
+  .chart-page-inner {
+    width: calc(100% - 30px);
+    padding-top: 20px;
+  }
+
+  .chart-page-title {
+    font-size: 24px;
+  }
+
+  .chart-song-card {
+    padding: 14px 11px;
+  }
+
+  .chart-song-card h3 {
+    font-size: 15px;
+  }
+
+  .chart-song-ranks {
+    gap: 8px;
+  }
+
+  .chart-song-ranks p {
+    padding: 10px 8px;
+  }
+
+  .chart-song-ranks strong {
+    font-size: 13px;
+  }
+}
+
+
+/* ================================= */
+/* 차트 순위 변동 표시 */
+/* ================================= */
+
+.chart-rank-change {
+  display: inline-block;
+  margin-left: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8293a0;
+  vertical-align: middle;
+}
+
+.chart-rank-change.rank-up {
+  color: #e56c85;
+}
+
+.chart-rank-change.rank-down {
+  color: #648fc7;
+}
+
+.chart-rank-change.rank-new {
+  color: #6297cf;
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+  .chart-rank-change {
+    margin-left: 4px;
+    font-size: 11px;
+  }
+}
