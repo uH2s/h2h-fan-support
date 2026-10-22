@@ -3752,15 +3752,16 @@ p.small-text {
   gap: 14px;
 }
 
+
 .home-oneclick-platform-btn {
-  width: 90%;
-  height: 70px;
+  width: 80%;       /* 가로 길이 조절 */
+  height: 50px;     /* 세로 길이 조절 */
+  min-width: 0;
   box-sizing: border-box;
-  padding: 17px 12px;
+  padding: 10px 16px;
   border: 1px solid #d8e9f5;
   border-radius: 13px;
-  background: #e6eff7;
-  background-color: rgba(255, 255, 255, 0.57);
+  background: rgba(255, 255, 255, 0.57);
   color: #393030;
   font-size: 16px;
   font-weight: 100;
@@ -3771,20 +3772,13 @@ p.small-text {
     transform 0.2s ease;
 }
 
+
 /* PC 원클릭 스트리밍 버튼 비율 복구 */
 .home-oneclick-platforms {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   align-items: stretch;
-}
-
-.home-oneclick-platform-btn {
-  width: 100%;
-  min-width: 0;
-  height: 70px;
-  padding: 10px 16px;
-  box-sizing: border-box;
 }
 
 .home-oneclick-platform-btn .platform-korean-label {
@@ -3840,9 +3834,8 @@ p.small-text {
   background: linear-gradient(
     to right,
     #ffffff 0%,
-    #f3f8fc 10%,
-    #eff4f7 20%,
-    #e1ecf3 30%,
+    #f7f9fa 30%,
+    #e9f1f8 65%,
     #d3e9f7 100%
   );
 }
@@ -3959,8 +3952,8 @@ p.small-text {
   }
 
   .home-oneclick-platform-btn {
-    width: 100%;
-    height: 70px;
+    width: 80%;
+    height:50px;
     min-width: 0;
     padding: 10px;
     box-sizing: border-box;
@@ -4066,12 +4059,9 @@ p.small-text {
   gap: 9px;
   min-width: 0;
 }
-
 .home-chart-icon {
-  color: #6d9fbd;
-  font-size: 23px;
+  display: none !important;
 }
-
 .home-chart-heading h2 {
   margin: 0;
   color: #222;
@@ -4103,8 +4093,10 @@ p.small-text {
   border-radius: 12px;
   background: linear-gradient(
     180deg,
-    #f5faff 0%,
-    #fff 100%
+    #ffffff 0%,
+    #f7f9fa 30%,
+    #e9f1f8 65%,
+    #d3e9f7 100%
   );
 }
 
@@ -4151,10 +4143,27 @@ p.small-text {
 
 
 .home-chart-platform {
-  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: #777;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.4px;
+  letter-spacing: 0;
+}
+
+.home-chart-platform-logo {
+  display: block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.home-chart-platform span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .home-chart-rank strong {
@@ -4308,9 +4317,16 @@ p.small-text {
   }
 
   .home-chart-platform {
-    font-size: 9px;
-    letter-spacing: 0;
-  }
+  gap: 5px;
+  font-size: 9px;
+  letter-spacing: 0;
+}
+
+.home-chart-platform-logo {
+  flex-basis: 18px;
+  width: 18px;
+  height: 18px;
+}
 
   .home-chart-rank strong {
     font-size: 14px;
@@ -4351,31 +4367,206 @@ p.small-text {
 /* 차트 순위 변동 표시 */
 /* ================================= */
 
-.chart-rank-change {
-  display: inline-block;
-  margin-left: 7px;
-  font-size: 12px;
+
+/* 홈 실시간 차트 순위 정렬 */
+.home-chart-rank > strong {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  gap: 12px;
+  text-align: left;
+  white-space: nowrap;
   font-weight: 600;
-  color: #8293a0;
-  vertical-align: middle;
 }
 
-.chart-rank-change.rank-up {
-  color: #e56c85;
+.rank-main {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
 }
 
-.chart-rank-change.rank-down {
-  color: #648fc7;
+.rank-change {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.chart-rank-change.rank-new {
-  color: #6297cf;
+/* 순위 변동 표시 개별 좌우 위치 조정 */
+.rank-up {
+  color: #e53935;
+  position: relative;
+  left: -7px;
+}
+
+.rank-down {
+  color: #1976d2;
+  position: relative;
+  left: -7px;
+}
+
+
+/* 변동 없음(-) 위치 개별 조정 */
+.home-chart-rank > strong .rank-change.rank-same {
+  position: relative !important;
+  left: -10px !important;
+  color: inherit;
+}
+
+/* ============================== */
+/* 실시간 차트 플랫폼 선택 버튼 */
+/* ============================== */
+
+.chart-platform-selector {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  margin: 26px 0 28px;
+}
+
+.chart-platform-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 0;
+  min-height: 100px;
+  padding: 14px 8px;
+  border: 1px solid #d8e9f5;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #393030;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.chart-platform-btn img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.chart-platform-btn:hover {
+  background: #f2f8fc;
+  border-color: #b6d6ed;
+}
+
+.chart-platform-btn.active {
+  background: linear-gradient(
+    180deg,
+    #f2f8fc 0%,
+    #e4f1fa 100%
+  );
+  border: 1.5px solid #9bc9ed;
+  color: #245c83;
+}
+
+.chart-platform-btn:focus-visible {
+  outline: 2px solid #78b5e5;
+  outline-offset: 3px;
+}
+
+/* 선택한 플랫폼의 순위만 표시 */
+.chart-song-ranks p.chart-rank-hidden {
+  display: none !important;
 }
 
 /* 모바일 */
 @media (max-width: 600px) {
-  .chart-rank-change {
-    margin-left: 4px;
-    font-size: 11px;
+  .chart-platform-selector {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 20px 0 24px;
+  }
+
+  .chart-platform-btn {
+    min-height: 88px;
+    gap: 7px;
+    padding: 11px 5px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  .chart-platform-btn img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ================================= */
+/* 차트 전체보기 - 순위 및 변동 표시 */
+/* ================================= */
+
+.chart-song-ranks p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 순위 숫자와 변동 표시를 나란히 정렬 */
+.chart-song-ranks p > strong {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 0;
+  gap: 25px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* 순위 숫자 */
+.chart-song-ranks .rank-main {
+  margin: 0;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+/* 변동 표시 */
+.chart-song-ranks .rank-change {
+  margin-left: 0;
+  flex-shrink: 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 상승 */
+.chart-song-ranks .rank-up {
+  color: #e53935;
+  position: relative;
+  left: -7px;
+}
+
+/* 하락 */
+.chart-song-ranks .rank-down {
+  color: #1976d2;
+  position: relative;
+  left: -7px;
+}
+
+/* 변동 없음 */
+.chart-song-ranks .rank-change.rank-same {
+  position: relative;
+  left: -10px;
+  color: inherit;
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+  .chart-song-ranks p > strong {
+    gap: 25px;
+    font-size: 13px;
   }
 }

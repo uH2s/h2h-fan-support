@@ -354,15 +354,14 @@ function getChartSong(charts, chartName, songTitle) {
   };
 }
 
-
 function formatRank(current, previous) {
   if (current.status === "error") {
     return "집계 오류";
   }
 
   if (current.status === "not-ranked") {
-  return "-";
-}
+    return "-";
+  }
 
   const rankText = `${current.rank}위`;
 
@@ -388,7 +387,48 @@ function formatRank(current, previous) {
     return `${rankText} ↓ ${Math.abs(difference)}`;
   }
 
-  return `${rankText} → 변동 없음`;
+  return `${rankText} -`;
+}
+
+function renderRank(element, current, previous) {
+  if (!element) return;
+
+  element.replaceChildren();
+
+  const rankMain = document.createElement("span");
+  rankMain.className = "rank-main";
+
+  const rankChange = document.createElement("span");
+  rankChange.className = "rank-change";
+
+  if (current.status !== "ranked") {
+    rankMain.textContent = formatRank(current, previous);
+    element.appendChild(rankMain);
+    return;
+  }
+
+  rankMain.textContent = `${current.rank}위`;
+
+  if (!previous || previous.status !== "ranked") {
+    rankMain.textContent = formatRank(current, previous);
+    element.appendChild(rankMain);
+    return;
+  }
+
+  const difference = previous.rank - current.rank;
+
+  if (difference > 0) {
+    rankChange.classList.add("rank-up");
+    rankChange.textContent = `↑ ${difference}`;
+  } else if (difference < 0) {
+    rankChange.classList.add("rank-down");
+    rankChange.textContent = `↓ ${Math.abs(difference)}`;
+  } else {
+    rankChange.classList.add("rank-same");
+    rankChange.textContent = "-";
+  }
+
+  element.append(rankMain, rankChange);
 }
 
 async function loadChartRanks() {
@@ -438,7 +478,7 @@ for (const chartName of [
           ? getChartSong(previous.charts, chartName, songTitle)
           : null;
 
-        element.textContent = formatRank(current, prior);
+        renderRank(element, current, prior);
       }
     }
 
@@ -450,24 +490,29 @@ for (const chartName of [
       latest.charts, "HOT100", "Lemon Tang"
     );
 
-    if (homeMelonTop100Rank) {
-      homeMelonTop100Rank.textContent =
-        formatRank(
-          lemonTop100,
-          previous
-            ? getChartSong(previous.charts, "TOP100", "Lemon Tang")
-            : null
-        );
-    }
+    
+if (homeMelonTop100Rank) {
+  renderRank(
+    homeMelonTop100Rank,
+    lemonTop100,
+    previous
+      ? getChartSong(previous.charts, "TOP100", "Lemon Tang")
+      : null
+  );
+}
 
-    if (homeMelonHot100Rank) {
-      homeMelonHot100Rank.textContent =
-        formatRank(
-          lemonHot100,
-          previous
-            ? getChartSong(previous.charts, "HOT100", "Lemon Tang")
-            : null
-        );
+
+    
+if (homeMelonHot100Rank) {
+  renderRank(
+    homeMelonHot100Rank,
+    lemonHot100,
+    previous
+      ? getChartSong(previous.charts, "HOT100", "Lemon Tang")
+      : null
+  );
+}
+
 
         // 지니
 const lemonGenie = getChartSong(
@@ -476,14 +521,17 @@ const lemonGenie = getChartSong(
   "Lemon Tang"
 );
 
+
 if (homeGenieRank) {
-  homeGenieRank.textContent = formatRank(
+  renderRank(
+    homeGenieRank,
     lemonGenie,
     previous
       ? getChartSong(previous.charts, "GENIE", "Lemon Tang")
       : null
   );
 }
+
 
 // 벅스
 const lemonBugs = getChartSong(
@@ -492,14 +540,17 @@ const lemonBugs = getChartSong(
   "Lemon Tang"
 );
 
+
 if (homeBugsRank) {
-  homeBugsRank.textContent = formatRank(
+  renderRank(
+    homeBugsRank,
     lemonBugs,
     previous
       ? getChartSong(previous.charts, "BUGS", "Lemon Tang")
       : null
   );
 }
+
 
 // FLO
 const lemonFlo = getChartSong(
@@ -508,13 +559,17 @@ const lemonFlo = getChartSong(
   "Lemon Tang"
 );
 
+
 if (homeFloRank) {
-  homeFloRank.textContent = formatRank(
+  renderRank(
+    homeFloRank,
     lemonFlo,
     previous
       ? getChartSong(previous.charts, "FLO", "Lemon Tang")
       : null
   );
+}
+
 
   // VIBE
 const lemonVibe = getChartSong(
@@ -523,20 +578,16 @@ const lemonVibe = getChartSong(
   "Lemon Tang"
 );
 
+
 if (homeVibeRank) {
-  homeVibeRank.textContent = formatRank(
+  renderRank(
+    homeVibeRank,
     lemonVibe,
     previous
-      ? getChartSong(
-          previous.charts,
-          "VIBE",
-          "Lemon Tang"
-        )
+      ? getChartSong(previous.charts, "VIBE", "Lemon Tang")
       : null
   );
 }
-}
-    }
 
     const updatedText = latest.checkedAt
       ? "마지막 집계: " +
@@ -1990,3 +2041,64 @@ if (mobileMenuToggle && mobileMenuLinks) {
     }
   );
 }
+
+/* ===================================== */
+/* 실시간 차트 전체보기 - 플랫폼별 필터 */
+/* ===================================== */
+
+(() => {
+  const selector = document.querySelector(".chart-platform-selector");
+  const chartPage = document.getElementById("chart-page");
+
+  if (!selector || !chartPage) return;
+
+  const buttons = selector.querySelectorAll(".chart-platform-btn");
+
+  // 기존 순위 항목의 ID와 레이블을 유지하면서 플랫폼 구분
+  const platformMap = {
+    "TOP100": "melon",
+    "HOT100": "melon",
+    "GENIE": "genie",
+    "BUGS": "bugs",
+    "FLO": "flo",
+    "VIBE": "vibe"
+  };
+
+  chartPage.querySelectorAll(".chart-song-ranks p").forEach((item) => {
+    const label = item.firstChild?.textContent?.trim().toUpperCase();
+
+    // 레이블이 별도 텍스트 노드로 구성된 기존 HTML 기준
+    const platform = platformMap[label];
+
+    if (platform) {
+      item.dataset.chartPlatform = platform;
+    }
+  });
+
+  function selectChartPlatform(platform) {
+    buttons.forEach((button) => {
+      const isActive = button.dataset.chartPlatform === platform;
+
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+
+    chartPage.querySelectorAll(".chart-song-ranks p").forEach((item) => {
+      const itemPlatform = item.dataset.chartPlatform;
+
+      item.classList.toggle(
+        "chart-rank-hidden",
+        itemPlatform !== platform
+      );
+    });
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectChartPlatform(button.dataset.chartPlatform);
+    });
+  });
+
+  // 처음 열었을 때 멜론 순위 표시
+  selectChartPlatform("melon");
+})();

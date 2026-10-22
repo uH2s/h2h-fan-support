@@ -471,7 +471,6 @@
 
   <div class="home-chart-header">
     <div class="home-chart-heading">
-      <span class="home-chart-icon">♫</span>
       <h2>실시간 차트 순위</h2>
     </div>
 
@@ -492,48 +491,60 @@
 
 
 <div class="home-chart-ranks">
-
   <!-- 멜론 TOP100 -->
   <div class="home-chart-rank">
-    <span class="home-chart-platform">MELON TOP100</span>
+    <div class="home-chart-platform">
+      <img src="images/melon-logo.png" alt="" class="home-chart-platform-logo">
+      <span>멜론 TOP100</span>
+    </div>
     <strong id="home-melon-top100-rank">집계 대기 중</strong>
   </div>
 
   <!-- 멜론 HOT100 -->
   <div class="home-chart-rank">
-    <span class="home-chart-platform">MELON HOT100</span>
+    <div class="home-chart-platform">
+      <img src="images/melon-logo.png" alt="" class="home-chart-platform-logo">
+      <span>멜론 HOT100</span>
+    </div>
     <strong id="home-melon-hot100-rank">집계 대기 중</strong>
   </div>
 
   <!-- 지니 -->
   <div class="home-chart-rank">
-    <span class="home-chart-platform">GENIE</span>
+    <div class="home-chart-platform">
+      <img src="images/genie-logo.png" alt="" class="home-chart-platform-logo">
+      <span>지니뮤직</span>
+    </div>
     <strong id="home-genie-rank">집계 대기 중</strong>
   </div>
 
   <!-- 벅스 -->
   <div class="home-chart-rank">
-    <span class="home-chart-platform">BUGS</span>
+    <div class="home-chart-platform">
+      <img src="images/bugs-logo.png" alt="" class="home-chart-platform-logo">
+      <span>벅스</span>
+    </div>
     <strong id="home-bugs-rank">집계 대기 중</strong>
   </div>
 
-  <!-- 플로 -->
+  <!-- FLO -->
   <div class="home-chart-rank">
-    <span class="home-chart-platform">FLO</span>
+    <div class="home-chart-platform">
+      <img src="images/flo-logo.png" alt="" class="home-chart-platform-logo">
+      <span>FLO</span>
+    </div>
     <strong id="home-flo-rank">집계 대기 중</strong>
   </div>
+
   <!-- VIBE -->
   <div class="home-chart-rank">
-    <span class="home-chart-platform">VIBE</span>
+    <div class="home-chart-platform">
+      <img src="images/vibe-logo.png" alt="" class="home-chart-platform-logo">
+      <span>VIBE</span>
+    </div>
     <strong id="home-vibe-rank">집계 대기 중</strong>
   </div>
 </div>
-
-
-  <p class="home-chart-updated" id="home-chart-updated">
-    순위 데이터 준비 중
-  </p>
-
 </section>
 
 
@@ -558,10 +569,49 @@
     </button>
 
     <p class="small-text">HEARTS2HEARTS</p>
-    <h2 class="chart-page-title">음원 차트</h2>
-    <p class="chart-page-description">
-      수록곡별 멜론 TOP100 · HOT100 순위를 확인해 보세요.
-    </p>
+    <h2 class="chart-page-title">실시간 음원 차트</h2>
+    
+<p class="chart-page-description">
+  플랫폼을 선택해 하츠투하츠의 현재 순위를 확인해 보세요!
+</p>
+
+<!-- 플랫폼 선택 버튼 -->
+<div class="chart-platform-selector" role="group" aria-label="차트 플랫폼 선택">
+
+  <button type="button" class="chart-platform-btn active"
+    data-chart-platform="melon" aria-pressed="true">
+    <img src="images/melon-logo.png" alt="">
+    <span>멜론</span>
+  </button>
+
+  <button type="button" class="chart-platform-btn"
+    data-chart-platform="genie" aria-pressed="false">
+    <img src="images/genie-logo.png" alt="">
+    <span>지니뮤직</span>
+  </button>
+
+  <button type="button" class="chart-platform-btn"
+    data-chart-platform="bugs" aria-pressed="false">
+    <img src="images/bugs-logo.png" alt="">
+    <span>벅스</span>
+  </button>
+
+  <button type="button" class="chart-platform-btn"
+    data-chart-platform="flo" aria-pressed="false">
+    <img src="images/flo-logo.png" alt="">
+    <span>FLO</span>
+  </button>
+
+  <button type="button" class="chart-platform-btn"
+    data-chart-platform="vibe" aria-pressed="false">
+    <img src="images/vibe-logo.png" alt="">
+    <span>VIBE</span>
+  </button>
+
+</div>
+
+<div class="chart-song-list">
+
 
     <div class="chart-song-list">
 
