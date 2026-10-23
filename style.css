@@ -4661,3 +4661,28 @@ p.small-text {
     font-size: 16px;
   }
 }
+
+/* 홈화면 원클릭 스밍 창 아래 구분 점선 */
+.home-oneclick-divider {
+  width: 46%;
+  border-top: 2.5px dashed #d9e2e7;
+  margin: -105px auto 40px;
+}
+
+
+/* 홈화면 원클릭 스밍 창 아래 구분 점선 */
+.home-oneclick-divider {
+  width: 46%;
+  border-top: 2.5px dashed #d9e2e7;
+  margin: -105px auto 40px;
+  box-sizing: border-box;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .home-oneclick-divider {
+    width: 93%;
+    margin: -80px auto 40px;
+  }
+}
+
