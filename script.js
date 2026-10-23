@@ -936,11 +936,13 @@ fanchantBackButton.addEventListener("click", () => {
       ko: "새로운 공지 제목",
       en: "New Notice",
       id: "Judul Pengumuman Baru"
+      zh: "新公告标题"
     },
     content: {
       ko: "공지 내용을 입력하세요.",
       en: "Enter the notice here.",
       id: "Masukkan isi pengumuman."
+      zh:"请输入公告内容。"
   },
 
 */
@@ -952,8 +954,10 @@ const notices = [
 
     title: {
       ko: "[하츠투하츠 음원총공팀 홈페이지 오픈]",
-      en: "[Hearts2Hearts Strm Website Launch]",
-      id: "[Peluncuran Situs Web Tim Streaming Hearts2Hearts]"
+      en: "[Hearts2Hearts strm Web Site Launch]",
+      id: "[Peluncuran Situs Web Hearts2Hearts Strm]",
+      zh: "[Hearts2Hearts Strm 网站上线]",
+      ja: "[Hearts2Hearts 音源応援チーム公式サイト オープン]"
     },
 
     content: {
@@ -979,8 +983,25 @@ Dengan senang hati kami mengumumkan peluncuran situs web Tim Streaming Hearts2He
 Kami akan terus memperbarui situs web dengan berbagai informasi yang bermanfaat. Kami berharap kalian terus mendukung kami.
 Terima kasih.
 
-Tim Streaming Hearts2Hearts`
-    }
+Tim Streaming Hearts2Hearts`,
+
+zh: `S2U的各位，大家好！
+
+我们很高兴地宣布推出 Hearts2Hearts Streaming 支持团队网站！
+我们计划持续更新网站，提供有用且丰富多样的信息，也希望您能继续支持我们。
+谢谢。
+
+Hearts2Hearts Streaming Support Team`,
+    
+    ja: `S2Uの皆さん、こんにちは！
+
+Hearts2Hearts 音源応援チームの公式ウェブサイトがオープンしました！
+
+今後も役立つ情報を随時更新していきますので、ぜひご覧いただき、応援をよろしくお願いします。
+
+ありがとうございます！
+Hearts2Hearts 音源応援チーム`
+    },
   }
 ];
 
@@ -1284,12 +1305,6 @@ function openNoticeList() {
 
 }
 
-
-/* ================================= */
-/* NOTICE 상세 표시 */
-/* ================================= */
-
-
 /* ================================= */
 /* NOTICE 상세 표시 */
 /* ================================= */
@@ -1495,6 +1510,11 @@ homeOneclickGenie: "지니뮤직",
 homeOneclickFlo: "플로",
 homeOneclickBugs: "벅스",
 
+
+noticeMailbox: "하츄(S2U)의 우체통",
+noticeFocus: "하츄(S2U) 여러분, 공지사항에 focus해 주세요!"
+  
+
   },
 
 
@@ -1606,6 +1626,10 @@ homeOneclickMelon: "Melon",
 homeOneclickGenie: "Genie Music",
 homeOneclickFlo: "FLO",
 homeOneclickBugs: "Bugs",
+
+noticeMailbox: "Hachu (S2U)'s Mailbox",
+noticeFocus: "S2U, please check the notices!"
+  
   },
 
   id: {
@@ -1720,8 +1744,202 @@ homeOneclickGenie: "Genie Music",
 homeOneclickFlo: "FLO",
 homeOneclickBugs: "Bugs",
 
-  }
+noticeMailbox: "Kotak Surat Hachu (S2U)",
+noticeFocus: "S2U, jangan lupa cek pengumuman!"
+  
+  },
+zh: {
+
+  name: "简体中文",
+
+  navHome: "首页",
+  navGuide: "使用指南",
+  navStreaming: "音源",
+  navFanchant: "应援口号",
+  navVote: "投票",
+  navNotice: "公告",
+
+  guideDescription:
+    "查看各类指南",
+
+  streamingDescription:
+    "MV/音源播放指南",
+
+  fanchantDescription:
+    "Hearts2Hearts 官方应援口号合集",
+
+  voteDescription:
+    "Hearts2Hearts 各类投票指南",
+
+  footer:
+    "社交媒体: https://linktr.ee/h2h_strm",
+
+  noticeLabel:
+    "公告",
+
+  streamingSmall:
+    "MV/音源播放指南",
+
+  streamingList:
+    "播放列表",
+
+  oneClick:
+    "一键播放",
+
+  streamingListSmall:
+    "播放列表",
+
+  streamingListTitle:
+    "播放列表",
+
+  streamingListCaption:
+    "Iconic Heart 音源播放列表",
+
+  oneClickSmall:
+    "一键音源播放",
+
+  oneClickTitle:
+    "一键播放",
+
+  melonAndroid1:
+    "Melon（安卓）1",
+
+  melonAndroid2:
+    "Melon（安卓）2",
+
+  melonAndroid3:
+    "Melon（安卓）3",
+
+  melonAndroid4:
+    "Melon（安卓）4",
+
+  melonIOS:
+    "Melon（iOS）",
+
+  genieAndroid:
+    "Genie Music（安卓）",
+
+  genieIOS:
+    "Genie Music（iOS）",
+
+  flo:
+    "FLO MUSIC",
+
+  fanchantSmall:
+    "Hearts2Hearts 官方应援口号合集",
+
+  officialFanchant:
+    "官方应援口号",
+
+  homeChartTitle:
+    "实时音源排行榜",
+
+  chartViewAll:
+    "查看全部 →",
+
+  chartPageTitle:
+    "实时音源排行榜",
+
+  chartPlatformDescription:
+    "选择平台，查看 Hearts2Hearts 当前排名！",
+
+  chartPlatformMelon: "Melon",
+  chartPlatformGenie: "Genie Music",
+  chartPlatformBugs: "Bugs",
+  chartPlatformFlo: "FLO",
+  chartPlatformVibe: "VIBE",
+
+  
+  chartLastUpdated: "最后统计时间：",
+  chartTimeUnavailable: "无法确认统计时间",
+  chartLoadError: "无法加载排行榜数据。",
+
+  chartRankUnit: "位",
+  chartRankError: "统计错误",
+  chartRankNew: "新上榜",
+
+  homeOneclickTitle: "♬ Lemon Tang 一键播放",
+  homeOneclickMelon: "Melon",
+  homeOneclickGenie: "Genie Music",
+  homeOneclickFlo: "FLO",
+  homeOneclickBugs: "Bugs",
+
+noticeMailbox: "Hachu（S2U）的信箱",
+noticeFocus: "S2U的各位，请关注公告！"
+  
+
+},
+
+ja: {
+  name: "日本語",
+
+  navHome: "ホーム",
+  navGuide: "ガイド",
+  navStreaming: "ストリーミング",
+  navFanchant: "掛け声",
+  navVote: "投票",
+  navNotice: "お知らせ",
+
+  guideDescription: "各種ガイドを確認できます",
+  streamingDescription: "MV・音源の再生ガイド",
+  fanchantDescription: "Hearts2Hearts 公式掛け声一覧",
+  voteDescription: "Hearts2Hearts 各種投票ガイド",
+
+  footer: "SNS: https://linktr.ee/h2h_strm",
+  noticeLabel: "お知らせ",
+
+  streamingSmall: "MV・音源の再生ガイド",
+  streamingList: "プレイリスト",
+  oneClick: "ワンクリック再生",
+  streamingListSmall: "プレイリスト",
+  streamingListTitle: "プレイリスト",
+  streamingListCaption: "Iconic Heart 音源プレイリスト",
+
+  oneClickSmall: "ワンクリック音源再生",
+  oneClickTitle: "ワンクリック再生",
+
+  melonAndroid1: "Android 1",
+  melonAndroid2: "Android 2",
+  melonAndroid3: "Android 3",
+  melonAndroid4: "Android 4",
+  melonIOS: "iOS",
+  genieAndroid: "Android",
+  genieIOS: "iOS",
+  flo: "FLO",
+
+  fanchantSmall: "Hearts2Hearts 公式掛け声",
+  officialFanchant: "公式掛け声",
+
+  homeChartTitle: "リアルタイム音源ランキング",
+  chartViewAll: "すべて見る →",
+  chartPageTitle: "音源ランキング",
+  chartPlatformDescription:
+    "プラットフォームを選択して、Hearts2Heartsの現在のランキングを確認しましょう！",
+
+  chartPlatformMelon: "Melon",
+  chartPlatformGenie: "Genie",
+  chartPlatformBugs: "Bugs",
+  chartPlatformFlo: "FLO",
+  chartPlatformVibe: "VIBE",
+
+  chartLastUpdated: "最終集計時刻：",
+  chartTimeUnavailable: "集計時刻を確認できません",
+  chartLoadError: "ランキングデータを読み込めませんでした。",
+  chartRankUnit: "位",
+  chartRankError: "集計エラー",
+  chartRankNew: "新規ランクイン",
+
+  homeOneclickTitle: "♬ Lemon Tang ワンクリック再生",
+  homeOneclickMelon: "Melon",
+  homeOneclickGenie: "Genie Music",
+  homeOneclickFlo: "FLO",
+  homeOneclickBugs: "Bugs",
+
+  noticeMailbox: "Hachu（S2U）の郵便箱",
+  noticeFocus: "S2Uの皆さん、お知らせをチェックしてください！"
+},
 };
+
 
 
 /* ================================= */
@@ -1751,6 +1969,46 @@ function applyLanguage(languageCode) {
   if (!language) {
     return;
   }
+
+
+  // 공지사항 목록 상단 문구 번역
+  const noticeMailboxTitle = document.querySelector(
+    ".mailbox-title-text"
+  );
+
+  if (noticeMailboxTitle) {
+    noticeMailboxTitle.textContent =
+      language.noticeMailbox;
+  }
+
+  const noticeFocusText = document.querySelector(
+    ".notice-focus-text"
+  );
+
+  if (noticeFocusText) {
+    noticeFocusText.textContent =
+      language.noticeFocus;
+  }
+
+  // 공지사항 목록 제목 번역
+  const noticeListHeading = document.getElementById(
+    "notice-list-heading"
+  );
+
+  if (noticeListHeading) {
+    const noticeListHeadings = {
+      ko: "공지사항",
+      en: "NOTICE",
+      id: "PENGUMUMAN",
+      zh: "公告",
+      ja: "お知らせ"
+    };
+
+    noticeListHeading.textContent =
+      noticeListHeadings[languageCode] || "공지사항";
+  }
+
+
 // 홈 화면 원클릭 스트리밍 제목
 const homeOneclickTitle =
   document.getElementById("home-oneclick-title");
@@ -1783,16 +2041,19 @@ Object.entries(homeOneclickPlatforms).forEach(
     }
   }
 );
-  if (fanchantDescription) {
+  
+if (fanchantDescription) {
   const descriptions = {
     ko: "하츠투하츠 공식 응원법",
     en: "Hearts2Hearts Official Fan Chant",
-    id: "Fan Chant Resmi Hearts2Hearts"
+    id: "Fan Chant Resmi Hearts2Hearts",
+    zh: "Hearts2Hearts 官方应援口号"
   };
 
   fanchantDescription.textContent =
     descriptions[currentLanguage] || descriptions.ko;
 }
+
 
 // 전체 차트 페이지 안내 문구
 const chartPageDescription = document.querySelector(
