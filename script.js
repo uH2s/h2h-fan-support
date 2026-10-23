@@ -984,7 +984,9 @@ Tim Streaming Hearts2Hearts`
   }
 ];
 
-
+if (notices.length > 0 && latestNoticeDate) {
+  latestNoticeDate.textContent = notices[0].date;
+}
 
 /* ================================= */
 /* 현재 보고 있는 공지 */
