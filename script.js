@@ -45,6 +45,9 @@ const fanchantPage =
 
 const fanchantDetailPage =
   document.getElementById("fanchant-detail-page");
+
+  const fanchantDescription =
+  document.getElementById("fanchant-description");
   
 const noticeListPage =
   document.getElementById("notice-list-page");
@@ -58,9 +61,15 @@ const noticeListBackButton =
 const latestNoticeSection =
   document.querySelector(".latest-notice");
 
-  const latestNoticePreview =
-  document.getElementById("latest-notice-preview");
+  console.log(
+  "전체보기 버튼:",
+  chartViewAllButton
+);
 
+console.log(
+  "차트 페이지:",
+  chartPage
+);
 
 /* ================================= */
 /* 상단 메뉴 */
@@ -147,10 +156,8 @@ const noticeDetailDate =
 const noticeDetailTitle =
   document.getElementById("notice-detail-title");
 
-const noticeDetailContent =
+  const noticeDetailContent =
   document.getElementById("notice-detail-content");
-
-
 
 /* ================================= */
 /* STREAMING */
@@ -214,39 +221,26 @@ if (oneclickStreamingBackButton) {
   });
 }
 
-
 /* ================================= */
 /* CHART */
 /* ================================= */
 
-/* 차트 전체보기 → 차트 페이지 */
-if (chartViewAllButton) {
-  chartViewAllButton.addEventListener("click", () => {
-    console.log("차트 전체보기 버튼 클릭");
-    console.log("chartPage:", chartPage);
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("#chart-view-all-btn");
 
-    if (!chartPage) {
-      console.error("차트 페이지 요소를 찾을 수 없습니다.");
-      return;
-    }
+  if (button) {
+    console.log("전체보기 클릭 감지");
+    console.log("차트 페이지:", chartPage);
 
     showPage(chartPage);
+  }
 
-    console.log(
-      "차트 페이지 active 여부:",
-      chartPage.classList.contains("active")
-    );
-  });
-}
+  const homeButton = event.target.closest("#chart-home-btn");
 
-/* 차트 페이지 → HOME */
-if (chartHomeButton) {
-  chartHomeButton.addEventListener("click", () => {
+  if (homeButton) {
     showPage(mainPage);
-  });
-}
-
-
+  }
+});
 
 /* ================================= */
 /* 차트 순위 데이터 표시 */
@@ -355,23 +349,27 @@ function getChartSong(charts, chartName, songTitle) {
 }
 
 function formatRank(current, previous) {
+  const language =
+    languageData[currentLanguage] || languageData.ko;
+
+  const unit = language.chartRankUnit;
+  const errorText = language.chartRankError;
+  const newText = language.chartRankNew;
+
   if (current.status === "error") {
-    return "집계 오류";
+    return errorText;
   }
 
   if (current.status === "not-ranked") {
     return "-";
   }
 
-  const rankText = `${current.rank}위`;
-
-  if (!previous || previous.status === "error") {
-    return rankText;
-  }
-
-  if (previous.status === "not-ranked") {
-    return `${rankText} NEW`;
-  }
+  const rankText =
+    currentLanguage === "ko"
+      ? `${current.rank}${unit}`
+      : currentLanguage === "id"
+        ? `${current.rank}`
+        : `${current.rank}${unit}`;
 
   if (previous.status !== "ranked") {
     return rankText;
@@ -407,7 +405,13 @@ function renderRank(element, current, previous) {
     return;
   }
 
-  rankMain.textContent = `${current.rank}위`;
+  const language =
+  languageData[currentLanguage] || languageData.ko;
+
+rankMain.textContent =
+  currentLanguage === "id"
+    ? `${current.rank}`
+    : `${current.rank}${language.chartRankUnit}`;
 
   if (!previous || previous.status !== "ranked") {
     rankMain.textContent = formatRank(current, previous);
@@ -589,12 +593,26 @@ if (homeVibeRank) {
   );
 }
 
+     const languageCode =
+      localStorage.getItem("h2h-language") || "ko";
+
+    const language =
+      languageData[languageCode] || languageData.ko;
+
+    const localeMap = {
+      ko: "ko-KR",
+      en: "en-US",
+      id: "id-ID",
+    };
+
+    const locale = localeMap[languageCode] || "ko-KR";
+
     const updatedText = latest.checkedAt
-      ? "마지막 집계: " +
-        new Date(latest.checkedAt).toLocaleString("ko-KR", {
+      ? language.chartLastUpdated +
+        new Date(latest.checkedAt).toLocaleString(locale, {
           timeZone: "Asia/Seoul",
         })
-      : "집계 시각 확인 불가";
+      : language.chartTimeUnavailable;
 
     if (updatedElement) {
       updatedElement.textContent = updatedText;
@@ -606,12 +624,18 @@ if (homeVibeRank) {
   } catch (error) {
     console.error("차트 순위 불러오기 오류:", error);
 
+    const languageCode =
+      localStorage.getItem("h2h-language") || "ko";
+
+    const language =
+      languageData[languageCode] || languageData.ko;
+
     if (updatedElement) {
-      updatedElement.textContent = "차트 데이터를 불러오지 못했습니다.";
+      updatedElement.textContent = language.chartLoadError;
     }
 
     if (homeChartUpdated) {
-      homeChartUpdated.textContent = "차트 데이터를 불러오지 못했습니다.";
+      homeChartUpdated.textContent = language.chartLoadError;
     }
   }
 }
@@ -921,29 +945,45 @@ fanchantBackButton.addEventListener("click", () => {
 
 */
 
-const notices = [
 
+const notices = [
   {
-    date: "2026.09.29",
+    date: "2026.10.23",
 
     title: {
-      ko: "[공지사항 제목]",
-      en: "[notice title]",
-      id: "[judul pengumuman]"
+      ko: "[하츠투하츠 음원총공팀 홈페이지 오픈]",
+      en: "[Hearts2Hearts Strm Website Launch]",
+      id: "[Peluncuran Situs Web Tim Streaming Hearts2Hearts]"
     },
 
     content: {
-      ko:
-        "[공지사항 내용 1줄 미리보기]",
+      ko: `하츄(S2U) 여러분, 안녕하세요!
 
-      en:
-        "Please enter the notice here.",
+하츠투하츠 음원총공팀 홈페이지 오픈 소식을 전해드립니다.
+앞으로 보다 편리하고 다양한 정보를 업데이트할 예정이니 많은 관심 부탁드립니다.
+감사합니다.
 
-      id:
-        "Silakan masukkan isi pengumuman di sini."
-      }  }
+하츠투하츠 음원총공팀`,
 
+      en: `Hello, S2U!
+
+We're excited to announce the launch of the Hearts2Hearts Streaming Support Team website!
+We plan to keep updating the website with useful and diverse information, and we hope you'll continue to show your support.
+Thank you.
+
+Hearts2Hearts Streaming Support Team`,
+
+      id: `Halo, S2U!
+
+Dengan senang hati kami mengumumkan peluncuran situs web Tim Streaming Hearts2Hearts!
+Kami akan terus memperbarui situs web dengan berbagai informasi yang bermanfaat. Kami berharap kalian terus mendukung kami.
+Terima kasih.
+
+Tim Streaming Hearts2Hearts`
+    }
+  }
 ];
+
 
 
 /* ================================= */
@@ -1063,16 +1103,6 @@ if (latestNoticeTitle) {
   ).textContent = noticeTitleText;
 }
 
-  if (latestNoticePreview) {
-    const content =
-      currentNotice.content[currentLanguage] ||
-      currentNotice.content.ko ||
-      "";
-
-    latestNoticePreview.textContent =
-      content.replace(/\s+/g, " ").trim();
-  }
-
   const seenNoticeKey =
     localStorage.getItem("h2h-seen-notice");
 
@@ -1095,6 +1125,7 @@ if (latestNoticeTitle) {
 let currentNoticePage = 1;
 
 const noticesPerPage = 5;
+
 
 
 /* ================================= */
@@ -1129,10 +1160,6 @@ function renderNoticeList(page = 1) {
         ? "There are no notices yet."
         : currentLanguage === "id"
         ? "Belum ada pengumuman."
-        : currentLanguage === "ja"
-        ? "お知らせはまだありません。"
-        : currentLanguage === "zh"
-        ? "暂无公告。"
         : "등록된 공지사항이 없습니다.";
 
     noticeListContainer.appendChild(emptyMessage);
@@ -1185,28 +1212,19 @@ function renderNoticeList(page = 1) {
       notice.title.ko ||
       "";
 
-    const preview =
-      document.createElement("div");
-
-    preview.className = "notice-list-item-preview";
-
-    const content =
-      notice.content[currentLanguage] ||
-      notice.content.ko ||
-      "";
-
-    preview.textContent =
-      content.replace(/\s+/g, " ").trim();
-
-    item.append(top, title, preview);
+    /* 미리보기 없이 날짜와 제목만 표시 */
+    item.append(top, title);
 
     item.addEventListener("click", () => {
       openNotice(notice);
     });
 
     noticeListContainer.appendChild(item);
-    updateNoticeUnreadDots();
+
   });
+
+  /* 읽지 않은 공지 표시 갱신 */
+  updateNoticeUnreadDots();
 
   /* 페이지네이션 */
 
@@ -1224,7 +1242,6 @@ function renderNoticeList(page = 1) {
 
       pageButton.type = "button";
       pageButton.className = "notice-page-btn";
-
       pageButton.textContent = i;
 
       if (i === currentNoticePage) {
@@ -1235,8 +1252,9 @@ function renderNoticeList(page = 1) {
         );
       }
 
-      pageButton.addEventListener("click", () => {
+      pageButton.addEventListener("click", (event) => {
 
+        event.stopPropagation();
         renderNoticeList(i);
 
       });
@@ -1269,30 +1287,44 @@ function openNoticeList() {
 /* NOTICE 상세 표시 */
 /* ================================= */
 
+
+/* ================================= */
+/* NOTICE 상세 표시 */
+/* ================================= */
+
 function openNotice(notice) {
 
-  if (!notice) {
+  if (!notice || !noticePage) {
     return;
   }
 
   currentNotice = notice;
+
   markNoticeAsRead(notice);
-  noticeDetailDate.textContent =
-    notice.date;
 
-  noticeDetailTitle.textContent =
-    notice.title[currentLanguage] ||
-    notice.title.ko ||
-    "";
+  if (noticeDetailDate) {
+    noticeDetailDate.textContent =
+      notice.date || "";
+  }
 
-  noticeDetailContent.textContent =
-    notice.content[currentLanguage] ||
-    notice.content.ko ||
-    "";
+  if (noticeDetailTitle) {
+    noticeDetailTitle.textContent =
+      notice.title[currentLanguage] ||
+      notice.title.ko ||
+      "";
+  }
+
+  if (noticeDetailContent) {
+    noticeDetailContent.textContent =
+      notice.content[currentLanguage] ||
+      notice.content.ko ||
+      "";
+  }
 
   showPage(noticePage);
 
 }
+
 
 
 /* ================================= */
@@ -1357,6 +1389,7 @@ const languageData = {
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navVote: "VOTE",
     navNotice: "NOTICE",
 
     guideDescription:
@@ -1429,7 +1462,36 @@ const languageData = {
       "하츠투하츠 공식 응원법 모음",
 
     officialFanchant:
-      "OFFICIAL FANCHANT"
+      "OFFICIAL FANCHANT",
+
+      homeChartTitle: "실시간 차트 순위",
+
+      chartViewAll: "전체보기 →",
+
+chartPageTitle: "실시간 음원 차트",
+
+      chartPlatformDescription:
+  "플랫폼을 선택해 하츠투하츠의 현재 순위를 확인해 보세요!",
+
+chartPlatformMelon: "멜론",
+chartPlatformGenie: "지니뮤직",
+chartPlatformBugs: "벅스",
+chartPlatformFlo: "플로",
+chartPlatformVibe: "바이브",
+
+chartLastUpdated: "마지막 집계: ",
+chartTimeUnavailable: "집계 시각 확인 불가",
+chartLoadError: "차트 데이터를 불러오지 못했습니다.",
+
+chartRankUnit: "위",
+chartRankError: "집계 오류",
+chartRankNew: "NEW",
+
+homeOneclickTitle: "♬ Lemon Tang 원클릭 스트리밍",
+homeOneclickMelon: "멜론",
+homeOneclickGenie: "지니뮤직",
+homeOneclickFlo: "플로",
+homeOneclickBugs: "벅스",
 
   },
 
@@ -1442,6 +1504,7 @@ const languageData = {
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navVote: "Vote",
     navNotice: "NOTICE",
 
     guideDescription:
@@ -1457,7 +1520,7 @@ const languageData = {
       "Official fanchant collection",
 
     footer:
-      "Made by H2H 음원총공팀",
+      "SNS: https://linktr.ee/h2h_strm",
 
     noticeLabel:
       "NOTICE",
@@ -1472,7 +1535,7 @@ const languageData = {
       "One-Click Streaming",
 
     streamingListSmall:
-      "Recommended streaming list provided by H2H 음원총공팀",
+      "Recommended streaming list provided by H2H strm",
 
     streamingListTitle:
       "STREAMING LIST",
@@ -1511,13 +1574,37 @@ const languageData = {
       "FLO MUSIC",
 
     fanchantSmall:
-      "Official fanchants provided by H2H 음원총공팀",
+      "Official fanchants provided by H2H strm",
 
     officialFanchant:
-      "OFFICIAL FANCHANT"
+      "OFFICIAL FANCHANT",
 
+      homeChartTitle: "Real-Time Chart Rankings",
+chartPageTitle: "Real-Time Music Charts",
+      chartViewAll: "View All →",
+
+      chartPlatformDescription:
+  "Select a platform to check Hearts2Hearts' current rankings!",
+
+chartPlatformMelon: "Melon",
+chartPlatformGenie: "Genie Music",
+chartPlatformBugs: "Bugs",
+chartPlatformFlo: "FLO",
+chartPlatformVibe: "VIBE",
+
+chartLastUpdated: "Last updated: ",
+chartTimeUnavailable: "Update time unavailable",
+chartLoadError: "Failed to load chart data.",
+chartRankUnit: "th",
+chartRankError: "Chart error",
+chartRankNew: "NEW",
+
+homeOneclickTitle: "♬ Lemon Tang One-Click Streaming",
+homeOneclickMelon: "Melon",
+homeOneclickGenie: "Genie Music",
+homeOneclickFlo: "FLO",
+homeOneclickBugs: "Bugs",
   },
-
 
   id: {
 
@@ -1527,6 +1614,7 @@ const languageData = {
     navGuide: "GUIDE",
     navStreaming: "STREAMING",
     navFanchant: "FANCHANT",
+    navVote: "Vote",
     navNotice: "NOTICE",
 
     guideDescription:
@@ -1542,7 +1630,7 @@ const languageData = {
       "Kumpulan fanchant resmi",
 
     footer:
-      "Made by H2H 음원총공팀",
+      "SNS: https://linktr.ee/h2h_strm",
 
     noticeLabel:
       "NOTICE",
@@ -1557,7 +1645,7 @@ const languageData = {
       "Streaming Sekali Klik",
 
     streamingListSmall:
-      "Daftar streaming rekomendasi dari H2H 음원총공팀",
+      "Daftar streaming rekomendasi dari H2H strm",
 
     streamingListTitle:
       "STREAMING LIST",
@@ -1596,10 +1684,39 @@ const languageData = {
       "FLO MUSIC",
 
     fanchantSmall:
-      "Fanchant resmi dari H2H 음원총공팀",
+      "Fanchant resmi dari H2H strm",
 
     officialFanchant:
-      "OFFICIAL FANCHANT"
+      "OFFICIAL FANCHANT",
+
+      homeChartTitle: "Peringkat Tangga Lagu Real-Time",
+
+      chartPageTitle: "Tangga Lagu Musik Real-Time",
+
+      chartViewAll: "Lihat Semua →",
+
+      chartPlatformDescription:
+  "Pilih platform untuk melihat peringkat Hearts2Hearts saat ini!",
+
+chartPlatformMelon: "Melon",
+chartPlatformGenie: "Genie Music",
+chartPlatformBugs: "Bugs",
+chartPlatformFlo: "FLO",
+chartPlatformVibe: "VIBE",
+
+chartLastUpdated: "Pembaruan terakhir: ",
+chartTimeUnavailable: "Waktu pembaruan tidak tersedia",
+chartLoadError: "Gagal memuat data tangga lagu.",
+
+chartRankUnit: "th",
+chartRankError: "Kesalahan data",
+chartRankNew: "BARU",
+
+homeOneclickTitle: "♬ Streaming Sekali Klik Lemon Tang",
+homeOneclickMelon: "Melon",
+homeOneclickGenie: "Genie Music",
+homeOneclickFlo: "FLO",
+homeOneclickBugs: "Bugs",
 
   }
 };
@@ -1632,7 +1749,101 @@ function applyLanguage(languageCode) {
   if (!language) {
     return;
   }
+// 홈 화면 원클릭 스트리밍 제목
+const homeOneclickTitle =
+  document.getElementById("home-oneclick-title");
 
+if (homeOneclickTitle) {
+  homeOneclickTitle.textContent =
+    language.homeOneclickTitle;
+}
+
+// 홈 화면 원클릭 스트리밍 플랫폼 이름
+const homeOneclickPlatforms = {
+  melon: "home-oneclick-melon",
+  genie: "home-oneclick-genie",
+  flo: "home-oneclick-flo",
+  bugs: "home-oneclick-bugs"
+};
+
+Object.entries(homeOneclickPlatforms).forEach(
+  ([platform, elementId]) => {
+    const element =
+      document.getElementById(elementId);
+
+    if (element) {
+      const key =
+        "homeOneclick" +
+        platform.charAt(0).toUpperCase() +
+        platform.slice(1);
+
+      element.textContent = language[key];
+    }
+  }
+);
+  if (fanchantDescription) {
+  const descriptions = {
+    ko: "하츠투하츠 공식 응원법",
+    en: "Hearts2Hearts Official Fan Chant",
+    id: "Fan Chant Resmi Hearts2Hearts"
+  };
+
+  fanchantDescription.textContent =
+    descriptions[currentLanguage] || descriptions.ko;
+}
+
+// 전체 차트 페이지 안내 문구
+const chartPageDescription = document.querySelector(
+  ".chart-page-description"
+);
+
+if (chartPageDescription) {
+  chartPageDescription.textContent =
+    language.chartPlatformDescription;
+}
+const homeChartTitle =
+  document.getElementById("home-chart-title");
+
+if (homeChartTitle) {
+  homeChartTitle.textContent = language.homeChartTitle;
+}
+const chartViewAllBtn =
+  document.getElementById("chart-view-all-btn");
+
+if (chartViewAllBtn) {
+  chartViewAllBtn.textContent = language.chartViewAll;
+}
+
+// 전체 차트 페이지 제목
+const chartPageTitle = document.querySelector(
+  "#chart-page .chart-page-title"
+);
+
+if (chartPageTitle) {
+  chartPageTitle.textContent = language.chartPageTitle;
+}
+
+// 플랫폼별 버튼 제목
+const platformKeys = [
+  "chartPlatformMelon",
+  "chartPlatformGenie",
+  "chartPlatformBugs",
+  "chartPlatformFlo",
+  "chartPlatformVibe"
+];
+
+const platformButtons = document.querySelectorAll(
+  "#chart-page .chart-platform-btn"
+);
+
+platformButtons.forEach((button, index) => {
+  const title = button.querySelector("span");
+  const key = platformKeys[index];
+
+  if (title && key && language[key]) {
+    title.textContent = language[key];
+  }
+});
 
   currentLanguage =
     languageCode;
@@ -2102,3 +2313,14 @@ if (mobileMenuToggle && mobileMenuLinks) {
   // 처음 열었을 때 멜론 순위 표시
   selectChartPlatform("melon");
 })();
+
+console.log("script.js 실행 완료");
+
+
+document.addEventListener("click", (event) => {
+  console.log("클릭 대상:", event.target);
+  console.log(
+    "전체보기 버튼 내부 클릭:",
+    event.target.closest("#chart-view-all-btn")
+  );
+}, true);

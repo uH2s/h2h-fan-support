@@ -278,15 +278,6 @@
 >
   <span id="latest-notice-title-text">공지사항 제목</span>
 </p>
-
-
-            <p
-              id="latest-notice-preview"
-              class="latest-notice-preview"
-            >
-              공지사항 내용 1줄 미리보기
-            </p>
-
           </div>
 
           <span
@@ -395,7 +386,7 @@
   >
     <span>♥ 04</span>
 
-    <h3>투표</h3>
+    <h3>VOTE</h3>
 
     <p>
       하츠투하츠 각종 투표 안내
@@ -405,82 +396,24 @@
 <div class="menu-card-divider"></div>
     </main>
 
-
-<!-- ========================= -->
-<!-- 메인 원클릭 스트리밍 플랫폼 -->
-<!-- ========================= -->
-
-<section class="home-oneclick-section">
-
-  <div class="banner-window-bar home-oneclick-window-bar">
-    <div class="banner-window-title">
-  <span class="banner-window-circle"></span>
-  <span class="banner-window-text">♬ Lemon Tang 원클릭 스트리밍</span>
-  <span class="home-oneclick-dots">• • •</span>
-</div>
-  </div>
-
-  <div class="home-oneclick-platforms">
-
-  <!-- 멜론 -->
-  <button
-    type="button"
-    class="home-oneclick-platform-btn"
-    data-streaming-platform="melon"
-  >
-    <span class="platform-korean-label">
-      <img src="images/melon-logo.png" alt="">
-      멜론
-    </span>
-  </button>
-
-  <!-- 지니뮤직 -->
-  <button
-    type="button"
-    class="home-oneclick-platform-btn"
-    data-streaming-platform="genie"
-  >
-    <span class="platform-korean-label">
-      <img src="images/genie-logo.png" alt="">
-      지니뮤직
-    </span>
-  </button>
-
-  <!-- 플로 -->
-  <button
-    type="button"
-    class="home-oneclick-platform-btn"
-    data-streaming-platform="flo"
-  >
-    <span class="platform-korean-label">
-      <img src="images/flo-logo.png" alt="">
-      플로
-    </span>
-  </button>
-
-</div>
-</section>
-
-
-   
-<!-- ========================= -->
+<!-- ======================== -->
 <!-- 메인 차트 요약 -->
 <!-- ========================= -->
 
 <section class="home-chart-section">
 
+ 
   <div class="home-chart-header">
     <div class="home-chart-heading">
-      <h2>실시간 차트 순위</h2>
+      <h2 id="home-chart-title">실시간 차트 순위</h2>
     </div>
-
     <button
-      type="button"
-      id="chart-view-all-btn"
-      class="chart-view-all-btn"
-    >
-      전체보기 →
-    </button>
+  type="button"
+  id="chart-view-all-btn"
+  class="chart-view-all-btn"
+>
+  전체보기 →
+</button>
   </div>
 
   <div class="home-chart-song">
@@ -545,6 +478,79 @@
     <strong id="home-vibe-rank">집계 대기 중</strong>
   </div>
 </div>
+</section>
+<!-- ========================= -->
+<!-- 메인 원클릭 스트리밍 플랫폼 -->
+<!-- ========================= -->
+
+<section class="home-oneclick-section">
+
+  <div class="banner-window-bar home-oneclick-window-bar">
+    <div class="banner-window-title">
+      <span class="banner-window-circle"></span>
+
+      <span
+        class="banner-window-text"
+        id="home-oneclick-title"
+      >♬ Lemon Tang 원클릭 스트리밍</span>
+
+      <span class="home-oneclick-dots">• • •</span>
+    </div>
+  </div>
+
+  
+<div class="home-oneclick-platforms">
+
+  <!-- 멜론 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="melon"
+  >
+    <span class="platform-korean-label">
+      <img src="images/melon-logo.png" alt="">
+      <span id="home-oneclick-melon">멜론</span>
+    </span>
+  </button>
+
+  <!-- 지니뮤직 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="genie"
+  >
+    <span class="platform-korean-label">
+      <img src="images/genie-logo.png" alt="">
+      <span id="home-oneclick-genie">지니뮤직</span>
+    </span>
+  </button>
+
+  <!-- 플로 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="flo"
+  >
+    <span class="platform-korean-label">
+      <img src="images/flo-logo.png" alt="">
+      <span id="home-oneclick-flo">플로</span>
+    </span>
+  </button>
+
+  <!-- 벅스 -->
+  <button
+    type="button"
+    class="home-oneclick-platform-btn"
+    data-streaming-platform="bugs"
+  >
+    <span class="platform-korean-label">
+      <img src="images/bugs-logo.png" alt="">
+      <span id="home-oneclick-bugs">벅스</span>
+    </span>
+  </button>
+
+</div>
+
 </section>
 
 
@@ -664,7 +670,7 @@
       </article>
 
       <article class="chart-song-card" data-chart-song="처음투성이">
-        <h3>처음투성이</h3>
+        <h3>처음투성이 (Baby Steps)</h3>
        <div class="chart-song-ranks">
   <p>TOP100 <strong id="chart-first-top100">집계 대기 중</strong></p>
   <p>HOT100 <strong id="chart-first-hot100">집계 대기 중</strong></p>
@@ -676,7 +682,7 @@
       </article>
 
       <article class="chart-song-card" data-chart-song="Heart Emoji">
-        <h3>Heart Emoji</h3>
+        <h3> heart emoji (♡)</h3>
         <div class="chart-song-ranks">
   <p>TOP100 <strong id="chart-heart-emoji-top100">집계 대기 중</strong></p>
   <p>HOT100 <strong id="chart-heart-emoji-hot100">집계 대기 중</strong></p>
@@ -801,18 +807,14 @@
         2026.09.29
       </div>
 
-      <h2
-        id="notice-detail-title"
-      >
-      [공지사항 제목]
-      </h2>
+      <h2 id="notice-detail-title">
+  [공지사항 제목]
+</h2>
 
-      <div
-        id="notice-detail-content"
-        class="notice-detail-content"
-      >
-        [공지사항 내용 1줄 미리보기]
-      </div>
+<div
+  id="notice-detail-content"
+  class="notice-detail-content"
+></div>
 
     </div>
 
@@ -1163,6 +1165,23 @@
 
     </section>
 
+    <!-- ========================= -->
+    <!-- BUGS 상세 -->
+    <!-- ========================= -->
+
+    <section
+      class="oneclick-platform-detail"
+      data-streaming-platform="bugs"
+    >
+
+      <h3 class="streaming-platform-title">
+        BUGS MUSIC
+      </h3>
+
+      <!-- 벅스 스트리밍 링크 추가 예정 -->
+
+    </section>
+
   </div>
 
 </div>
@@ -1185,7 +1204,7 @@
 
       
 
-<p class="small-text">
+<p class="small-text" id="fanchant-description">
   하츠투하츠 공식 응원법
 </p>
 
