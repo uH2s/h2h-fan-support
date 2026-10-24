@@ -2587,3 +2587,43 @@ document.addEventListener("click", (event) => {
     event.target.closest("#chart-view-all-btn")
   );
 }, true);
+
+
+
+/* =================================
+   홈 화면 계정 아카이브
+================================= */
+
+document.querySelectorAll(".home-account-folder").forEach(folder => {
+  const image = folder.querySelector("img");
+
+  if (image) {
+    image.style.cursor = "pointer";
+  }
+
+  folder.addEventListener("click", () => {
+    const accountPage = folder.dataset.accountPage;
+
+    if (accountPage === "official") {
+      showPage(
+        document.getElementById("account-official-page")
+      );
+    } else if (accountPage === "team") {
+      showPage(
+        document.getElementById("account-team-page")
+      );
+    }
+  });
+});
+
+document.querySelectorAll(".account-archive-back-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    const mainPage = document.getElementById("main-page");
+
+    if (mainPage) {
+      showPage(mainPage);
+    } else {
+      console.error("main-page 요소를 찾을 수 없습니다.");
+    }
+  });
+});

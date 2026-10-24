@@ -757,37 +757,6 @@ footer {
 }
 
 /* ================================= */
-/* 공통 돌아가기 버튼 */
-/* ================================= */
-
-.back-btn {
-  display: block;
-
-  margin-bottom: 30px;
-
-  padding: 0;
-
-  background: transparent;
-  border: none;
-
-  color: #3e7188;
-
-  font-size: 24px;
-  font-weight: 300;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-.back-btn:hover {
-  color: #888;
-}
-
-
-/* ================================= */
 /* 스트리밍 가이드 */
 /* ================================= */
 
@@ -4686,3 +4655,1129 @@ p.small-text {
   }
 }
 
+
+/* ================================= */
+/* HOME ACCOUNT ARCHIVE */
+/* ================================= */
+
+
+.home-account-archive {
+  width: 50%;
+  max-width: 50vw;
+  margin: 0 auto 40px 0;
+  padding: 0px 20px; /* 기존 24px에서 축소 */
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f4f9fc 100%
+  );
+  border: 1px solid #e1eaf0;
+  border-radius: 18px;
+}
+
+
+.home-account-archive-header {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.home-account-archive-header h2 {
+  margin: 0 0 7px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #263746;
+}
+
+.home-account-archive-header p {
+  margin: 0;
+  font-size: 12px;
+  color: #8495a3;
+  line-height: 1.6;
+}
+
+.home-account-archive-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.home-account-folder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  min-width: 0;
+  padding: 6px 5px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background: transparent;
+  cursor: pointer;
+  color: #354655;
+  font: inherit;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-account-folder img {
+  display: block;
+  width: 100%;
+  max-width: 110px; /* 기존 65px → 90px */
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.home-account-folder span {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: auto;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .home-account-folder:hover {
+    background: #edf5fa;
+    border-color: #dce9f1;
+    transform: translateY(-3px);
+  }
+}
+
+.home-account-folder:active {
+  transform: scale(0.97);
+}
+
+/* 계정 아카이브 페이지 */
+
+.account-links-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .home-account-archive {
+    width: 46%;
+    padding: 20px 12px;
+    margin-bottom: 32px;
+    border-radius: 15px;
+  }
+
+  .home-account-archive-header h2 {
+    font-size: 16px;
+  }
+
+  .home-account-archive-header p {
+    font-size: 10px;
+  }
+
+  .home-account-archive-list {
+    gap: 5px;
+  }
+
+  .home-account-folder {
+    padding: 10px 2px;
+    gap: 7px;
+  }
+
+  .home-account-folder img {
+    max-width: 78px;
+  }
+
+  .home-account-folder span {
+    font-size: 10px;
+  }
+}
+
+/* 계정 아카이브 창 가운데 정렬 강제 적용 */
+.home-account-archive {
+  display: block !important;
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 0 auto 40px !important;
+  box-sizing: border-box !important;
+}
+
+/* 계정 아카이브: 버튼 모양 제거 */
+.home-account-folder {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  cursor: default !important;
+  transform: none !important;
+}
+
+/* 이미지에만 클릭 커서 표시 */
+.home-account-folder img {
+  cursor: pointer !important;
+}
+
+/* 글자는 클릭 대상에서 제외 */
+.home-account-folder span {
+  cursor: default !important;
+  pointer-events: none;
+}
+
+/* 이미지 외 영역은 클릭해도 반응하지 않도록 설정 */
+.home-account-folder {
+  pointer-events: none;
+}
+
+.home-account-folder img {
+  pointer-events: auto;
+}
+
+/* ================================= */
+/* PC 계정 아카이브 위치 조절 */
+/* ================================= */
+
+@media (min-width: 769px) {
+  .home-account-archive {
+    position: relative !important;
+
+    /* 가로 위치: + 오른쪽 / - 왼쪽 */
+    left: 515px !important;
+
+    /* 세로 위치: + 아래쪽 / - 위쪽 */
+    top: -18px !important;
+
+    /* 창 크기 */
+     width: 210px !important;  /* 창 가로 */
+    height: 160px !important; /* 창 세로 */
+
+    /* 기본 여백 초기화 */
+    margin: 0 !important;
+
+     border-radius: 12px !important; /* PC 모서리 둥글기 */
+    overflow: hidden !important;
+  }
+}
+
+/* ================================= */
+/* 모바일 계정 아카이브 위치 조절 */
+/* ================================= */
+
+@media (max-width: 768px) {
+  .home-account-archive {
+    position: relative !important;
+
+    /* 가로 위치: + 오른쪽 / - 왼쪽 */
+    left: 20px !important;
+
+    /* 세로 위치: + 아래쪽 / - 위쪽 */
+    top: -15px !important;
+
+    /* 모바일 창 너비 */
+    width: 190px !important;  /* 창 가로 */
+    height: 145px !important; /* 창 세로 */
+
+    /* 기본 여백 초기화 */
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    border-radius: 12px !important; /* 모바일 모서리 둥글기 */
+    overflow: hidden !important;
+  }
+}
+/* ================================= */
+/* PC 계정 아카이브 제목 조절 */
+/* ================================= */
+
+@media (min-width: 769px) {
+  .home-account-archive-header h2 {
+    /* 글씨 크기 및 색상 */
+    font-size: 16px !important;
+    color: #222 !important;
+
+    /* 위치 조절 */
+    position: relative !important;
+    left: -30px !important; /* + 오른쪽 / - 왼쪽 */
+    top: 15px !important;  /* + 아래 / - 위 */
+
+    margin: 0 !important;
+  }
+}
+
+/* ================================= */
+/* 모바일 계정 아카이브 제목 조절 */
+/* ================================= */
+
+@media (max-width: 768px) {
+  .home-account-archive-header h2 {
+    font-size: 16px !important;
+    color: #222 !important;
+
+    position: relative !important;
+
+    /* 좌우 위치 */
+    left: -23px !important;
+
+    /* 상하 위치 */
+    top: -5px !important;
+
+    margin: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* ================================= */
+/* PC 계정 아카이브 폴더 개별 조절 */
+/* ================================= */
+
+@media (min-width: 769px) {
+
+  /* 하츠투하츠 공식 계정 폴더 이미지 */
+  .home-account-folder[data-account-page="official"] img {
+    position: relative !important;
+    left: 5px !important;       /* + 오른쪽 / - 왼쪽 */
+    top: -8px !important;        /* + 아래 / - 위 */
+    width: 90px !important;     /* 이미지 가로 크기 */
+    height: 90px !important;    /* 이미지 세로 크기 */
+    max-width: none !important;
+  }
+
+  /* 음원총공팀 계정 폴더 이미지 */
+  .home-account-folder[data-account-page="team"] img {
+    position: relative !important;
+    left: -10px !important;
+    top: -8px !important;
+    width: 90px !important;
+    height: 90px !important;
+    max-width: none !important;
+  }
+
+  /* 하츠투하츠 공식 계정 글씨 */
+  .home-account-folder[data-account-page="official"] span {
+    position: relative !important;
+    left: 26px !important;
+    top: -28px !important;
+    width: auto !important;
+    font-size: 10px !important;
+    color: #838383 !important;
+  }
+
+  /* 음원총공팀 계정 글씨 */
+  .home-account-folder[data-account-page="team"] span {
+    position: relative !important;
+    left: 12px !important;
+    top: -28px !important;
+    width: auto !important;
+    font-size: 10px !important;
+    color: #838383 !important;
+  }
+}
+
+/* ================================= */
+/* 모바일 계정 아카이브 폴더 개별 조절 */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+  /* 하츠투하츠 공식 계정 폴더 이미지 */
+  .home-account-folder[data-account-page="official"] img {
+    position: relative !important;
+    left: 8px !important;
+    top: -6px !important;
+    width: 70px !important;
+    height: 70px !important;
+    max-width: none !important;
+  }
+
+  /* 음원총공팀 계정 폴더 이미지 */
+  .home-account-folder[data-account-page="team"] img {
+    position: relative !important;
+    left: 3px !important;
+    top: -6px !important;
+    width: 70px !important;
+    height: 70px !important;
+    max-width: none !important;
+  }
+
+  /* 하츠투하츠 공식 계정 글씨 */
+  .home-account-folder[data-account-page="official"] span {
+    position: relative !important;
+    left: 20px !important;
+    top: -25px !important;
+    width: auto !important;
+    font-size: 10px !important;
+    color: #838383 !important;
+  }
+
+  /* 음원총공팀 계정 글씨 */
+  .home-account-folder[data-account-page="team"] span {
+    position: relative !important;
+    left: 16px !important;
+    top: -25px !important;
+    width: auto !important;
+    font-size: 10px !important;
+    color: #838383 !important;
+  }
+}
+
+/* ================================= */
+/* 계정 아카이브 - 메인 배너 창 디자인 */
+/* ================================= */
+
+.home-account-archive {
+  overflow: hidden;
+  border: 1px solid #d8e9f5;
+  border-radius: 0;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* 상단 하늘색 바 */
+.home-account-archive .home-account-archive-header {
+  width: 100%;
+  height: 36px;
+  margin: 0;
+  padding: 0 12px;
+  background: #e2eff8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* 왼쪽 제목 */
+.home-account-archive .banner-window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-account-archive .banner-window-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #222;
+  flex-shrink: 0;
+}
+
+.home-account-archive .banner-window-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* 오른쪽 창 표시 */
+.home-account-archive .banner-window-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-left: auto;
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  line-height: 1;
+  color: #3e7188;
+}
+
+.home-account-archive .banner-window-controls span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  position: static;
+  transform: none;
+  line-height: 1;
+}
+
+/* 폴더 영역 */
+.home-account-archive .home-account-archive-list {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ================================= */
+/* 계정 아카이브 상단 바 너비 맞춤 */
+/* ================================= */
+
+.home-account-archive {
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.home-account-archive .home-account-archive-header {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.home-account-archive .banner-window-title {
+  min-width: 0;
+}
+
+.home-account-archive .banner-window-controls {
+  flex-shrink: 0;
+}
+/* 계정 아카이브 상단 바를 창 테두리에 정확히 맞춤 */
+.home-account-archive {
+  position: relative !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.home-account-archive > .home-account-archive-header {
+  position: relative !important;
+  display: flex !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+
+  left: 0 !important;
+  right: auto !important;
+  transform: none !important;
+
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+.home-account-archive > .home-account-archive-header
+.banner-window-title {
+  min-width: 0 !important;
+  flex-shrink: 1 !important;
+}
+
+.home-account-archive > .home-account-archive-header
+.banner-window-controls {
+  width: auto !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+
+/* 계정 아카이브 상단 바 너비 보정 */
+.home-account-archive > .home-account-archive-header {
+  width: calc(100% + 2px) !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+/* ================================= */
+/* 계정 아카이브 상단 바 정렬 */
+/* ================================= */
+
+/* 제목 왼쪽 동그라미 제거 */
+.home-account-archive .banner-window-circle {
+  display: none !important;
+}
+
+/* 제목과 창 표시 정렬 */
+.home-account-archive .banner-window-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+
+/* 계정 아카이브 - 창 제어 기호 정렬 */
+.home-account-archive .banner-window-controls {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  height: 36px !important;
+  line-height: 1 !important;
+}
+
+/* −, □, × 공통 정렬 */
+.home-account-archive .banner-window-controls span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 14px !important;
+  height: 20px !important;
+  flex: 0 0 14px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  position: static !important;
+  transform: none !important;
+
+  font-family: Arial, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* 기호별 미세 위치 조정 */
+.home-account-archive .window-minimize {
+  padding-bottom: 3px !important;
+}
+
+.home-account-archive .window-maximize {
+  font-size: 15px !important;
+}
+
+.home-account-archive .window-close {
+  padding-bottom: 1px !important;
+}
+
+/* 계정 아카이브 - ㅁ만 위로 이동 */
+.home-account-archive .banner-window-controls .window-maximize {
+  position: relative !important;
+  top: 0 !important;
+  transform: translateY(-2px) !important;
+}
+
+
+/* =================================
+   공식 계정 페이지
+================================= */
+
+.account-official-container {
+  box-sizing: border-box;
+}
+
+.account-official-subtitle {
+  margin: 8px 0 32px;
+  color: #a0b8c4;
+  font-size: 14px;
+}
+
+.account-region-section {
+  margin-top: 32px;
+}
+
+.account-region-section h2 {
+  margin: 0;
+  color: #526f83;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.account-region-description {
+  margin: 6px 0 14px;
+  color: #a0b8c4;
+  font-size: 13px;
+}
+
+.account-links-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.account-link-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px;
+  box-sizing: border-box;
+
+  color: #283640;
+  text-decoration: none;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f1f7fb 100%
+  );
+
+  border: 1px solid #e0eaf0;
+  border-radius: 14px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.account-link-card:hover {
+  background: linear-gradient(
+    135deg,
+    #f2f8fc 0%,
+    #e4f1fa 100%
+  );
+
+  border-color: #c6dce9;
+  transform: translateY(-2px);
+}
+
+.account-platform-icon {
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+
+  border-radius: 12px;
+  background: #e7f0f6;
+  color: #354e60;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.account-youtube {
+  background: #fff0f0;
+  color: #e62117;
+}
+
+.account-x {
+  background: #edf0f2;
+  color: #111111;
+}
+
+.account-instagram {
+  background: #f9edf5;
+  color: #c13584;
+}
+
+.account-facebook {
+  background: #eaf1ff;
+  color: #1877f2;
+}
+
+.account-tiktok {
+  background: #eaf5f5;
+  color: #202020;
+}
+
+.account-weverse {
+  background: #e9f4ff;
+  color: #2879c7;
+}
+
+.account-pinterest {
+  background: #fff0f0;
+  color: #bd081c;
+}
+
+.account-weibo {
+  background: #fff5df;
+  color: #e36b30;
+}
+
+.account-bilibili {
+  background: #e9f6ff;
+  color: #00a4db;
+}
+
+.account-douyin {
+  background: #edf0f3;
+  color: #222222;
+}
+
+.account-link-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.account-link-info strong {
+  font-size: 14px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.account-link-info small {
+  color: #84929c;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.account-external-icon {
+  flex: 0 0 auto;
+  color: #92a5b2;
+  font-size: 17px;
+}
+
+@media (max-width: 600px) {
+  .account-links-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .account-region-section {
+    margin-top: 27px;
+  }
+
+  .account-link-card {
+    padding: 13px;
+    border-radius: 12px;
+  }
+
+  .account-platform-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* =================================
+   계정 아카이브 페이지 여백 조정
+================================= */
+
+.account-official-container,
+#account-team-page .support-standard-page {
+  box-sizing: border-box;
+  padding: 28px 32px 36px;
+}
+
+/* 계정 페이지 제목과 설명 */
+.account-official-container h1,
+#account-team-page .support-standard-page h1 {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* 계정 링크 버튼 영역 */
+.account-links-list {
+  margin-top: 24px;
+}
+
+/* 모바일 여백 */
+@media (max-width: 600px) {
+  .account-official-container,
+  #account-team-page .support-standard-page {
+    padding: 22px 18px 30px;
+  }
+
+  .account-links-list {
+    margin-top: 20px;
+  }
+}
+
+
+/* =================================
+   공식 계정 페이지 디자인
+================================= */
+
+#account-official-page .account-official-container,
+#account-team-page .support-standard-page {
+  width: min(870px, calc(100% - 30px));
+  margin: 0 auto;
+  padding: 28px 0 50px;
+  box-sizing: border-box;
+}
+
+/* 홈으로 버튼 */
+.account-archive-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 18px;
+  padding: 8px 12px;
+  border: 1px solid #d8e9f5;
+  border-radius: 8px;
+  background: #fff;
+  color: #507e9a;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.account-archive-back-btn:hover {
+  background: #f2f8fc;
+  border-color: #b6d6ed;
+}
+
+/* 페이지 제목 */
+#account-official-page h1,
+#account-team-page h1 {
+  margin: 8px 0;
+  color: #222;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* 영문 설명 */
+#account-official-page .account-official-subtitle,
+#account-team-page .account-team-subtitle {
+  margin: 0 0 26px;
+  color: #a0b8c4;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 지역별 계정 구역 */
+#account-official-page .account-region-section {
+  margin-top: 30px;
+}
+
+#account-official-page .account-region-section h2 {
+  margin: 0 0 6px;
+  color: #222;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+#account-official-page .account-region-description {
+  margin: 0 0 14px;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 계정 카드 목록 */
+#account-official-page .account-links-list,
+#account-team-page .account-links-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 0;
+}
+
+/* 개별 계정 카드 */
+#account-official-page .account-link-card,
+#account-team-page .account-link-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px;
+  box-sizing: border-box;
+  border: 1px solid #d8e9f5;
+  border-radius: 13px;
+  background: #fff;
+  color: #283640;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#account-official-page .account-link-card:hover,
+#account-team-page .account-link-card:hover {
+  background: linear-gradient(180deg, #f2f8fc 0%, #e4f1fa 100%);
+  border-color: #b6d6ed;
+  transform: translateY(-2px);
+}
+
+/* 플랫폼 아이콘 */
+#account-official-page .account-platform-icon,
+#account-team-page .account-platform-icon {
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* 계정 이름 및 아이디 */
+#account-official-page .account-link-info,
+#account-team-page .account-link-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+#account-official-page .account-link-info strong,
+#account-team-page .account-link-info strong {
+  color: #222;
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+#account-official-page .account-link-info small,
+#account-team-page .account-link-info small {
+  color: #888;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#account-official-page .account-external-icon,
+#account-team-page .account-external-icon {
+  flex: 0 0 auto;
+  color: #92a5b2;
+  font-size: 17px;
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+  #account-official-page .account-official-container,
+  #account-team-page .support-standard-page {
+    width: calc(100% - 30px);
+    padding: 20px 0 36px;
+  }
+
+  #account-official-page h1,
+  #account-team-page h1 {
+    font-size: 24px;
+  }
+
+  #account-official-page .account-official-subtitle,
+  #account-team-page .account-team-subtitle {
+    margin-bottom: 22px;
+  }
+
+  #account-official-page .account-region-section {
+    margin-top: 26px;
+  }
+
+  #account-official-page .account-links-list,
+  #account-team-page .account-links-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  #account-official-page .account-link-card,
+  #account-team-page .account-link-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  #account-official-page .account-platform-icon,
+  #account-team-page .account-platform-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ================================= */
+/* 공통 돌아가기 버튼 */
+/* ================================= */
+
+.back-btn {
+  display: block;
+
+  margin-bottom: 30px;
+
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  color: #3e7188;
+
+  font-size: 24px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #888;
+}
+
+
+/* 계정 페이지 돌아가기 버튼: 공통 버튼 스타일 적용 */
+.account-archive-back-btn {
+  display: block;
+  margin: 0 0 30px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #3e7188;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.account-archive-back-btn:hover {
+  color: #888;
+}
+
+/* 공식 계정 페이지 영문 설명과 제목 간격 */
+#account-official-page .account-official-subtitle {
+  margin-bottom: 4px;
+}
+
+#account-official-page h1 {
+  margin-top: 8px;
+}
+
+
+/* 공식 계정 로고 이미지 */
+#account-official-page .account-platform-icon img,
+#account-team-page .account-platform-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: auto;
+}
+
+/* 공식 계정 로고 배경 흰색 */
+#account-official-page .account-platform-icon,
+#account-team-page .account-platform-icon {
+  background-color: #ffffff !important;
+}
+
+/* 음원총공팀 계정 페이지 영문 설명과 제목 간격 */
+#account-team-page .account-team-subtitle {
+  margin-bottom: 4px;
+}
+
+#account-team-page h1 {
+  margin-top: 8px;
+}
+
+.footer-contact {
+  margin: 6px 0 0;
+  font-size: 10px;
+  color: #777;
+}
+
+.footer-contact a {
+  color: #777;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+/* 푸터 하단 문장 간격 통일 */
+.footer-sns,
+.footer-contact {
+  margin: 0px 0;
+  line-height: 1.5;
+}
