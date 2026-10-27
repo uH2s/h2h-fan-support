@@ -353,6 +353,8 @@ function formatRank(current, previous) {
     languageData[currentLanguage] || languageData.ko;
 
   const unit = language.chartRankUnit;
+  console.log("차트 순위 언어:", currentLanguage);
+console.log("차트 순위 단위:", unit);
   const errorText = language.chartRankError;
   const newText = language.chartRankNew;
 
@@ -363,13 +365,9 @@ function formatRank(current, previous) {
   if (current.status === "not-ranked") {
     return "-";
   }
-
-  const rankText =
-    currentLanguage === "ko"
-      ? `${current.rank}${unit}`
-      : currentLanguage === "id"
-        ? `${current.rank}`
-        : `${current.rank}${unit}`;
+  
+const rankText =
+  `${current.rank}${unit}`;
 
   if (previous.status !== "ranked") {
     return rankText;
@@ -409,9 +407,7 @@ function renderRank(element, current, previous) {
   languageData[currentLanguage] || languageData.ko;
 
 rankMain.textContent =
-  currentLanguage === "id"
-    ? `${current.rank}`
-    : `${current.rank}${language.chartRankUnit}`;
+  `${current.rank}${language.chartRankUnit}`;
 
   if (!previous || previous.status !== "ranked") {
     rankMain.textContent = formatRank(current, previous);
@@ -2327,6 +2323,7 @@ if (votePageDescription) {
   });
 
 
+
   /* 언어 저장 */
 
   localStorage.setItem(
@@ -2334,7 +2331,11 @@ if (votePageDescription) {
     currentLanguage
   );
 
+  /* 언어 변경 즉시 차트 순위 갱신 */
+  loadChartRanks();
+
 }
+
 
 
 /* ================================= */
