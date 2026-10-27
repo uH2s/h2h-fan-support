@@ -3803,7 +3803,7 @@ p.small-text {
     #ffffff 0%,
     #f7f9fa 30%,
     #e9f1f8 65%,
-    #d3e9f7 100%
+    #ddf2ff 100%
   );
 }
 
@@ -6356,3 +6356,23 @@ p.small-text {
     box-sizing: border-box !important;
   }
 }
+
+
+/* 계정 아카이브 + 투두리스트 제목 배경 그라데이션 */
+#main-page .home-account-archive .banner-window-bar,
+#main-page .home-todo-list .banner-window-bar {
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #F7FBFE 35%,
+    #e6f3fc 100%
+  ) !important;
+}
+
+
+/* 계정 아카이브 + 투두리스트 제목과 내용 구분선 */
+#main-page .home-account-archive .banner-window-bar,
+#main-page .home-todo-list .banner-window-bar {
+  border-bottom: 1px solid #E1EDF5 !important;
+}
+
