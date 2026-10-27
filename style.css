@@ -4877,7 +4877,7 @@ p.small-text {
     top: -15px !important;
 
     /* 모바일 창 너비 */
-    width: 190px !important;  /* 창 가로 */
+    width: 150px !important;  /* 창 가로 */
     height: 145px !important; /* 창 세로 */
 
     /* 기본 여백 초기화 */
@@ -4986,7 +4986,7 @@ p.small-text {
   /* 하츠투하츠 공식 계정 폴더 이미지 */
   .home-account-folder[data-account-page="official"] img {
     position: relative !important;
-    left: 8px !important;
+    left: -4px !important;
     top: -6px !important;
     width: 70px !important;
     height: 70px !important;
@@ -4996,7 +4996,7 @@ p.small-text {
   /* 음원총공팀 계정 폴더 이미지 */
   .home-account-folder[data-account-page="team"] img {
     position: relative !important;
-    left: 3px !important;
+    left: -3px !important;
     top: -6px !important;
     width: 70px !important;
     height: 70px !important;
@@ -5006,7 +5006,7 @@ p.small-text {
   /* 하츠투하츠 공식 계정 글씨 */
   .home-account-folder[data-account-page="official"] span {
     position: relative !important;
-    left: 20px !important;
+    left: 9px !important;
     top: -25px !important;
     width: auto !important;
     font-size: 10px !important;
@@ -5016,7 +5016,7 @@ p.small-text {
   /* 음원총공팀 계정 글씨 */
   .home-account-folder[data-account-page="team"] span {
     position: relative !important;
-    left: 16px !important;
+    left: 10px !important;
     top: -25px !important;
     width: auto !important;
     font-size: 10px !important;
@@ -5055,6 +5055,7 @@ p.small-text {
   display: flex;
   align-items: center;
   gap: 8px;
+    white-space: nowrap;
 }
 
 .home-account-archive .banner-window-circle {
@@ -5166,6 +5167,7 @@ p.small-text {
   width: auto !important;
   flex-shrink: 0 !important;
   margin-left: auto !important;
+  display: none !important;
 }
 
 /* 계정 아카이브 상단 바 너비 보정 */
