@@ -6021,15 +6021,14 @@ p.small-text {
   height: 16px;
   margin: 2px 0 0;
 
-  border: 1.5px solid #a9c3d5;
+  border: 1.5px solid #b4ddfa;
   border-radius: 50%;
   background: #fff;
   cursor: pointer;
 }
 
 .home-todo-checkbox:checked {
-  border-color: #8cb9d8;
-  background: #8cb9d8;
+  background: #b4ddfa;
 }
 
 .home-todo-checkbox:checked::after {
@@ -6050,9 +6049,9 @@ p.small-text {
 
 /* 완료된 문장 */
 .home-todo-checkbox:checked + .home-todo-text {
-  color: #9ba8b2;
+  color: #b7cee0;
   text-decoration: line-through;
-  text-decoration-color: #9ba8b2;
+  text-decoration-color: #b7cee0;
 }
 
 /* PC */
@@ -6269,7 +6268,7 @@ p.small-text {
 }
 
 #main-page .home-todo-list .home-todo-items::-webkit-scrollbar-thumb {
-  background: #cbd8e2;
+  background: #e0edf7;
   border-radius: 10px;
 }
 
@@ -6375,4 +6374,3 @@ p.small-text {
 #main-page .home-todo-list .banner-window-bar {
   border-bottom: 1px solid #E1EDF5 !important;
 }
-
