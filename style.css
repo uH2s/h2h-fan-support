@@ -4633,9 +4633,12 @@ p.small-text {
 
 /* 원클릭 스트리밍 창 아래 점선 */
 .home-oneclick-divider {
-  width: min(960px, calc(100% - 40px));
+  width: min(865px, calc(100% - 40px));
   border-top: 2.5px dashed #d9e2e7;
   margin: -105px auto 40px;
+   position: relative;
+    top: 2px;
+    margin-top: -105px;
   box-sizing: border-box;
 }
 
@@ -4645,7 +4648,108 @@ p.small-text {
   .home-oneclick-divider {
     width: 93%;
     margin: -80px auto 40px;
+    position: relative;
+    top: 23px;
+    margin-top: -105px;
   }
+}
+/* 아이패드 */
+@media (min-width: 768px) and (max-width: 1300px) {
+  .home-oneclick-divider {
+    width: 88%;
+    position: relative;
+    top: 2px;
+    margin-top: -105px;
+  }
+}
+
+
+/* PC - 점선과 하단 창 위치 개별 조절 */
+@media (min-width: 1301px) {
+
+  /* 점선 위치 */
+  #main-page .home-oneclick-divider {
+    position: relative !important;
+    top: 0px !important;
+    margin-top: -105px;
+  }
+
+  /* 계정 아카이브 위치 */
+  #main-page .home-account-archive {
+    position: relative !important;
+    top: -15px !important;
+  }
+
+  /* 투두리스트 위치 */
+  #main-page .home-todo-list {
+    position: absolute !important;
+    top: 16px !important;
+  }
+
+}
+
+/* PC - 투두리스트 상하 위치 강제 조절 */
+@media (min-width: 1301px) {
+  #main-page .home-todo-list {
+    top: 1690px !important;
+    transform: translateY(4px) !important;
+  }
+}
+
+/* 모바일 - 점선, 계정 아카이브, 투두리스트 위치 조절 */
+@media (max-width: 767px) {
+
+  /* 원클릭 스트리밍 아래 점선 */
+  #main-page .home-oneclick-divider {
+    position: relative !important;
+    top: 23px !important;
+  }
+
+  /* 계정 아카이브 창 */
+  #main-page .home-account-archive {
+    position: relative !important;
+    top: 7px !important;
+  }
+
+  /* 투두리스트 창 */
+  #main-page .home-todo-list {
+    position: relative !important;
+    top: 0px !important;
+    transform: translateY(22px) !important;
+  }
+
+}
+
+/* 모바일 - 푸터 위치 조절 */
+@media (max-width: 767px) {
+  footer {
+    position: relative !important;
+    top: 50px !important;
+  }
+}
+
+/* 아이패드 - 요소별 위치 조절 */
+@media (min-width: 768px) and (max-width: 1300px) {
+
+  /* 점선 */
+  #main-page .home-oneclick-divider {
+    top: 2px !important;
+  }
+
+  /* 계정 아카이브 */
+  #main-page .home-account-archive {
+     position: relative !important;
+    top: 0px !important;
+    transform: translateY(-13px) !important;
+    margin-top: 0px !important;
+  }
+
+  /* 투두리스트 */
+  #main-page .home-todo-list {
+    top: 0px !important;
+    transform: translateY(-13px) !important;
+  }
+
 }
 
 
@@ -5809,3 +5913,446 @@ p.small-text {
   }
 }
 
+/* ================================= */
+/* 홈 화면 투두리스트 위치 및 디자인 */
+/* ================================= */
+
+.home-todo-list {
+  position: relative;
+  box-sizing: border-box;
+  width: 210px;
+  min-height: 160px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid #d8e9f5;
+  border-radius: 12px;
+
+  color: #34495e;
+  font-family: inherit;
+}
+
+/* 투두리스트 상단 창 */
+.home-todo-list .home-todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  margin: 0;
+
+  background: #e2eff8;
+}
+
+/* 제목 */
+.home-todo-list .banner-window-title {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+
+.home-todo-list .banner-window-text {
+  color: #222;
+  font-size: 13px;
+  font-weight: 600;
+
+  /* 제목 좌우 위치 조절 */
+  position: relative;
+  left: 6px;
+}
+
+
+/* 모바일 - 투두리스트 제목 폰트 크기 */
+@media (max-width: 767px) {
+  .home-todo-list .banner-window-text {
+    font-size: 13px !important;
+  }
+}
+
+/* 창 표시 */
+.home-todo-list .banner-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  margin-left: auto;
+  color: #3e7188;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.home-todo-list .banner-window-controls span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 20px;
+}
+
+/* 리스트 */
+.home-todo-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 12px;
+}
+
+.home-todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 체크 동그라미 */
+.home-todo-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+
+  border: 1.5px solid #a9c3d5;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+.home-todo-checkbox:checked {
+  border-color: #8cb9d8;
+  background: #8cb9d8;
+}
+
+.home-todo-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+}
+
+.home-todo-text {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+/* 완료된 문장 */
+.home-todo-checkbox:checked + .home-todo-text {
+  color: #9ba8b2;
+  text-decoration: line-through;
+  text-decoration-color: #9ba8b2;
+}
+
+/* PC */
+@media (min-width: 1301px) {
+  #main-page .home-todo-list {
+    position: absolute;
+    left: calc(50% + 270px);
+    top: 0;
+    width: 210px;
+  }
+}
+
+/* 아이패드 및 작은 PC */
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  #main-page .home-todo-list {
+    position: relative;
+    left: 270px;
+    top: -160px;
+    width: 210px;
+    margin-bottom: -160px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 599px) {
+  #main-page .home-todo-list {
+    position: relative;
+    left: 20px;
+    top: -15px;
+    width: 150px;
+    min-height: 145px;
+    margin-bottom: 0;
+  }
+
+  .home-todo-list .home-todo-header {
+    padding: 0 6px;
+  }
+
+  .home-todo-list .banner-window-text {
+    font-size: 11px;
+  }
+
+  .home-todo-list .banner-window-controls {
+    gap: 2px;
+    font-size: 13px;
+  }
+
+  .home-todo-items {
+    padding: 12px 8px;
+  }
+
+  .home-todo-item {
+    gap: 6px;
+    font-size: 12px;
+  }
+}
+/* 투두리스트 위치 및 가로 비율 조정 */
+
+/* PC - 투두리스트를 더 아래로 이동 */
+@media (min-width: 1301px) {
+  #main-page .home-todo-list {
+    position: absolute !important;
+    left: calc(50% + -200px) !important;
+    top: 1650px !important;
+    width: 260px !important;
+    min-height: 160px;
+    margin: 0 !important;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+}
+
+/* 아이패드 */
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  #main-page .home-todo-list {
+    position: relative !important;
+    left: 285px !important;
+    top: -160px !important;
+    width: 310px !important;
+    min-height: 160px;
+    margin-bottom: -160px !important;
+    box-sizing: border-box;
+  }
+}
+
+/* 모바일 - 가로 비율 더 넓히기 */
+@media (max-width: 599px) {
+  #main-page .home-account-archive {
+    z-index: 1;
+  }
+
+  #main-page .home-todo-list {
+    position: relative !important;
+    left: 180px !important;
+    top: -160px !important;
+    width: 280px !important;
+    min-height: 145px;
+    margin-bottom: -160px !important;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  .home-todo-list .home-todo-header {
+    padding: 0 5px;
+  }
+
+  .home-todo-list .banner-window-text {
+    font-size: 11px;
+  }
+
+  .home-todo-list .banner-window-controls {
+    gap: 2px;
+    font-size: 12px;
+  }
+
+  .home-todo-items {
+    padding: 12px 8px;
+  }
+
+  .home-todo-item {
+    gap: 6px;
+    font-size: 12px;
+  }
+}
+
+/* PC - 투두리스트 창 가로 넓이 조절 */
+@media (min-width: 1301px) {
+  #main-page .home-todo-list {
+    width: 630px !important;
+  }
+}
+/* 투두리스트 - 항목 왼쪽 정렬 강제 */
+#main-page .home-todo-items {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#main-page .home-todo-items .home-todo-item {
+  display: grid !important;
+  grid-template-columns: 16px minmax(0, 1fr) !important;
+  align-items: center !important;
+  justify-content: start !important;
+  column-gap: 8px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 4px 0 !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+#main-page .home-todo-items .home-todo-checkbox {
+  justify-self: start !important;
+  margin: 0 !important;
+}
+
+#main-page .home-todo-items .home-todo-text {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  white-space: normal !important;
+}
+
+/* 투두리스트 항목 왼쪽 여백 조절 */
+#main-page .home-todo-items .home-todo-item {
+  padding-left: 13px !important;
+}
+
+/* 투두리스트 - 항목 상하 간격 통일 */
+#main-page .home-todo-items {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+#main-page .home-todo-items .home-todo-item {
+  margin: 0 !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  line-height: 1.4 !important;
+  box-sizing: border-box !important;
+}
+
+/* 투두리스트 - 창 높이 고정 및 내부 스크롤 */
+#main-page .home-todo-list {
+  height: 160px !important;
+  min-height: 0 !important;
+  max-height: 160px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+#main-page .home-todo-list .home-todo-header {
+  flex: 0 0 auto !important;
+}
+
+#main-page .home-todo-list .home-todo-items {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+#main-page .home-todo-list .home-todo-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+#main-page .home-todo-list .home-todo-items::-webkit-scrollbar-thumb {
+  background: #cbd8e2;
+  border-radius: 10px;
+}
+
+/* 투두리스트 - 스크롤바 좌우 위치 조절 */
+#main-page .home-todo-scroll-wrapper {
+  --todo-scrollbar-x: 0px;
+
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#main-page .home-todo-scroll-wrapper .home-todo-items {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+#main-page .home-todo-scroll-wrapper .home-todo-items::-webkit-scrollbar {
+  display: none;
+}
+
+#main-page .home-todo-scrollbar {
+  position: absolute;
+  top: 4px;
+  right: calc(5px - var(--todo-scrollbar-x));
+  bottom: 4px;
+  width: 5px;
+  border-radius: 10px;
+  background: #edf2f6;
+}
+
+#main-page .home-todo-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  background: #cbd8e2;
+}
+
+/* 모바일 - 투두리스트 높이 고정 및 내부 스크롤 */
+@media (max-width: 767px) {
+  #main-page .home-todo-list {
+    height: 160px !important;
+    min-height: 100px !important;
+    max-height: 145px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  #main-page .home-todo-list .home-todo-header {
+    flex-shrink: 0 !important;
+  }
+
+  #main-page .home-todo-list .home-todo-scroll-wrapper {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin !important;
+    scrollbar-color: #8bbbdc #f2f8fc !important;
+  }
+
+  #main-page .home-todo-list .home-todo-items {
+    min-height: 0 !important;
+  }
+}
+
+/* 아이패드 - 투두리스트 가로 너비 조절 */
+@media (min-width: 768px) and (max-width: 1300px) {
+  #main-page .home-todo-list {
+    width: 730px !important;
+    box-sizing: border-box !important;
+  }
+}
