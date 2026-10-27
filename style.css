@@ -4631,21 +4631,14 @@ p.small-text {
   }
 }
 
-/* 홈화면 원클릭 스밍 창 아래 구분 점선 */
+/* 원클릭 스트리밍 창 아래 점선 */
 .home-oneclick-divider {
-  width: 46%;
-  border-top: 2.5px dashed #d9e2e7;
-  margin: -105px auto 40px;
-}
-
-
-/* 홈화면 원클릭 스밍 창 아래 구분 점선 */
-.home-oneclick-divider {
-  width: 46%;
+  width: min(960px, calc(100% - 40px));
   border-top: 2.5px dashed #d9e2e7;
   margin: -105px auto 40px;
   box-sizing: border-box;
 }
+
 
 /* 모바일 */
 @media (max-width: 768px) {
@@ -5783,3 +5776,36 @@ p.small-text {
   margin: 0px 0;
   line-height: 1.5;
 }
+
+/* 아이패드 차트 요약 창 가로 너비 맞춤 */
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  .home-chart-section {
+    width: min(960px, calc(100% - 40px)) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
+  }
+}
+
+
+/* 아이패드 원클릭 스트리밍 창 가로 너비 맞춤 */
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  .home-oneclick-section {
+    width: min(960px, calc(100% - 40px)) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
+  }
+}
+
+/* 아이패드 계정 아카이브 위치 조절 */
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  #main-page .home-account-archive {
+    position: relative !important;
+    left: 100px !important;
+    top: 0px !important;
+  }
+}
+
